@@ -1,13 +1,13 @@
-CFLAGS		=	-Wall -Wextra -Werror -MMD -MP -g
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
-SRC_FILES	=	main.cpp
+SRC_FILES	=	main.cpp Contact.cpp
 
 COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 
-NAME		=	megaphone
+NAME		=	phonebook
 
 COLOR = \033[1;32m
 RESET = \033[0m
@@ -18,7 +18,7 @@ $(NAME)	:	$(OBJS)
 	@$(COMPILER) $(OBJS) -o $(NAME)
 	@echo "$(COLOR)COMPILED!$(RESET)"
 
-$(OBJDIR)/%.o	:	$(SRC_FILES)
+$(OBJDIR)/%.o	:	%.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
 
