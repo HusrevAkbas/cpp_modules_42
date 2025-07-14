@@ -37,3 +37,6 @@ re	: fclean all
 
 run	:	all
 	@./$(NAME)
+
+val	:
+	valgrind $(NAME)
