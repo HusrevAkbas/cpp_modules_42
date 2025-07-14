@@ -6,11 +6,21 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/14 19:05:56 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/14 23:22:59 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
+
+void	print_labels()
+{
+	std::cout
+	<< "|" << std::setw(10) << "Index"
+	<< "|" << std::setw(10) << "Firstname"
+	<< "|" << std::setw(10) << "Lastname"
+	<< "|" << std::setw(10) << "Nickname"
+	<< "|" << std::endl;
+}
 
 bool	is_number(std::string str)
 {
@@ -28,58 +38,98 @@ bool	is_number(std::string str)
 	return (true);
 }
 
+void	add_contact(PhoneBook *book)
+{
+	std::string	input[5];
+	int			i;
+
+	std::cout << YELLOW << "ADD CONTACT:" << RESET << book->get_index() << std::endl;
+	if (book->get_index() + 1 > 7)
+	{
+		std::cout << RED << "Warning: New contact will be replaced with contact: "
+		<< ((book->get_index() + 1) % 8) << RESET << std::endl;
+	}
+	i = 0;
+	while (i < 5)
+	{
+		std::cout << "Please enter " << fields[i] << " :" << std::endl;
+		std::getline(std::cin, input[i]);
+		if (i == 3 && !is_number(input[i]))
+			continue ;
+		if (input[i] != "")
+			i++;
+	}
+	book->add_contact(input[0], input[1], input[2], input[3], input[4]);
+}
+
+void	print_all(PhoneBook book)
+{
+	print_labels();
+	for (int i = 0; i < book.get_index() + 1; i++)
+	{
+		if (i == 8)
+			return ;
+		book.get_contact(i).print_contact(i);
+	}
+}
+
+void	search_contact(PhoneBook book)
+{
+	std::string	index;
+
+	index = "";
+	std::cout << MAGENT << "SEARCH:" << RESET << std::endl;
+	while (index.length() == 0 || index.length() > 1 || index[0] > '7')
+	{
+		if (index != "")
+			std::cout << RED << "Invalid index value!" << RESET << std::endl;
+		std::cout << "Please enter index number (0-7):" << std::endl;
+		std::getline(std::cin, index);
+		if (index == "-1")
+		{
+			print_all(book);
+				return ;
+		}
+	}
+	if (index[0] - 48 > book.get_index())
+		std::cout << GREEN << "Contact is empty: \e[3m" << RESET << index << std::endl;
+	else
+	{
+		print_labels();
+		book.get_contact(index[0] - 48).print_contact(index[0] - 48);
+	}
+}
+
+void	print_welcome()
+{
+	std::cout << CYAN << "\e[4m" << "Please select an option (1,2,3):" << RESET << std::endl
+	<< YELLOW << " (1): ADD CONTACT - "
+	<< MAGENT << "(2): SEARCH - "
+	<<  RED  << "(3): EXIT "
+	<< RESET << std::endl;
+}
+
 int	main()
 {
 	PhoneBook	book;
 	std::string	select;
-	std::string	input[5];
-	std::string	index;
-	int			i;
 
+	std::cout << "\e[1;91;106m" << "WELCOME TO THE GREATEST PHONEBOOK EVER	" << RESET << std::endl;
 	while (1)
 	{
-		index = "";
-		std::cout << "Please select an option (1,2,3):" << std::endl
-		<< YELLOW << " (1): ADD CONTACT - "
-		<< MAGENT << "(2): SEARCH - "
-		<<  RED   << "(3): EXIT " << book.get_index()
-		<< RESET  << std::endl;
+		print_welcome();
 		std::getline(std::cin, select);
 		if (select == "1")
-		{
-			std::cout << YELLOW << "ADD CONTACT:" << RESET << std::endl;
-			i = 0;
-			while (i < 5)
-			{
-				std::cout << "Please enter " << fields[i] << " :" << std::endl;
-				std::getline(std::cin, input[i]);
-				if (i == 4 && !is_number(input[i]))
-					continue ;
-				if (input[i] != "")
-					i++;
-			}
-			book.add_contact(input[0], input[1], input[2], input[3], input[4]);
-		}
+			add_contact(&book);
 		else if (select == "2")
-		{
-			std::cout << MAGENT << "SEARCH:" << RESET << std::endl;
-			while (index.length() == 0 || index.length() > 1 || index[0] > '7')
-			{
-				std::cout << "Please enter index number (0-7):" << std::endl;
-				std::getline(std::cin, index);
-			}
-			if (index[0] - 48 > book.get_index())
-				std::cout << GREEN << "Contact is empty: \e[3m" << RESET << index << std::endl;
-			else
-				book.get_contact(index[0] - 48).print_contact(index[0] - 48);
-		}
+			search_contact(book);
 		else if (select == "3")
 		{
-			std::cout << RED << "Good Bye" << RESET << std::endl;
+			std::cout << BLUE << "Good Bye" << RESET << std::endl;
 			return (0);
 		}
 		else
-			std::cout << "INVALID OPTION" << std::endl;
+			std::cout << RED << "INVALID OPTION" << std::endl;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:12:21 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 19:08:08 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/14 23:05:41 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ const	std::string fields[5] = {
 	"Firstname",
 	"Lastname",
 	"Nickname",
-	"Secret",
-	"Phone Number"
+	"Phone Number",
+	"Darkest Secret"
 };
 
 #endif

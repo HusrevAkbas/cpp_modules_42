@@ -1,4 +1,4 @@
-#ifndef	CONTACT_H
+#ifndef		CONTACT_H
 # define	CONTACT_H
 
 # include "iostream"
