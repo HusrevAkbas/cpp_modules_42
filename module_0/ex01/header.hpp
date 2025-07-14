@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:12:21 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 13:13:01 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/14 14:48:40 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,13 @@
 # include "Contact.hpp"
 # include "PhoneBook.hpp"
 # include "iostream"
+
+const	std::string fields[5] = {
+	"Firstname",
+	"Lastname",
+	"Nickname",
+	"Secret",
+	"Phone Number"
+};
 
 #endif

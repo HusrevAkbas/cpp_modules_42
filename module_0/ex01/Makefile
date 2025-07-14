@@ -41,4 +41,4 @@ run	:	all
 	@./$(NAME)
 
 val	:	all
-	valgrind ./$(NAME)
+	valgrind --track-origins=yes ./$(NAME)

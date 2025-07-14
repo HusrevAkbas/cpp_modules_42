@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:21:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 13:35:25 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/14 14:17:47 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class PhoneBook
 		Contact	_contacts[8];
 		int		_index;
 	public:
-		PhoneBook () {}
+		PhoneBook ();
 		void	add_contact(
 			std::string	_first_name,
 			std::string	_last_name,

@@ -6,11 +6,18 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:21:37 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 13:35:14 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/14 14:17:23 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+PhoneBook::PhoneBook()
+{
+	for (int i = 0; i < 8; i++)
+		this->_contacts[i] = Contact();
+	this->_index = 0;
+}
 
 void PhoneBook::add_contact(
 			std::string	first_name,
