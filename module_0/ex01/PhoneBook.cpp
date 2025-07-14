@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:21:37 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 14:17:23 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/14 19:04:26 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ Contact	PhoneBook::get_contact(int i)
 }
 int	PhoneBook::get_index()
 {
-	return ((this->_index - 1) % 8);
+	return (this->_index - 1);
 }

@@ -16,11 +16,11 @@ RESET = \033[0m
 
 all	:	$(NAME)
 
-$(NAME)	:	$(OBJS) $(INCLUDES)
+$(NAME)	:	$(OBJS)
 	@$(COMPILER) $(OBJS) -o $(NAME)
 	@echo "$(COLOR)COMPILED!$(RESET)"
 
-$(OBJDIR)/%.o	:	%.cpp
+$(OBJDIR)/%.o	:	%.cpp $(INCLUDES)
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
 
@@ -38,6 +38,9 @@ re	: fclean all
 	@echo "$(COLOR)RE_MADE!$(RESET)"
 
 run	:	all
+	@./$(NAME)
+
+rerun	:	re all
 	@./$(NAME)
 
 val	:	all
