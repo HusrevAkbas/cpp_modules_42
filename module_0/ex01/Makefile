@@ -1,6 +1,8 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
-SRC_FILES	=	main.cpp Contact.cpp
+SRC_FILES	=	main.cpp Contact.cpp PhoneBook.cpp
+
+INCLUDES	=	PhoneBook.hpp Contact.hpp
 
 COMPILER	=	c++
 
@@ -14,7 +16,7 @@ RESET = \033[0m
 
 all	:	$(NAME)
 
-$(NAME)	:	$(OBJS)
+$(NAME)	:	$(OBJS) $(INCLUDES)
 	@$(COMPILER) $(OBJS) -o $(NAME)
 	@echo "$(COLOR)COMPILED!$(RESET)"
 
@@ -37,3 +39,6 @@ re	: fclean all
 
 run	:	all
 	@./$(NAME)
+
+val	:	all
+	valgrind ./$(NAME)

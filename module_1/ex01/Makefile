@@ -18,7 +18,7 @@ $(NAME)	:	$(OBJS)
 	@$(COMPILER) $(OBJS) -o $(NAME)
 	@echo "$(COLOR)COMPILED!$(RESET)"
 
-$(OBJDIR)/%.o	:	$(SRC_FILES)
+$(OBJDIR)/%.o	:	%.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
 

@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/14 13:55:56 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/14 13:12:21 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/14 13:13:01 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.hpp"
+#ifndef HEADER_H
+# define HEADER_H
 
-int	main()
-{
-	PhoneBook book;
-	std::string	input;
+# include "Contact.hpp"
+# include "PhoneBook.hpp"
+# include "iostream"
 
-	book.add_contact("veryfirstlongname", "lnam", "mynick", "dark", "blabla");
-	book.get_contact(0).print_contact(book.get_index());
-	return (0);
-}
+#endif
