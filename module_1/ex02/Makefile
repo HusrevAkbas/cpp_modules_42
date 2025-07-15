@@ -7,7 +7,7 @@ COMPILER	=	c++
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 
-NAME		=	BraiiiiiiinnnzzzZ
+NAME		=	HITHISISBRAIN
 
 COLOR = \033[1;32m
 RESET = \033[0m
