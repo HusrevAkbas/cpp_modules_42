@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 22:07:53 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/15 22:37:24 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/15 22:21:11 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/15 22:39:30 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Zombie.hpp"
 
-int	main()
+void	randomChump( std::string name )
 {
-	Zombie	*zombie;
+	Zombie	zombie(name);
 
-	zombie = newZombie("dustin");
-	zombie->announce();
-	randomChump("randomGuy");
-	delete(zombie);
-	return (0);
+	zombie.announce();
 }

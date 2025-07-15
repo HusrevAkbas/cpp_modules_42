@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 22:07:53 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/15 22:37:24 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/15 22:18:29 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/15 22:20:56 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Zombie.hpp"
 
-int	main()
+Zombie	*newZombie(std::string name)
 {
 	Zombie	*zombie;
 
-	zombie = newZombie("dustin");
-	zombie->announce();
-	randomChump("randomGuy");
-	delete(zombie);
-	return (0);
+	zombie = new Zombie(name);
+	return (zombie);
 }
+/*	SHORT VERSION
+Zombie	*newZombie(std::string name)
+{	return (new Zombie(name));	}
+*/

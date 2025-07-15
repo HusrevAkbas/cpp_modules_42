@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 22:07:53 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/15 22:37:24 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/15 22:23:31 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/15 22:24:52 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef	MAIN_H
+# define MAIN_H
 
-int	main()
-{
-	Zombie	*zombie;
+# include "Zombie.hpp"
 
-	zombie = newZombie("dustin");
-	zombie->announce();
-	randomChump("randomGuy");
-	delete(zombie);
-	return (0);
-}
+Zombie	*newZombie(std::string name);
+void	randomChump( std::string name );
+
+#endif
