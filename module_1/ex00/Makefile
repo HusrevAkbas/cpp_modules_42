@@ -1,13 +1,13 @@
 CFLAGS		=	-Wall -Wextra -Werror -MMD -MP -g
 
-SRC_FILES	=	main.cpp
+SRC_FILES	=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 
-NAME		=	megaphone
+NAME		=	BraiiiiiiinnnzzzZ
 
 COLOR = \033[1;32m
 RESET = \033[0m
@@ -38,5 +38,7 @@ re	: fclean all
 run	:	all
 	@./$(NAME)
 
-val	:
-	valgrind $(NAME)
+val	:	all
+	@valgrind --track-origins=yes ./$(NAME)
+
+.phony	:	all c clean f fclean re run val

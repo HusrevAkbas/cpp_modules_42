@@ -1,10 +1,10 @@
 #!/bin/bash
 x=0
-m=0
+m=1
 mlast=10
 last=3
 key=module_
-src="$key"0/ex00/Makefile
+src="$key"1/ex00/Makefile
 while [ $m -lt $mlast ]
 do
 	x=0
@@ -14,7 +14,7 @@ do
 	fi
 	while [ $x -lt $last ]
 	do
-		echo mod $m ex $x greets $src
+		echo mod $m ex $x src: $src
 		diff $src $key$m/ex0$x/Makefile
 		x=$(($x+1))
 	done
@@ -22,7 +22,7 @@ do
 	then
 		while [ $x -lt 7 ]
 		do
-			echo mod $m ex $x greets
+			echo mod $m ex $x src: $src
 			diff $src $key$m/ex0$x/Makefile
 			x=$(($x+1))
 		done

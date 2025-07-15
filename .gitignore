@@ -1,6 +1,8 @@
+# object and dependency files
 /obj/*
 *.o
 *.d
+# executables
 megaphone
 phonebook
 accountant
