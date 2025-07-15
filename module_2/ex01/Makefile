@@ -1,6 +1,6 @@
 CFLAGS		=	-Wall -Wextra -Werror -MMD -MP -g
 
-SRC_FILES	=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC_FILES	=	main.cpp
 
 COMPILER	=	c++
 
