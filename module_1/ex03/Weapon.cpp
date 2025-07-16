@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 14:02:35 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/16 15:28:19 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/16 14:03:31 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/16 14:58:14 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
 #include "Weapon.hpp"
 
-int main()
-{
-	{
-		Weapon club = Weapon("crude spiked club");
+Weapon::Weapon ( std::string type )
+{	this->type = type;	}
 
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
+const std::string	&Weapon::getType( void )
+{	return	(this->type);	}
 
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return 0;
-}
+void	Weapon::setType( std::string type )
+{	this->type = type;	}
