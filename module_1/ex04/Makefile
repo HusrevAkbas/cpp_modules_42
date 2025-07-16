@@ -7,7 +7,7 @@ COMPILER	=	c++
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 
-NAME		=	BraiiiiiiinnnzzzZ
+NAME		=	changetheword
 
 COLOR = \033[1;32m
 RESET = \033[0m
@@ -24,7 +24,7 @@ $(OBJDIR)/%.o	:	%.cpp
 
 c	:	clean
 clean	:
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR) *.replace
 	@echo "$(COLOR)SOURCE FILES REMOVED$(RESET)"
 
 f	: fclean
@@ -36,9 +36,10 @@ re	: fclean all
 	@echo "$(COLOR)RE_MADE!$(RESET)"
 
 run	:	all
-	@./$(NAME)
+	@./$(NAME) Makefile ':' '+++'
 
 val	:	all
-	@valgrind --track-origins=yes ./$(NAME)
+	@valgrind --track-origins=yes --track-fds=yes ./$(NAME) Makefile 2 3
+#=yes+=yes+=yes
 
 .phony	:	all c clean f fclean re run val
