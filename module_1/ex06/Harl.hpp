@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 14:14:48 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/17 14:21:55 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/17 12:41:51 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/17 14:00:27 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef	HARL_H
+# define HARL_H
 
-int	main(int argc, char **argv)
+# include <iostream>
+
+class Harl
 {
-	std::string	level;
-	Harl		harl;
+	private:
+		void	debug( void );
+		void	info( void );
+		void	warning( void );
+		void	error( void );
+	public:
+		Harl(){}
+		~Harl(){}
+		void	complain(std::string level);
+};
 
-	(void) argc;
-	level = "";
-	if (argv[1])
-		level = argv[1];
-	harl.complain(level);
-	return (0);
-}
+#endif	//	HARL_H
