@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 00:12:15 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/18 00:21:21 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/18 00:13:09 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef	FIXED_H
+# define	FIXED_H
 
-int	main()
+#include <iostream>
+
+class Fixed
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	
-	a.getRawBits();
-	c = b;
-	c.getRawBits();
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
-}
+	private:
+		int					value;
+		static const int	bits = 8;
+	public:
+		Fixed();
+		~Fixed();
+		Fixed(const Fixed &a);
+		Fixed& operator=(const Fixed &a);
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
+};
+
+#endif	//	FIXED_H

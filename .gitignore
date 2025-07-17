@@ -3,6 +3,9 @@
 *.o
 *.d
 
+#local files and configuration files
+.vscode/*
+
 # executables
 a.out
 megaphone
@@ -14,6 +17,7 @@ warzone
 changetheword
 Harl
 harlFilter
+fixedPointNumberIntro
 
 # test output files
 out
