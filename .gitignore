@@ -19,6 +19,7 @@ Harl
 harlFilter
 fixedPointNumberIntro
 fixedPointNumber
+fixedPointNumberWithOperators
 
 # test output files
 out
