@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:57:01 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/20 00:10:27 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/20 22:58:52 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int	main()
 	std::cout << ba << std::endl;
 	std::cout << Fixed::max( aa, ba ) << std::endl;
 	std::cout << Fixed::min( b, c ) << std::endl;
+	std::cout << Fixed(12) / 2 << std::endl;
+	std::cout << Fixed(12) * 2 << std::endl;
 	return (0);
 }
