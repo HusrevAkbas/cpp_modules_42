@@ -20,6 +20,7 @@ harlFilter
 fixedPointNumberIntro
 fixedPointNumber
 fixedPointNumberWithOperators
+bsp
 
 # test output files
 out
