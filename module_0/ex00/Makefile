@@ -37,3 +37,5 @@ re	: fclean all
 
 run	:	all
 	@./$(NAME)
+
+.phony:	all c clean f fclean re run

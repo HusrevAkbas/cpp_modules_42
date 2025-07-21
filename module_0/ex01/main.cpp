@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/14 23:22:59 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/22 00:51:21 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	add_contact(PhoneBook *book)
 	std::string	input[5];
 	int			i;
 
-	std::cout << YELLOW << "ADD CONTACT:" << RESET << book->get_index() << std::endl;
+	std::cout << YELLOW << "ADD CONTACT:" << RESET << std::endl;
 	if (book->get_index() + 1 > 7)
 	{
-		std::cout << RED << "Warning: New contact will be replaced with contact: "
+		std::cout << WARN << "Warning: New contact will be replaced with contact: "
 		<< ((book->get_index() + 1) % 8) << RESET << std::endl;
 	}
 	i = 0;
@@ -82,7 +82,7 @@ void	search_contact(PhoneBook book)
 	while (index.length() == 0 || index.length() > 1 || index[0] > '7')
 	{
 		if (index != "")
-			std::cout << RED << "Invalid index value!" << RESET << std::endl;
+			std::cout << WARN << "Invalid index value!" << RESET << std::endl;
 		std::cout << "Please enter index number (0-7):" << std::endl;
 		std::getline(std::cin, index);
 		if (index == "-1")
@@ -100,7 +100,7 @@ void	search_contact(PhoneBook book)
 	}
 }
 
-void	print_welcome()
+void	print_options()
 {
 	std::cout << CYAN << "\e[4m" << "Please select an option (1,2,3):" << RESET << std::endl
 	<< YELLOW << " (1): ADD CONTACT - "
@@ -114,10 +114,10 @@ int	main()
 	PhoneBook	book;
 	std::string	select;
 
-	std::cout << "\e[1;91;106m" << "WELCOME TO THE GREATEST PHONEBOOK EVER	" << RESET << std::endl;
+	std::cout << "\e[1;91;106m" << " WELCOME TO THE GREATEST PHONEBOOK EVER " << RESET << std::endl;
 	while (1)
 	{
-		print_welcome();
+		print_options();
 		std::getline(std::cin, select);
 		if (select == "1")
 			add_contact(&book);
@@ -129,7 +129,7 @@ int	main()
 			return (0);
 		}
 		else
-			std::cout << RED << "INVALID OPTION" << std::endl;
+			std::cout << WARN << "INVALID OPTION" << std::endl;
 	}
 	return (0);
 }

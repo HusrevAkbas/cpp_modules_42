@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:12:21 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 23:05:41 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/22 00:51:02 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "iostream"
 
 # define RED	"\e[1;31m"
+# define WARN	"\e[2;3;91m"
 # define GREEN	"\e[1;32m"
 # define YELLOW	"\e[1;33m"
 # define BLUE	"\e[1;34m"
