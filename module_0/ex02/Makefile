@@ -38,6 +38,9 @@ re	: fclean all
 run	:	all
 	@./$(NAME)
 
+out	:	all
+	@./$(NAME) > out
+
 val	:	all
 	valgrind ./$(NAME)
 
