@@ -3,22 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 22:46:39 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/15 23:06:31 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/22 19:55:01 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-Zombie	*zombieHorde(int N, std::string name);
 
-int	main()
+int	main(int argc, char **argv)
 {
-	Zombie	*horde;
+	Zombie		*horde;
+	int			count;
+	std::string	name;
+	std::string	num;
 
-	horde = zombieHorde(10, "mike");
-	for (int i = 0; i < 10; i++)
+	name = "mickey";
+	count = 10;
+	if (argc == 3)
+	{
+		num = argv[1];
+		count = std::stoi(num);
+		name = argv[2];
+	}
+	horde = zombieHorde(count, name);
+	for (int i = 0; i < count; i++)
 		horde[i].announce();
 	delete[] horde;
 	return (0);

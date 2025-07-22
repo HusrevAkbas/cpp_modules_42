@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 22:07:53 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/15 22:37:24 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/22 19:37:36 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@ int	main()
 
 	zombie = newZombie("dustin");
 	zombie->announce();
-	randomChump("randomGuy");
 	delete(zombie);
+
+	zombie = newZombie("clara");
+	zombie->announce();
+	delete(zombie);
+
+	randomChump("randomGuy");
+
+	randomChump("anotherRandomGuy");
+
 	return (0);
 }
