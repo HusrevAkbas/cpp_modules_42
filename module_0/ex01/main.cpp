@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/22 00:51:21 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/22 13:51:52 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	search_contact(PhoneBook book)
 
 	index = "";
 	std::cout << MAGENT << "SEARCH:" << RESET << std::endl;
-	while (index.length() == 0 || index.length() > 1 || index[0] > '7')
+	while (index.length() > 1 || index[0] > '7' || index[0] < '0')
 	{
 		if (index != "")
 			std::cout << WARN << "Invalid index value!" << RESET << std::endl;
@@ -87,8 +87,11 @@ void	search_contact(PhoneBook book)
 		std::getline(std::cin, index);
 		if (index == "-1")
 		{
-			print_all(book);
-				return ;
+			if (book.get_contact(0).get_first_name() != "")
+				print_all(book);
+			else
+				std::cout << WARN << "There is no contact recorded yet!" << RESET << std::endl;
+			return ;
 		}
 	}
 	if (index[0] - 48 > book.get_index())
