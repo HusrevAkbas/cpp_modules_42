@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 12:41:51 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 13:44:44 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:13:00 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 class Harl
 {
 	private:
-		void	debug( void );
-		void	info( void );
-		void	warning( void );
-		void	error( void );
+		void	_debug( void );
+		void	_info( void );
+		void	_warning( void );
+		void	_error( void );
 	public:
 		Harl(){}
 		~Harl(){}

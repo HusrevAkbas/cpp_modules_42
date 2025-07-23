@@ -6,13 +6,13 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:23:35 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:07:42 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:13:00 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-void	Harl::debug()
+void	Harl::_debug()
 {
 	std::cout << BLUE 
 	<< "I love having extra bacon for my "
@@ -21,7 +21,7 @@ void	Harl::debug()
 	<< RESET << std::endl;
 }
 
-void	Harl::info()
+void	Harl::_info()
 {
 	std::cout << GREEN 
 		<< "I cannot believe adding extra bacon costs more money."
@@ -30,7 +30,7 @@ void	Harl::info()
 		<< RESET << std::endl;
 }
 
-void	Harl::warning()
+void	Harl::_warning()
 {
 	std::cout << YELLOW 
 	<< "I think I deserve to have some extra bacon for free."
@@ -39,7 +39,7 @@ void	Harl::warning()
 	<< RESET << std::endl;
 }
 
-void	Harl::error()
+void	Harl::_error()
 {
 	std::cout << RED
 	<< "This is unacceptable! I want to speak to the manager now."
@@ -49,7 +49,7 @@ void	Harl::error()
 void	Harl::complain(std::string level)
 {
 	void		(Harl::*ptr)( void );
-	void		(Harl::*ptr_array[4])( void ) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+	void		(Harl::*ptr_array[4])( void ) = { &Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error };
 	std::string	array[4] = { "debug", "info", "warning", "error"};
 
 	ptr = nullptr;
