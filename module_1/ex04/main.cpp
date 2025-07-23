@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:28:17 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 13:39:44 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 16:01:24 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ int	main(int argc, char *argv[])
 	}
 	ofilename = argv[1];
 	ofilename += ".replace";
-	output_file.open(ofilename);
+	output_file.open(ofilename.c_str());
 	remove = argv[2];
 	put = argv[3];
 	while (getline(input_file, line))
 	{
+		if (!input_file.eof())
+			line += "\n";
 		end = 0;
 		while (end < line.length() && line[end])
 		{
@@ -57,7 +59,6 @@ int	main(int argc, char *argv[])
 				end += remove.length();
 			}
 		}
-		output_file << std::endl;
 	}
 	return (0);
 }
