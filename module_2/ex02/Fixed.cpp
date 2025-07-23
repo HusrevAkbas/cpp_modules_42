@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:11:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:58:37 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ Fixed::Fixed()
 Fixed::Fixed(const int value)
 {
 	//	std::cout << "Int constructor called" << std::endl;
-	if (value > static_cast<int32_t>(roundf(std::numeric_limits<int32_t>::max() / (1 << bits))))
+	if (value > static_cast<int>(roundf(INT_MAX / (1 << bits))))
 		std::cout << "\e[1;31mGiven value is greater than max representable value\e[0m" << std::endl;
-	if (value < static_cast<int32_t>(roundf(std::numeric_limits<int32_t>::min() / (1 << bits))))
+	if (value < static_cast<int>(roundf(INT_MIN / (1 << bits))))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
 	this->_value = value * (1 << bits);
 }
@@ -35,9 +35,9 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	//	std::cout << "Float constructor called" << std::endl;
-	if (value > std::numeric_limits<int32_t>::max() / (1 << bits))
+	if (value > INT_MAX / (1 << bits))
 		std::cout << "\e[1;31mGiven value exeeds max representable value\e[0m" << std::endl;
-	if (value < std::numeric_limits<int32_t>::min() / (1 << bits))
+	if (value < INT_MIN / (1 << bits))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
 	this->_value = roundf(value * ( 1 << bits));
 }
@@ -55,38 +55,35 @@ Fixed::Fixed(const Fixed &a)
 Fixed& Fixed::operator=(const Fixed &a)
 {
 	//	std::cout << "Copy assignment operator called" << std::endl;
-	this->_value = a.getRawBits();
+	if (this != &a)
+		this->_value = a.getRawBits();
 	return (*this);
 }
 
-Fixed& Fixed::operator+(const Fixed &a)
+Fixed Fixed::operator+(const Fixed &a)
 {
 	//	std::cout << "Addition operator called" << std::endl;
-	this->_value += a.getRawBits();
-	return (*this);
+	return (this->toFloat() + a.toFloat());
 }
 
-Fixed& Fixed::operator-(const Fixed &a)
+Fixed Fixed::operator-(const Fixed &a)
 {
 	//	std::cout << "Subtraction operator called" << std::endl;
-	this->_value -= a.getRawBits();
-	return (*this);
+	return (this->toFloat() - a.toFloat());
 }
 
-Fixed& Fixed::operator*(const Fixed &a)
+Fixed Fixed::operator*(const Fixed &a)
 {
 	//	std::cout << "Multiplication operator called" << std::endl;
-	this->_value *= a.getRawBits() / (1 << bits);
-	return (*this);
+	return (this->toFloat() * a.toFloat());
 }
 
-Fixed& Fixed::operator/(const Fixed &a)
+Fixed Fixed::operator/(const Fixed &a)
 {
 	//	std::cout << "Division operator called" << std::endl;
 	if (a.getRawBits() == 0)
 		std::cout << "\e[1;31mDivision by 0, be careful!\e[0m" << std::endl;
-	this->_value /= a.getRawBits() / ( 1 << bits);
-	return (*this);
+	return (this->toFloat() / a.toFloat());
 }
 
 std::ostream& operator<<(std::ostream &o, const Fixed &a)

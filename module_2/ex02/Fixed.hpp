@@ -6,15 +6,17 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:11:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:59:44 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	FIXED_H
 # define	FIXED_H
 
-#include <iostream>
+#include <limits.h>
 #include <cmath>
+#include <iostream>
+#include <iomanip>
 
 class Fixed
 {
@@ -32,10 +34,10 @@ class Fixed
 		float	toFloat( void ) const;
 		int		toInt ( void ) const;
 		Fixed&	operator=(const Fixed &a);
-		Fixed&	operator+(const Fixed &a);
-		Fixed&	operator-(const Fixed &a);
-		Fixed&	operator*(const Fixed &a);
-		Fixed&	operator/(const Fixed &a);
+		Fixed	operator+(const Fixed &a);
+		Fixed	operator-(const Fixed &a);
+		Fixed	operator*(const Fixed &a);
+		Fixed	operator/(const Fixed &a);
 		Fixed&	operator++(int);
 		Fixed&	operator++();
 		Fixed&	operator--(int);
