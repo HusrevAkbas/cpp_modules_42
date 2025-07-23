@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:28:17 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/17 00:44:00 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/23 13:39:44 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 	while (getline(input_file, line))
 	{
 		end = 0;
-		while (line[end])
+		while (end < line.length() && line[end])
 		{
 			start = end;
 			end = line.find(remove, start);
@@ -59,6 +59,5 @@ int	main(int argc, char *argv[])
 		}
 		output_file << std::endl;
 	}
-	output_file << std::endl;
 	return (0);
 }
