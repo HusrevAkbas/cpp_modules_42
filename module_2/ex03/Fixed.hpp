@@ -6,15 +6,16 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:11:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 15:20:06 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	FIXED_H
 # define	FIXED_H
 
-#include <iostream>
+#include <limits>
 #include <cmath>
+#include <iostream>
 
 class Fixed
 {

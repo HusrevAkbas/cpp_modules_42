@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:11:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/23 15:15:24 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ Fixed::Fixed()
 Fixed::Fixed(const int value)
 {
 	//	std::cout << "Int constructor called" << std::endl;
-	if (value > static_cast<int32_t>(roundf(std::numeric_limits<int32_t>::max() / (1 << bits))))
+	if (value > static_cast<int>(roundf(std::numeric_limits<int>::max() / (1 << bits))))
 		std::cout << "\e[1;31mGiven value is greater than max representable value\e[0m" << std::endl;
-	if (value < static_cast<int32_t>(roundf(std::numeric_limits<int32_t>::min() / (1 << bits))))
+	if (value < static_cast<int>(roundf(std::numeric_limits<int>::min() / (1 << bits))))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
 	this->_value = value * (1 << bits);
 }
@@ -35,9 +35,9 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	//	std::cout << "Float constructor called" << std::endl;
-	if (value > std::numeric_limits<int32_t>::max() / (1 << bits))
+	if (value > std::numeric_limits<int>::max() / (1 << bits))
 		std::cout << "\e[1;31mGiven value exeeds max representable value\e[0m" << std::endl;
-	if (value < std::numeric_limits<int32_t>::min() / (1 << bits))
+	if (value < std::numeric_limits<int>::min() / (1 << bits))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
 	this->_value = roundf(value * ( 1 << bits));
 }
