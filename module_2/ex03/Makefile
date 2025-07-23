@@ -1,4 +1,4 @@
-CFLAGS		=	-Wall -Wextra -Werror -MMD -MP -g
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
 SRC_FILES	=	main.cpp Fixed.cpp Point.cpp bsp.cpp
 

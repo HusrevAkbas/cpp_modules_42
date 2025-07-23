@@ -1,10 +1,10 @@
 #!/bin/bash
 x=0
-m=1
+m=4
 mlast=10
 last=3
 key=module_
-src="$key"1/ex00/Makefile
+src="$key"4/ex00/Makefile
 while [ $m -lt $mlast ]
 do
 	x=0
