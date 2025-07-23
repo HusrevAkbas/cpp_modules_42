@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:23:35 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/17 14:30:27 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/23 14:05:55 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,38 @@
 
 void	Harl::debug()
 {
-	std::cout << "\e[1;34mDebug message\e[0m" << std::endl;
+	std::cout << BLUE 
+	<< "I love having extra bacon for my "
+	<< "7XL-double-cheese-triple-pickle-specialketchup burger."
+	<< " I really do!" 
+	<< RESET << std::endl;
 }
 
 void	Harl::info()
 {
-	std::cout << "\e[1;32mInfo message\e[0m" << std::endl;
+	std::cout << GREEN 
+		<< "I cannot believe adding extra bacon costs more money."
+		<< "You didn’t put enough bacon in my burger! "
+		<< "If you did, I wouldn’t be asking for more!"
+		<< RESET << std::endl;
 }
 
 void	Harl::warning()
 {
-	std::cout << "\e[1;33mWarning message\e[0m" << std::endl;
+	std::cout << YELLOW 
+	<< "I think I deserve to have some extra bacon for free."
+	<< " I’ve been coming for years, whereas you started "
+	<< "working here just last month."
+	<< RESET << std::endl;
 }
 
 void	Harl::error()
 {
-	std::cout << "\e[1;31mError! message\e[0m" << std::endl;
+	std::cout << RED
+	<< "This is unacceptable! I want to speak to the manager now."
+	<< RESET << std::endl;
 }
+
 
 void	Harl::complain(std::string level)
 {
@@ -60,7 +75,7 @@ void	Harl::complain(std::string level)
 		(this->*ptr_array[3])();
 		break;
 	default:
-		std::cout << "[ This is not even a complain. Try better ]" << std::endl;
+		std::cout << CYAN << "[ This is not even a complain. Try better ]" << RESET << std::endl;
 		break;
 	}
 }
