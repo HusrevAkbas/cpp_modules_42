@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:21:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/24 16:50:30 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/24 16:53:50 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	main ()
 	// Create rest of count times Dog s
 	for (size_t i = count / 2; i < count; i++)
 		animals[i] = new Dog();
+
+	// Animals makes sound
+	for (size_t i = 0; i < count; i++)
+		animals[i]->make_sound();
 
 	// Delete all animals one by one
 	for (size_t i = 0; i < count; i++)

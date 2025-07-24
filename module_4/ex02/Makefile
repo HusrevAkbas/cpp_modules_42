@@ -1,13 +1,13 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
-SRC_FILES	=	main.cpp
+SRC_FILES	=	main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 
 COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 
-NAME		=	BraiiiiiiinnnzzzZ
+NAME		=	zoo
 
 COLOR = \033[1;32m
 RESET = \033[0m
