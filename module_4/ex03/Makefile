@@ -39,6 +39,6 @@ run	:	all
 	@./$(NAME)
 
 val	:	all
-	@valgrind --track-origins=yes ./$(NAME)
+	@valgrind -s --track-origins=yes --leak-check=full ./$(NAME)
 
 .phony	:	all c clean f fclean re run val

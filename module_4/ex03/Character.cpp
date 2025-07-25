@@ -28,7 +28,11 @@ Character::~Character()
 }
 
 Character::Character( std::string const & name )
-{	this->_name = name;		}
+{
+	this->_name = name;
+	for (size_t i = 0; i < 4; i++)
+		this->_materia[i] = NULL;
+}
 
 Character::Character( const Character& other)
 {
