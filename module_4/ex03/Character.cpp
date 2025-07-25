@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Characterl.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
+/*   Updated: 2025/07/24 17:09:43 by huakbas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Character.hpp"
+
+Character::Character()
+{
+	for (size_t i = 0; i < 4; i++)
+		this->_materia[i] = NULL;
+}
+
+Character::~Character()
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (this->_materia[i])
+			delete this->_materia[i];
+	}
+}
+
+Character::Character( std::string const & name )
+{	this->_name = name;		}
+
+Character::Character( const Character& other)
+{
+	if (this != &other)
+		*this = other;
+}
+
+Character&	Character::operator=( const Character& other)
+{
+	if (this == &other)
+		return (*this);
+	this->_name = other.getName();
+	return (*this);
+}
+
+std::string const & Character::getName() const
+{	return (this->_name);		}
+
+void	Character::equip( AMateria *m )
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (!this->_materia[i])
+		{
+			this->_materia[i] = m;
+			return ;
+		}
+	}
+}
+void	Character::unequip( int idx )
+{
+	if (idx > 3 || idx < 0)
+		return ;
+	if (this->_materia[idx])
+		this->_materia[idx] = NULL;
+}
+void	Character::use( int idx, ICharacter &target)
+{
+	if (idx > 3 || idx < 0)
+		return ;
+	if (this->_materia[idx])
+		this->_materia[idx]->use(target);
+}
