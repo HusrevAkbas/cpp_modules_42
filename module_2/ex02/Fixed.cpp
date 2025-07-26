@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:58:37 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/27 01:22:45 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,9 +156,9 @@ bool	operator!=(Fixed a, Fixed b)
 	return (false);
 }
 
-Fixed	&Fixed::operator++(int)
+Fixed	Fixed::operator++(int)
 {
-	Fixed	&temp = *this;
+	Fixed	temp = *this;
 	this->_value += 1;
 	return (temp);
 }
@@ -169,9 +169,9 @@ Fixed	&Fixed::operator++()
 	return (*this);
 }
 
-Fixed	&Fixed::operator--(int)
+Fixed	Fixed::operator--(int)
 {
-	Fixed	&temp = *this;
+	Fixed	temp = *this;
 	this->_value -= 1;
 	return (temp);
 }

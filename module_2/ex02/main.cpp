@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:57:01 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 01:17:57 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/27 01:30:49 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,18 @@ int	main()
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
-	a = 10;
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
+	std::cout << a << std::endl;
+	std::cout << --a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a-- << std::endl;
+	std::cout << a << std::endl;
+	
+	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
+	
+	a = 10;
 	std::cout << "a < b " << std::boolalpha << (a < b) << std::endl;
 	std::cout << "a > b " << (a > b) << std::endl;
 
@@ -82,12 +90,10 @@ int	main()
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
-	std::cout << "a set to 0" << std::endl;
 	a = 0;
 	std::cout << "a: " << a << std::endl;
 	a++;
 	std::cout << "a++: " << a << std::endl;
-	std::cout << "a set to 0" << std::endl;
 	a = 0;
 	std::cout << "a: " << a << std::endl;
 	a--;
@@ -95,18 +101,21 @@ int	main()
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 	
-	std::cout << "a and b set to 1000" << std::endl;
-	a = 100;
-	b = 100;
+	std::cout << "a and b set to 1000 than increment a" << std::endl;
+	a = 1000;
+	b = 1000;
 	a++;
+	std::cout << "a: " << a << std::endl;
+	std::cout << "b: " << b << std::endl;
 	std::cout << "a == b " << (a == b) << std::endl;
-	std::cout << "a: " << a.toFloat() << std::endl;
-	std::cout << "b: " << b.toFloat() << std::endl;
+	std::cout << "(int) a == (int) b " << (a.toInt() == b.toInt()) << std::endl;
 	std::cout << "a (raw bits): " << a.getRawBits() << std::endl;
 	std::cout << "b (raw bits): " << b.getRawBits() << std::endl;
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
+	a = 100;
+	b = 1000;
 	std::cout << "a: " << a << std::endl;
 	std::cout << "b: " << b << std::endl;
 	std::cout << "c: " << c << std::endl;
