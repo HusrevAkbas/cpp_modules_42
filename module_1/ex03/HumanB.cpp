@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:20:55 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:12:14 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/26 14:12:36 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 HumanB::HumanB( std::string name )
 {
 	this->_name = name;
-	this->_weapon = nullptr;
+	this->_weapon = NULL;
 }
 
 void	HumanB::setWeapon( Weapon &weapon )
