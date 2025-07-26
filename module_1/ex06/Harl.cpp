@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:23:35 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:13:00 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/26 14:47:51 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	Harl::_debug()
 	std::cout << BLUE 
 	<< "I love having extra bacon for my "
 	<< "7XL-double-cheese-triple-pickle-specialketchup burger."
-	<< " I really do!" 
+	<< " I really do!\n" 
 	<< RESET << std::endl;
 }
 
@@ -26,7 +26,7 @@ void	Harl::_info()
 	std::cout << GREEN 
 		<< "I cannot believe adding extra bacon costs more money."
 		<< "You didn’t put enough bacon in my burger! "
-		<< "If you did, I wouldn’t be asking for more!"
+		<< "If you did, I wouldn’t be asking for more!\n"
 		<< RESET << std::endl;
 }
 
@@ -35,14 +35,14 @@ void	Harl::_warning()
 	std::cout << YELLOW 
 	<< "I think I deserve to have some extra bacon for free."
 	<< " I’ve been coming for years, whereas you started "
-	<< "working here just last month."
+	<< "working here just last month.\n"
 	<< RESET << std::endl;
 }
 
 void	Harl::_error()
 {
 	std::cout << RED
-	<< "This is unacceptable! I want to speak to the manager now."
+	<< "This is unacceptable! I want to speak to the manager now.\n"
 	<< RESET << std::endl;
 }
 
@@ -50,7 +50,7 @@ void	Harl::_error()
 void	Harl::complain(std::string level)
 {
 	void		(Harl::*ptr_array[4])( void ) = { &Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error };
-	std::string	array[4] = { "debug", "info", "warning", "error"};
+	std::string	array[4] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 	size_t		level_num;
 
 	level_num = -1;
@@ -61,21 +61,24 @@ void	Harl::complain(std::string level)
 	}
 	switch (level_num)
 	{
-	case 0:
-		std::cout << "[\e[1;34m DEBUG \e[0m]" << std::endl;
-		(this->*ptr_array[0])();
-	case 1:
-		std::cout << "[\e[1;32m INFO \e[0m]" << std::endl;
-		(this->*ptr_array[1])();
-	case 2:
-		std::cout << "[\e[1;33m WARNING \e[0m]" << std::endl;
-		(this->*ptr_array[2])();
-	case 3:
-		std::cout << "[\e[1;31m ERROR \e[0m]" << std::endl;
-		(this->*ptr_array[3])();
-		break;
-	default:
-		std::cout << CYAN << "[ This is not even a complain. Try better ]" << RESET << std::endl;
-		break;
+		case 0:
+			std::cout << "[\e[1;34m DEBUG \e[0m]" << std::endl;
+			(this->*ptr_array[0])();
+			// fallthrough
+		case 1:
+			std::cout << "[\e[1;32m INFO \e[0m]" << std::endl;
+			(this->*ptr_array[1])();
+			// fallthrough
+		case 2:
+			std::cout << "[\e[1;33m WARNING \e[0m]" << std::endl;
+			(this->*ptr_array[2])();
+			// fallthrough
+		case 3:
+			std::cout << "[\e[1;31m ERROR \e[0m]" << std::endl;
+			(this->*ptr_array[3])();
+			break;
+		default:
+			std::cout << CYAN << "[ This is not even a complain. Try better ]" << RESET << std::endl;
+			break;
 	}
 }
