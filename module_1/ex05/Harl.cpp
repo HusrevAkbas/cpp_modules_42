@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:23:35 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:13:00 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/26 14:25:00 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	Harl::complain(std::string level)
 	void		(Harl::*ptr_array[4])( void ) = { &Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error };
 	std::string	array[4] = { "debug", "info", "warning", "error"};
 
-	ptr = nullptr;
+	ptr = NULL;
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (level == array[i])
