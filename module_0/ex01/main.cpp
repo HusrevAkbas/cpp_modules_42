@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/23 13:18:49 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/26 12:40:50 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,12 @@ int	search_contact(PhoneBook book)
 
 void	print_options()
 {
-	std::cout << CYAN << "\e[4m" << "Please select an option (1,2,3):" << RESET << std::endl
-	<< YELLOW << " (1): ADD - "
-	<< MAGENT << "(2): SEARCH - "
-	<<  RED  << "(3): EXIT "
-	<< RESET << std::endl;
+	std::cout 
+	<< YELLOW << " ADD - "
+	<< MAGENT << "SEARCH - "
+	<<  RED  << " EXIT " << std::endl
+	<< CYAN << "\e[4m" << "Please select an option: " << RESET
+	<< RESET;
 }
 
 int	main()
@@ -131,13 +132,13 @@ int	main()
 		select = "4";
 		print_options();
 		std::getline(std::cin, select);
-		if (select == "1")
+		if (select == "ADD")
 			eof = add_contact(&book);
-		else if (select == "2")
+		else if (select == "SEARCH")
 			eof = search_contact(book);
-		else if (select != "3")
+		else if (select != "EXIT")
 			std::cout << WARN << "INVALID OPTION" << RESET << std::endl;
-		if (eof || std::cin.eof() || select == "3")
+		if (eof || std::cin.eof() || select == "EXIT")
 		{
 			std::cout << BLUE << "Good Bye" << RESET << std::endl;
 			return (0);
