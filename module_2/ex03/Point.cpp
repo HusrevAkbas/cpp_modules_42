@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:53:47 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/20 22:50:21 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/27 22:25:45 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Point::Point ()
 
 Point::~Point(){}
 
-Point::Point( float x, float y)
+Point::Point( float const x, float const y)
 {
 	this->x = Fixed(x);
 	this->y = Fixed(y);

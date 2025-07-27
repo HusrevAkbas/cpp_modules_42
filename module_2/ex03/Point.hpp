@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:53:48 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/20 22:50:30 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/27 22:25:35 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Point
 		Fixed	y;
 	public:
 		Point();
-		Point( float x, float y );
+		Point( float const x, float const y );
 		Point( Point& p );
 		Point&	operator=( const Point& p );
 		~Point();

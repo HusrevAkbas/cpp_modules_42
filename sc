@@ -15,7 +15,7 @@ do
 	while [ $x -lt $last ]
 	do
 		echo mod $m ex $x src: $src
-		cp $src $key$m/ex0$x/Makefile
+		#cp $src $key$m/ex0$x/Makefile
 		x=$(($x+1))
 	done
 	if [ $m -eq 1 ]
@@ -23,7 +23,7 @@ do
 		while [ $x -lt 7 ]
 		do
 			echo mod $m ex $x src: $src
-			cp $src $key$m/ex0$x/Makefile
+			#cp $src $key$m/ex0$x/Makefile
 			x=$(($x+1))
 		done
 	fi
