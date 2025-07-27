@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:28:17 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/24 13:55:58 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/27 19:16:05 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	main(int argc, char *argv[])
 	content = "";
 	while (getline(input_file, line))
 	{
-		if (content != "" && !input_file.eof())
-			content += "\n";
 		content += line;
+		if (!input_file.eof())
+			content += "\n";
 	}
 	end = 0;
 	while (end < content.length() && content[end])
