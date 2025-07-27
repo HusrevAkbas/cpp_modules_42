@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 01:37:46 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/27 17:48:07 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,28 @@ Fixed& Fixed::operator=(const Fixed &a)
 	return (*this);
 }
 
-Fixed& Fixed::operator+(const Fixed &a)
+Fixed Fixed::operator+(const Fixed &a)
 {
 	//	std::cout << "Addition operator called" << std::endl;
 	this->_value += a.getRawBits();
 	return (*this);
 }
 
-Fixed& Fixed::operator-(const Fixed &a)
+Fixed Fixed::operator-(const Fixed &a)
 {
 	//	std::cout << "Subtraction operator called" << std::endl;
 	this->_value -= a.getRawBits();
 	return (*this);
 }
 
-Fixed& Fixed::operator*(const Fixed &a)
+Fixed Fixed::operator*(const Fixed &a)
 {
 	//	std::cout << "Multiplication operator called" << std::endl;
 	this->_value *= a.getRawBits() / (1 << bits);
 	return (*this);
 }
 
-Fixed& Fixed::operator/(const Fixed &a)
+Fixed Fixed::operator/(const Fixed &a)
 {
 	//	std::cout << "Division operator called" << std::endl;
 	if (a.getRawBits() == 0)

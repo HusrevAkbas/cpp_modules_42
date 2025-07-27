@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 21:05:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/20 22:52:16 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/27 17:48:23 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ Fixed	get_determinant( Point const& a, Point const& b, Point const& c )
 {
 	Fixed	det;
 
-	det = a.get_x() * ( b.get_y() - c.get_y())
-		+ b.get_x() * (c.get_y() - a.get_y())
-		+ c.get_x() * (a.get_y() - b.get_y());
+	det = (a.get_x() * ( b.get_y() - c.get_y()))
+		+ (b.get_x() * (c.get_y() - a.get_y()))
+		+ (c.get_x() * (a.get_y() - b.get_y()));
 	return	(det);
 }
 

@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 01:37:53 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/27 17:45:28 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ class Fixed
 		float	toFloat( void ) const;
 		int		toInt ( void ) const;
 		Fixed&	operator=(const Fixed &a);
-		Fixed&	operator+(const Fixed &a);
-		Fixed&	operator-(const Fixed &a);
-		Fixed&	operator*(const Fixed &a);
-		Fixed&	operator/(const Fixed &a);
+		Fixed	operator+(const Fixed &a);
+		Fixed	operator-(const Fixed &a);
+		Fixed	operator*(const Fixed &a);
+		Fixed	operator/(const Fixed &a);
 		Fixed	operator++(int);
 		Fixed&	operator++();
 		Fixed	operator--(int);
