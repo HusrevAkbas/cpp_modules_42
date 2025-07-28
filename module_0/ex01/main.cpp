@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/26 12:40:50 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/28 15:49:58 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,10 +136,12 @@ int	main()
 			eof = add_contact(&book);
 		else if (select == "SEARCH")
 			eof = search_contact(book);
-		else if (select != "EXIT")
+		else if (select != "EXIT" && !std::cin.eof())
 			std::cout << WARN << "INVALID OPTION" << RESET << std::endl;
 		if (eof || std::cin.eof() || select == "EXIT")
 		{
+			if (std::cin.eof())
+				std::cout << std::endl;
 			std::cout << BLUE << "Good Bye" << RESET << std::endl;
 			return (0);
 		}
