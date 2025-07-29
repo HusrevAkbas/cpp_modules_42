@@ -1,91 +1,80 @@
 #include "Contact.hpp"
 
+
+Contact::Contact (): _index(0) {}
+
 void Contact::set_contact(
+			int			index,
 			std::string	first_name,
 			std::string	last_name,
 			std::string	nick_name,
-			std::string	secret,
-			std::string	phone_number
+			std::string	phone_number,
+			std::string	secret
 		)
 {
+	this->_index = index;
 	this->_first_name = first_name;
 	this->_last_name = last_name;
 	this->_nick_name = nick_name;
-	this->_secret = secret;
 	this->_phone_number = phone_number;
+	this->_secret = secret;
 }
 
-void	Contact::print_contact(int i)
+void	Contact::print_contact()
 {
 	std::cout
-	<< "|" << std::setw(10) << i
-	<< "|" << std::setw(10) << this->get_first_name()
-	<< "|" << std::setw(10) << this->get_last_name()
-	<< "|" << std::setw(10) << this->get_nick_name()
+	<< std::left << std::setw(11) << "Index" << " : " << this->get_index() << std::endl
+	<< std::left << std::setw(11) << "First Name" << " : " << this->get_first_name() << std::endl
+	<< std::left << std::setw(11) << "Last Name" << " : " << this->get_last_name() << std::endl
+	<< std::left << std::setw(11) << "Nick Name" << " : " << this->get_nick_name() << std::endl
+	<< std::left << std::setw(11) << "Phone" << " : " << this->get_phone_number() << std::endl
+	<< std::left << std::setw(11) << "Secret" << " : " << this->get_secret() << std::endl;
+}
+
+void	Contact::print_contact_oneline()
+{
+	std::cout
+	<< "|" << std::setw(10) << this->get_index()
+	<< "|" << std::setw(10) << this->make_short(this->get_first_name())
+	<< "|" << std::setw(10) << this->make_short(this->get_last_name())
+	<< "|" << std::setw(10) << this->make_short(this->get_nick_name())
 	<< "|" << std::endl;
+}
+
+const std::string Contact::make_short( std::string str)
+{
+	if (str.length() <= 10)
+		return (str);
+	else
+		return (str.substr(0,9) + ".");
 }
 
 const std::string Contact::get_first_name()
 {
-	if (this->_first_name.length() <= 10)
-		return (this->_first_name);
-	else
-		return (this->_first_name.substr(0,9) + ".");
+	return (this->_first_name);
 }
 
 const std::string Contact::get_last_name()
 {
-	if (this->_last_name.length() <= 10)
-		return (this->_last_name);
-	else
-		return (this->_last_name.substr(0,9) + ".");
+	return (this->_last_name);
 }
 
 const std::string Contact::get_nick_name()
 {
-	if (this->_nick_name.length() <= 10)
-		return (this->_nick_name);
-	else
-		return (this->_nick_name.substr(0,9) + ".");
+	return (this->_nick_name);
 }
 
 const std::string Contact::get_secret()
 {
-	if (this->_secret.length() <= 10)
-		return (this->_secret);
-	else
-		return (this->_secret.substr(0,9) + ".");
+	return (this->_secret);
 }
 
 const std::string Contact::get_phone_number()
 {
-	if (this->_phone_number.length() <= 10)
-		return (this->_phone_number);
-	else
-		return (this->_phone_number.substr(0,9) + ".");
+	return (this->_phone_number);
 }
 
-void Contact::set_first_name(std::string first_name)
+int Contact::get_index()
 {
-	this->_first_name = first_name;
-}
-
-void Contact::set_last_name(std::string last_name)
-{
-	this->_last_name = last_name;
-}
-
-void Contact::set_nick_name(std::string nick_name)
-{
-	this->_nick_name = nick_name;
-}
-
-void Contact::set_secret(std::string secret)
-{
-	this->_secret = secret;
-}
-
-void Contact::set_phone_number(int phone_number)
-{
-	this->_phone_number = phone_number;
+	return (this->_index);
 }

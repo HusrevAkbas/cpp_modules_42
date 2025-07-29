@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:21:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/14 14:17:47 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/07/29 15:13:12 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ class PhoneBook
 	public:
 		PhoneBook ();
 		void	add_contact(
-			std::string	_first_name,
-			std::string	_last_name,
-			std::string	_nick_name,
-			std::string	_secret,
-			std::string	_phone_number
+			std::string	first_name,
+			std::string	last_name,
+			std::string	nick_name,
+			std::string	secret,
+			std::string	phone_number
 		);
+		void	print_contact_list();
 		Contact get_contact(int index);
 		int		get_index();
 };

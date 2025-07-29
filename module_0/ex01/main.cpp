@@ -6,21 +6,11 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:29:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/28 15:49:58 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/07/29 15:36:16 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
-
-void	print_labels()
-{
-	std::cout
-	<< "|" << std::setw(10) << "Index"
-	<< "|" << std::setw(10) << "Firstname"
-	<< "|" << std::setw(10) << "Lastname"
-	<< "|" << std::setw(10) << "Nickname"
-	<< "|" << std::endl;
-}
 
 bool	is_number(std::string str)
 {
@@ -65,23 +55,18 @@ int	add_contact(PhoneBook *book)
 	return (0);
 }
 
-void	print_all(PhoneBook book)
-{
-	print_labels();
-	for (int i = 0; i < book.get_index() + 1; i++)
-	{
-		if (i == 8)
-			return ;
-		book.get_contact(i).print_contact(i);
-	}
-}
-
 int	search_contact(PhoneBook book)
 {
 	std::string	index;
 
-	index = "";
 	std::cout << MAGENT << "SEARCH:" << RESET << std::endl;
+	if (book.get_index() == -1)
+	{
+		std::cout << WARN << "There is no contact yet" << RESET << std::endl;
+		return (0);
+	}
+	book.print_contact_list();
+	index = "";
 	while (index.length() > 1 || index[0] > '7' || index[0] < '0')
 	{
 		if (index != "")
@@ -90,22 +75,11 @@ int	search_contact(PhoneBook book)
 		std::getline(std::cin, index);
 		if (std::cin.eof())
 			return (1);
-		if (index == "-1")
-		{
-			if (book.get_contact(0).get_first_name() != "")
-				print_all(book);
-			else
-				std::cout << WARN << "There is no contact recorded yet!" << RESET << std::endl;
-			return (0);
-		}
 	}
 	if (index[0] - 48 > book.get_index())
 		std::cout << GREEN << "Contact is empty: \e[3m" << RESET << index << std::endl;
 	else
-	{
-		print_labels();
-		book.get_contact(index[0] - 48).print_contact(index[0] - 48);
-	}
+		book.get_contact(index[0] - 48).print_contact();
 	return (0);
 }
 
