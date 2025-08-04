@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:28:17 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 19:16:05 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/04 17:09:33 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ int	main(int argc, char *argv[])
 			content += "\n";
 	}
 	end = 0;
+	if (to_remove.length() == 0)
+	{
+		output_file << content;
+		return (0);
+	}
 	while (end < content.length() && content[end])
 	{
 		start = end;
