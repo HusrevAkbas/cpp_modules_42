@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 22:07:53 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/22 19:37:36 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/04 12:28:41 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 int	main()
 {
 	Zombie	*zombie;
+	Zombie	*zombie2;
 
 	zombie = newZombie("dustin");
 	zombie->announce();
-	delete(zombie);
 
-	zombie = newZombie("clara");
-	zombie->announce();
-	delete(zombie);
-
+	zombie2 = newZombie("clara");
+	zombie2->announce();
+	
 	randomChump("randomGuy");
-
+	
 	randomChump("anotherRandomGuy");
-
+	
+	delete(zombie);
+	delete(zombie2);
 	return (0);
 }
