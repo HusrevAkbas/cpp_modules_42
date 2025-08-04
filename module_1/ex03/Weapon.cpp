@@ -6,11 +6,14 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:03:31 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:11:50 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/04 12:49:46 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
+
+Weapon::~Weapon ()
+{	this->_type = "Simple stick";	}
 
 Weapon::Weapon ( std::string type )
 {	this->_type = type;	}

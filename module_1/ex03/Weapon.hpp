@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:06:42 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/26 14:13:59 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/04 12:46:32 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Weapon
 		std::string	_type;
 	public:
 		// Weapon(){}
-		~Weapon(){}
+		~Weapon();
 		Weapon(std::string type);
 		const std::string	&getType( void );
 		void				setType(std::string type);

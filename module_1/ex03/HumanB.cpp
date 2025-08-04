@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:20:55 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/26 14:12:36 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/04 12:48:04 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
+
+HumanB::~HumanB () {}
 
 HumanB::HumanB( std::string name )
 {

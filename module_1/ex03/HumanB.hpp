@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:10:13 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:12:14 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/04 12:47:52 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class HumanB
 		Weapon		*_weapon;
 	public:
 		//	HumanB () {}
-		~HumanB () {}
+		~HumanB ();
 		HumanB(std::string name);
 		void	setWeapon(Weapon &weapon);
 		void	attack();

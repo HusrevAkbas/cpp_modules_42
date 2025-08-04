@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:15:05 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/26 14:15:40 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/04 12:48:19 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
+
+HumanA::~HumanA () {}
 
 HumanA::HumanA (std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {

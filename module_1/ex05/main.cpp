@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:49:02 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 13:44:37 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/04 13:05:01 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	std::string	level;
 	Harl	harl;
-	std::string	array[4] = { "debug", "info", "warning", "error"};
+	std::string	array[4] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 
 	(void) argc;
 	level = "";

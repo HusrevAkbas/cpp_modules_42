@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 23:12:07 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/26 14:03:52 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/04 12:45:39 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,12 @@ int	main()
 	std::cout << "Value of address of stringPTR: " << *stringPTR << std::endl;
 	std::cout << "Value of address of stringREF: " << stringREF << RESET << std::endl;
 
-	test1(string);
+	// test1(string);
+
 	// test2(stringPTR);
+
 	// test3(stringREF);
+
 	// test4
 	// std::string	string2 = "NEW BRAIN";
 	// stringPTR = &string2;
@@ -78,8 +81,5 @@ int	main()
 	std::cout << "Value of address of stringPTR: " << *stringPTR << std::endl;
 	std::cout << "Value of address of stringREF: " << stringREF << RESET << std::endl;
 
-	// test2(string);
-	// test2(stringREF);
-	// test2(*stringPTR);
 	return (0);
 }
