@@ -1,13 +1,14 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
-SRC_FILES	=	main.cpp
+SRC_FILES	=	main.cpp Bureaucrat.cpp Form.cpp
 
 COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
+DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
-NAME		=	BraiiiiiiinnnzzzZ
+NAME		=	bureaucrat
 
 COLOR = \033[1;32m
 RESET = \033[0m
@@ -21,6 +22,8 @@ $(NAME)	:	$(OBJS)
 $(OBJDIR)/%.o	:	%.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 c	:	clean
 clean	:

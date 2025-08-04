@@ -6,18 +6,20 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/04 17:26:55 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/04 18:01:13 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	BUREAUCRAT_H
-# define	BUREAUCRAT_H
+#pragma once
 
 # include <iostream>
 
 # define	RED		"\e[31m"
 # define	GREEN	"\e[32m"
 # define	YELLOW	"\e[33m"
+# define	BLUE	"\e[34m"
+# define	MAGENT	"\e[35m"
+# define	CYAN	"\e[36m"
 # define	RESET	"\e[0m"
 # define	BOLD	"\e[1m"
 # define	ITALIC	"\e[3m"
@@ -48,5 +50,3 @@ class Bureaucrat
 	};
 
 std::ostream& operator<< (std::ostream &o, Bureaucrat &b);
-
-#endif	//	BUREAUCRAT_H

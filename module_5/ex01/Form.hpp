@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/04 17:26:55 by huakbas          ###   ########.fr       */
+/*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/07/23 14:11:15 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	BUREAUCRAT_H
-# define	BUREAUCRAT_H
+#pragma once
 
-# include <iostream>
+#include <iostream>
+#include "Bureaucrat.hpp"
 
-# define	RED		"\e[31m"
-# define	GREEN	"\e[32m"
-# define	YELLOW	"\e[33m"
-# define	RESET	"\e[0m"
-# define	BOLD	"\e[1m"
-# define	ITALIC	"\e[3m"
-
-class Bureaucrat
+class Form
 {
 	private:
 		const std::string	_name;
-		int					_grade;
+		bool				_signed;
+		const int			_grade_to_sign;
+		const int			_grade_to_execute;
 	public:
-		Bureaucrat();
-		~Bureaucrat();
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(const Bureaucrat &a);
-		Bureaucrat& operator=(const Bureaucrat &a);
-		const std::string	getName();
-		int	getGrade();
+		Form();
+		~Form();
+		Form(const Form &a);
+		Form( std::string name, int grade_to_execute, int grade_to_sign );
+		Form& operator=(const Form &a);
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -45,8 +38,11 @@ class Bureaucrat
 			public:
 				const char	*what() const throw ();
 		};
-	};
+		const std::string	getName();
+		bool	isSigned();
+		int	getGradeToSign();
+		int	getGradeToExecute();
+		void	beSigned(Bureaucrat &b);
+};
 
-std::ostream& operator<< (std::ostream &o, Bureaucrat &b);
-
-#endif	//	BUREAUCRAT_H
+std::ostream& operator<< (std::ostream &o, Form &f);

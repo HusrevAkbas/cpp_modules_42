@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	BASEFORM_H
-# define	BASEFORM_H
+#pragma once
 
 #include <iostream>
 
@@ -24,4 +23,3 @@ class BaseForm
 		BaseForm(const BaseForm &a);
 		BaseForm& operator=(const BaseForm &a);
 };
-#endif	//	BASEFORM_H
