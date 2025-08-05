@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:11:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:34:22 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Fixed
 {
 	private:
 		int					_value;
-		static const int	bits = 8;
+		static const int	_bits = 8;
 	public:
 		Fixed();
 		~Fixed();

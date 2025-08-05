@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:57:01 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 01:30:49 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/05 14:59:14 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,27 @@
 
 int	main()
 {
+	Fixed x;
+	Fixed const y( Fixed( 5.05f ) * Fixed( 2 ) );
+
+	std::cout << x << std::endl;
+	std::cout << ++x << std::endl;
+	std::cout << x << std::endl;
+	std::cout << x++ << std::endl;
+	std::cout << x << std::endl;
+	std::cout << y << std::endl;
+	std::cout << Fixed::max( x, y ) << std::endl;
+
+	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
+
+	std::cout << x << std::endl;
+	std::cout << --x << std::endl;
+	std::cout << x << std::endl;
+	std::cout << x-- << std::endl;
+	std::cout << x << std::endl;
+
+	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
+
 	Fixed	a( 10 );
 	Fixed	b( 42.241f );
 	Fixed	c( b * a );
@@ -26,24 +47,13 @@ int	main()
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
-	a = 0;
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
+	std::cout << "a + b: " << (a + b) << std::endl;
+	std::cout << "a - b: " << (a - b) << std::endl;
+	std::cout << "c * a: " << (c * b) << std::endl;
+	std::cout << "d / b: " << (d / b) << std::endl;
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
-	std::cout << a << std::endl;
-	std::cout << --a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a-- << std::endl;
-	std::cout << a << std::endl;
-	
-	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
-	
-	a = 10;
 	std::cout << "a < b " << std::boolalpha << (a < b) << std::endl;
 	std::cout << "a > b " << (a > b) << std::endl;
 
@@ -55,12 +65,14 @@ int	main()
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
 	std::cout << "d > b " << (d > b) << std::endl;
+	std::cout << "d < b " << (d < b) << std::endl;
 	std::cout << "d >= b " << (d >= b) << std::endl;
 	std::cout << "d <= b " << (d <= b) << std::endl;
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 
 	std::cout << "c > b " << (c > b) << std::endl;
+	std::cout << "c < b " << (c < b) << std::endl;
 	std::cout << "c >= b " << (c >= b) << std::endl;
 	std::cout << "c <= b " << (c <= b) << std::endl;
 
@@ -69,6 +81,7 @@ int	main()
 	d++;
 	std::cout << "d++: " << d << std::endl;
 	std::cout << "d > b " << (d > b) << std::endl;
+	std::cout << "d < b " << (d < b) << std::endl;
 	std::cout << "d >= b " << (d >= b) << std::endl;
 	std::cout << "d <= b " << (d <= b) << std::endl;
 
@@ -77,6 +90,7 @@ int	main()
 	d--;
 	std::cout << "d--: " << d << std::endl;
 	std::cout << "d > b " << (d > b) << std::endl;
+	std::cout << "d < b " << (d < b) << std::endl;
 	std::cout << "d >= b " << (d >= b) << std::endl;
 	std::cout << "d <= b " << (d <= b) << std::endl;
 
@@ -85,19 +99,9 @@ int	main()
 	d--;
 	std::cout << "d--: " << d << std::endl;
 	std::cout << "d > b " << (d > b) << std::endl;
+	std::cout << "d < b " << (d < b) << std::endl;
 	std::cout << "d >= b " << (d >= b) << std::endl;
 	std::cout << "d <= b " << (d <= b) << std::endl;
-
-	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
-
-	a = 0;
-	std::cout << "a: " << a << std::endl;
-	a++;
-	std::cout << "a++: " << a << std::endl;
-	a = 0;
-	std::cout << "a: " << a << std::endl;
-	a--;
-	std::cout << "a--: " << a << std::endl;
 
 	std::cout << std::setw(20) << std::setfill('-') << "" << std::endl;
 	
@@ -105,7 +109,7 @@ int	main()
 	a = 1000;
 	b = 1000;
 	a++;
-	std::cout << "a: " << a << std::endl;
+	std::cout << "a++: " << a << std::endl;
 	std::cout << "b: " << b << std::endl;
 	std::cout << "a == b " << (a == b) << std::endl;
 	std::cout << "(int) a == (int) b " << (a.toInt() == b.toInt()) << std::endl;

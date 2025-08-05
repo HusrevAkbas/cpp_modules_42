@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/23 14:36:30 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:38:52 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ class Fixed
 {
 	private:
 		int					_value;
-		static const int	bits = 8;
+		static const int	_bits = 8;
 	public:
 		Fixed();
 		~Fixed();
 		Fixed(const Fixed &a);
 		Fixed(const int value);
 		Fixed(const float value);
-		Fixed& operator=(const Fixed &a);
+		Fixed&	operator=(const Fixed &a);
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 		float	toFloat( void ) const;

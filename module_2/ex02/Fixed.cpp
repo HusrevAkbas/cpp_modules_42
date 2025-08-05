@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 01:22:45 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/05 14:34:22 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ Fixed::Fixed()
 Fixed::Fixed(const int value)
 {
 	//	std::cout << "Int constructor called" << std::endl;
-	if (value > static_cast<int>(roundf(INT_MAX / (1 << bits))))
+	if (value > static_cast<int>(roundf(INT_MAX / (1 << _bits))))
 		std::cout << "\e[1;31mGiven value is greater than max representable value\e[0m" << std::endl;
-	if (value < static_cast<int>(roundf(INT_MIN / (1 << bits))))
+	if (value < static_cast<int>(roundf(INT_MIN / (1 << _bits))))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
-	this->_value = value * (1 << bits);
+	this->_value = value * (1 << _bits);
 }
 
 Fixed::Fixed(const float value)
 {
 	//	std::cout << "Float constructor called" << std::endl;
-	if (value > INT_MAX / (1 << bits))
+	if (value > INT_MAX / (1 << _bits))
 		std::cout << "\e[1;31mGiven value exeeds max representable value\e[0m" << std::endl;
-	if (value < INT_MIN / (1 << bits))
+	if (value < INT_MIN / (1 << _bits))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
-	this->_value = roundf(value * ( 1 << bits));
+	this->_value = roundf(value * ( 1 << _bits));
 }
 
 Fixed::~Fixed()
@@ -106,12 +106,12 @@ void	Fixed::setRawBits( int const raw )
 
 float	Fixed::toFloat( void ) const
 {
-	return (static_cast<float>(this->_value) / static_cast<float>(1 << bits));
+	return (static_cast<float>(this->_value) / static_cast<float>(1 << _bits));
 }
 
 int	Fixed::toInt( void ) const
 {
-	return (this->_value >> bits);
+	return (this->_value >> _bits);
 }
 
 bool	operator<(Fixed a, Fixed b)
