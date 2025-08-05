@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:53:48 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 22:25:35 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/05 16:22:23 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class	Point
 {
 	private:
-		Fixed	x;
-		Fixed	y;
+		const Fixed	_x;
+		const Fixed	_y;
 	public:
 		Point();
 		Point( float const x, float const y );
@@ -28,8 +28,6 @@ class	Point
 		~Point();
 		Fixed	get_x() const;
 		Fixed	get_y() const;
-		void	set_x( Fixed x );
-		void	set_y( Fixed y );
 };
 
 #endif	//	POINT_H

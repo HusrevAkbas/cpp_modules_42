@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 21:05:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/07/27 22:15:31 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/05 16:38:26 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,43 @@
 
 bool	bsp( Point const a, Point const b, Point const c, Point const point )
 {
-	Triangle	abc(a, b, c);
-	Triangle	pab(point, a, b);
-	Triangle	pac(point, a, c);
-	Triangle	pbc(point, b, c);
+	Fixed	area_a_b_c;
+	Fixed	area_a_b_point;
+	Fixed	area_b_c_point;
+	Fixed	area_a_c_point;
 	Fixed	diff;
 
-	diff = abc.getArea() - (pab.getArea() + pac.getArea() + pbc.getArea());
+	area_a_b_c = area_of_triangle( a, b, c);
+	area_a_b_point = area_of_triangle( a, b, point);
+	area_b_c_point = area_of_triangle( b, c, point);
+	area_a_c_point = area_of_triangle( a, c, point);
 
-	if (diff == 0 || (diff > 0 && diff < EPSYLON)
-		|| (diff < 0 && diff > EPSYLON * -1))
+	diff = area_a_b_c - ( area_a_b_point + area_a_c_point + area_b_c_point);
+
+	if (diff == 0)
 		return (true);
 
 	return (false);
 }
 
-// bool	bsp( Point const a, Point const b, Point const c, Point const point )
-// {
-// 	Fixed	area_a_b_c;
-// 	Fixed	area_a_b_point;
-// 	Fixed	area_b_c_point;
-// 	Fixed	area_a_c_point;
-// 	Fixed	diff;
+Fixed	get_determinant( Point const& a, Point const& b, Point const& c )
+{
+	Fixed	det;
 
-// 	area_a_b_c = area_of_triangle( a, b, c);
-// 	area_a_b_point = area_of_triangle( a, b, point);
-// 	area_b_c_point = area_of_triangle( b, c, point);
-// 	area_a_c_point = area_of_triangle( a, c, point);
+	det = (a.get_x() * ( b.get_y() - c.get_y()))
+		+ (b.get_x() * (c.get_y() - a.get_y()))
+		+ (c.get_x() * (a.get_y() - b.get_y()));
 
-// 	diff = area_a_b_c - ( area_a_b_point + area_a_c_point + area_b_c_point);
+	return	(det);
+}
 
-// 	if (diff == 0 || (diff > 0 && diff < EPSYLON)
-// 		|| (diff < 0 && diff > EPSYLON * -1))
-// 		return (true);
+Fixed	area_of_triangle( Point const &a, Point const &b, Point const &c )
+{
+	Fixed	det;
 
-// 	return (false);
-// }
+	det = get_determinant(a, b, c);
+	if (det < Fixed(0))
+		det = det * -1;
 
-// Fixed	get_determinant( Point const& a, Point const& b, Point const& c )
-// {
-// 	Fixed	det;
-
-// 	det = (a.get_x() * ( b.get_y() - c.get_y()))
-// 		+ (b.get_x() * (c.get_y() - a.get_y()))
-// 		+ (c.get_x() * (a.get_y() - b.get_y()));
-// 	return	(det);
-// }
-
-// Fixed	area_of_triangle( Point const& a, Point const& b, Point const& c )
-// {
-// 	Fixed	det;
-
-// 	det = get_determinant(a, b, c);
-// 	if (det < Fixed(0))
-// 		det = det * -1;
-// 	return (det / 2);
-// }
+	return (det / 2);
+}

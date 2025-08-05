@@ -1,11 +1,12 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
-SRC_FILES	=	main.cpp Fixed.cpp Point.cpp bsp.cpp Triangle.cpp
+SRC_FILES	=	main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
+DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
 NAME		=	bsp
 
@@ -21,6 +22,8 @@ $(NAME)	:	$(OBJS)
 $(OBJDIR)/%.o	:	%.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 c	:	clean
 clean	:
