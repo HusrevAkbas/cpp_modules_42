@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:53:48 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/05 16:22:23 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/05 17:06:58 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ class	Point
 		Point( float const x, float const y );
 		Point( Point& p );
 		Point&	operator=( const Point& p );
+		Point	operator-( const Point& p );
 		~Point();
 		Fixed	get_x() const;
 		Fixed	get_y() const;
 };
+
+bool	operator==( const Point& a, const Point &b );
 
 #endif	//	POINT_H
