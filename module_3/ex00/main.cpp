@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 16:09:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/23 16:57:05 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/06 22:40:53 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,31 @@
 int	main()
 {
 	ClapTrap	rob("Rob");
-	ClapTrap	wendy("Wendy");
-	ClapTrap	noname("last warior");
 
 	rob.attack("Robert");
-	wendy.attack("Junior");
 	rob.takeDamage(9);
-	noname.attack("Evaluated");
-	noname = rob;
 	rob.takeDamage(3);
-	wendy.takeDamage(2);
+	rob.attack("Robert");
 	rob.beRepaired(4);
-	noname.takeDamage(5);
+
+	std::cout << "------------------------------" << std::endl;
+
+	ClapTrap	wendy("Wendy");
+
+	wendy.attack("Junior");
+	wendy.takeDamage(2);
 	wendy.beRepaired(5);
+	wendy.takeDamage(3);
+
+	std::cout << "------------------------------" << std::endl;
+
+	ClapTrap	noname("The Last Warior");
+
+	for (size_t i = 0; i < 7; i++)
+		noname.attack("ENEMY");
+	for (size_t i = 0; i < 7; i++)
+		noname.beRepaired(1);
+	noname.attack("lion");
+
 	return (0);
 }

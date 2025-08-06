@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 15:30:41 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/23 16:51:59 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/06 22:39:58 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,19 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 
 void	ClapTrap::attack( const std::string& target)
 {
+	if (this->_hit_points <= 0)
+	{
+		std::cout << MAGENT << "ClapTrap " << this->_name
+		<< " is already dead. Can't attack. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
+	if (this->_energy_points <= 0)
+	{
+		std::cout << MAGENT << "ClapTrap " << this->_name
+		<< " doesn't have any energy. Can't attack. /( @ _ @ )\\" << RESET << std::endl;
+		return ;
+	}
+	this->_energy_points--;
 	std::cout << MAGENT
 	<< "ClapTrap " << this->_name
 	<< " attacs " << target
@@ -69,22 +82,41 @@ void	ClapTrap::attack( const std::string& target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	// if (amount > static_cast<unsigned int>(this->_hit_points))
-	// {
-	// 	std::cout << RED << "ClapTrap " << this->_name
-	// 	<< " is dead. RIP" << RESET << std::endl;
-	// 	return ;
-	// }
+	if (this->_hit_points <= 0)
+	{
+		std::cout << YELLOW << "ClapTrap " << this->_name
+		<< " is already dead. You can't hurt it anymore." << RESET << std::endl;
+		return ;
+	}
 	this->_hit_points -= amount;
 	std::cout << YELLOW
 	<< "ClapTrap " << this->_name
 	<< " takes " << amount
 	<< " damage. (Current hit points: " << this->_hit_points << ")"
 	<< RESET << std::endl;
+	if (this->_hit_points <= 0)
+	{
+		std::cout << YELLOW << "ClapTrap " << this->_name
+		<< " is no more. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	if (this->_hit_points <= 0)
+	{
+		std::cout << GREEN << "ClapTrap " << this->_name
+		<< " is already dead. It can not be repaired. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
+	if (this->_energy_points <= 0)
+	{
+		std::cout << GREEN << "ClapTrap " << this->_name
+		<< " does'nt have any energy. It can not be repaired. /( @ _ @ )\\ " << RESET << std::endl;
+		return ;
+	}
+	this->_energy_points--;
 	this->_hit_points += amount;
 	std::cout << GREEN
 	<< "ClapTrap " << this->_name
