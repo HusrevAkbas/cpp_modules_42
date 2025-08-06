@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:02:19 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 22:59:28 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/06 23:15:27 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ void	ScavTrap::attack(const std::string &target)
 		<< " doesn't have any energy. Can't attack. /( @ _ @ )\\" << RESET << std::endl;
 		return ;
 	}
+	this->_energy_points--;
 	std::cout << MAGENT
 	<< "ScavTrap " << this->_name
-	<< " attacs " << target
+	<< " attacks " << target
 	<< ", causing " << this->_attak_damage
 	<< " points of damage!"
 	<< RESET << std::endl;
@@ -63,6 +64,7 @@ void	ScavTrap::guardGate()
 		<< " doesn't have any energy. Can't switch to Gate Keeper mode. /( @ _ @ )\\" << RESET << std::endl;
 		return ;
 	}
+	this->_energy_points--;
 	std::cout << BLUE
 	<< "ScavTrap " << this->_name
 	<< " switched to Gate Keeper mode "
@@ -105,6 +107,7 @@ void	ScavTrap::beRepaired(unsigned int amount)
 		<< " does'nt have any energy. It can not be repaired. /( @ _ @ )\\ " << RESET << std::endl;
 		return ;
 	}
+	this->_energy_points--;
 	this->_hit_points += amount;
 	std::cout << GREEN
 	<< "ScavTrap " << this->_name

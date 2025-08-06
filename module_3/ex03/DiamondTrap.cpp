@@ -65,7 +65,7 @@ void	DiamondTrap::attack( const std::string& target) // : ScavTrap::attack(targe
 	ScavTrap::attack(target);
 	// std::cout << MAGENT
 	// << "DiamondTrap " << this->_name
-	// << " attacs " << target
+	// << " attacks " << target
 	// << ", causing " << this->_attak_damage
 	// << " points of damage!"
 	// << RESET << std::endl;

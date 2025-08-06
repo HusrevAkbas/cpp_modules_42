@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:02:19 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/23 21:42:29 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/06 23:15:27 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ScavTrap::attack(const std::string &target)
 {
 	std::cout << MAGENT
 	<< "ScavTrap " << this->_name
-	<< " attacs " << target
+	<< " attacks " << target
 	<< ", causing " << this->_attak_damage
 	<< " points of damage!"
 	<< RESET << std::endl;

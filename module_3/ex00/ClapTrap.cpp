@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 15:30:41 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 22:39:58 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/06 23:15:27 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ClapTrap::attack( const std::string& target)
 	this->_energy_points--;
 	std::cout << MAGENT
 	<< "ClapTrap " << this->_name
-	<< " attacs " << target
+	<< " attacks " << target
 	<< ", causing " << this->_attak_damage
 	<< " points of damage!"
 	<< RESET << std::endl;
