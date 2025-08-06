@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:02:19 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 23:15:27 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/07 00:29:20 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ ScavTrap::ScavTrap( const std::string name) : ClapTrap(name)
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attak_damage = 20;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
+{
+	std::cout << WARN
+	<< "ScavTrap " << other._name << " replicated" << RESET << std::endl;
+	if (this != &other)
+		*this = other;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &other)
+{
+	std::cout << WARN << "Assignment operator called" << RESET << std::endl;
+	if (this == &other)
+		return (*this);
+	this->_name = other._name;
+	this->_hit_points = other._hit_points;
+	this->_energy_points = other._energy_points;
+	this->_attak_damage = other._attak_damage;
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()
