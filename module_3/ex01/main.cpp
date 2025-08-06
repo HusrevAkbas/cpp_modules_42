@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:14:54 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/23 18:19:02 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/06 22:58:45 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main ()
 	wendy.attack("invisible target");
 	wendy.guardGate();
 	rob.takeDamage(1);
-	wendy.takeDamage(19);
+	wendy.takeDamage(222);
+	wendy.attack("Thanos");
 	return (0);
 }
 
