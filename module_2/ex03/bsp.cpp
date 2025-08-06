@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 21:05:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/05 17:25:34 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/06 13:29:44 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point )
 	area_b_c_point = area_of_triangle( b, c, point);
 	area_a_c_point = area_of_triangle( a, c, point);
 
-	diff = area_a_b_c - ( area_a_b_point + area_a_c_point + area_b_c_point);
+	diff = ( area_a_b_point + area_a_c_point + area_b_c_point) - area_a_b_c;
 
-	if (diff > 0)
-		return (false);
-
-	return (true);
+	return (diff <= 0);
 }
 
 Fixed	get_determinant( Point const& a, Point const& b, Point const& c )
@@ -70,7 +67,5 @@ bool	is_on_same_line(Point const &a, Point const &b, Point const &point)
 
 	Fixed	cross = (point.get_x() - a.get_x()) * (b.get_y() - a.get_y()) - (point.get_y() - a.get_y()) * (b.get_x() - a.get_x());
 
-	if (cross == 0) return (true);
-
-	return (false);
+	return (cross == 0);
 }
