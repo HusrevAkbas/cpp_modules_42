@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/05 14:34:22 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/06 21:50:44 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	FIXED_H
 # define	FIXED_H
 
-#include <limits>
+#include <limits.h>
 #include <cmath>
 #include <iostream>
 

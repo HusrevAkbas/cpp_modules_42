@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/06 14:28:10 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/06 21:41:15 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
 	if (value > static_cast<float>(INT_MAX) / static_cast<float>(1 << _bits))
-		std::cout << "\e[1;31mGiven value exeeds max representable value\e[0m" << std::endl;
+		std::cout << "\e[1;31mGiven value is greater than max representable value\e[0m" << std::endl;
 	if (value < static_cast<float>(INT_MIN) / static_cast<float>(1 << _bits))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
 	this->_value = roundf(value * ( 1 << _bits));

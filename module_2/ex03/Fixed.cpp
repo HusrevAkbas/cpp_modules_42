@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/05 14:34:22 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/06 21:49:11 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int value)
 {
-	//	std::cout << "Int constructor called" << std::endl;
-	if (value > static_cast<int>(roundf(std::numeric_limits<int>::max() / (1 << _bits))))
+	// std::cout << "Int constructor called" << std::endl;
+	if (value >= 1 << (31 - _bits))
 		std::cout << "\e[1;31mGiven value is greater than max representable value\e[0m" << std::endl;
-	if (value < static_cast<int>(roundf(std::numeric_limits<int>::min() / (1 << _bits))))
+	if (value < (1 << (31 - _bits)) * -1)
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
-	this->_value = value * (1 << _bits);
+	this->_value = value << _bits;
 }
 
 Fixed::Fixed(const float value)
 {
-	//	std::cout << "Float constructor called" << std::endl;
-	if (value > std::numeric_limits<int>::max() / (1 << _bits))
-		std::cout << "\e[1;31mGiven value exeeds max representable value\e[0m" << std::endl;
-	if (value < std::numeric_limits<int>::min() / (1 << _bits))
+	// std::cout << "Float constructor called" << std::endl;
+	if (value > static_cast<float>(INT_MAX) / static_cast<float>(1 << _bits))
+		std::cout << "\e[1;31mGiven value is greater than max representable value\e[0m" << std::endl;
+	if (value < static_cast<float>(INT_MIN) / static_cast<float>(1 << _bits))
 		std::cout << "\e[1;31mGiven value is lower than min representable value\e[0m" << std::endl;
 	this->_value = roundf(value * ( 1 << _bits));
 }
