@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:02:19 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/07 00:29:24 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/07 12:19:51 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ void	ScavTrap::attack(const std::string &target)
 
 void	ScavTrap::guardGate()
 {
+	if (this->_hit_points <= 0)
+	{
+		std::cout << YELLOW << "ScavTrap " << this->_name
+		<< " is already dead. Can't guard the gate. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
 	if (this->_energy_points <= 0)
 	{
 		std::cout << MAGENT << "ScavTrap " << this->_name

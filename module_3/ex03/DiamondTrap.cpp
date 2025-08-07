@@ -18,9 +18,9 @@ DiamondTrap::DiamondTrap()
 	std::cout << WARN << "DiamondTrap default constructor called" << RESET << std::endl;
 	this->_name = "DEFAULT";
 	this->ClapTrap::_name = "DEFAULT_clap_name";
-	this->_hit_points = FragTrap::_hit_points;
-	this->_energy_points = ScavTrap::_energy_points;
-	this->_attak_damage = FragTrap::_attak_damage;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_attak_damage = 30;
 }
 
 DiamondTrap::DiamondTrap(const std::string name)
@@ -29,9 +29,9 @@ DiamondTrap::DiamondTrap(const std::string name)
 	std::cout << WARN << "DiamondTrap " << name << " is constructed" << RESET << std::endl;
 	this->_name = name;
 	this->ClapTrap::_name = name + "_clap_name";
-	this->_hit_points = FragTrap::_hit_points;
-	this->_energy_points = ScavTrap::_energy_points;
-	this->_attak_damage = FragTrap::_attak_damage;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_attak_damage = 30;
 }
 
 DiamondTrap::~DiamondTrap()
@@ -64,22 +64,41 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 
 void	DiamondTrap::takeDamage(unsigned int amount)
 {
-	// if (amount > static_cast<unsigned int>(this->_hit_points))
-	// {
-	// 	std::cout << RED << "DiamondTrap " << this->_name
-	// 	<< " is dead. RIP" << RESET << std::endl;
-	// 	return ;
-	// }
+	if (this->_hit_points <= 0)
+	{
+		std::cout << YELLOW << "DiamondTrap " << this->_name
+		<< " is already dead. You can't hurt it anymore." << RESET << std::endl;
+		return ;
+	}
 	this->_hit_points -= amount;
 	std::cout << YELLOW
 	<< "DiamondTrap " << this->_name
 	<< " takes " << amount
 	<< " damage. (Current hit points: " << this->_hit_points << ")"
 	<< RESET << std::endl;
+	if (this->_hit_points <= 0)
+	{
+		std::cout << YELLOW << "DiamondTrap " << this->_name
+		<< " is no more. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
 }
 
 void	DiamondTrap::beRepaired(unsigned int amount)
 {
+	if (this->_hit_points <= 0)
+	{
+		std::cout << GREEN << "DiamondTrap " << this->_name
+		<< " is already dead. It can not be repaired. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
+	if (this->_energy_points <= 0)
+	{
+		std::cout << GREEN << "DiamondTrap " << this->_name
+		<< " does'nt have any energy. It can not be repaired. /( @ _ @ )\\ " << RESET << std::endl;
+		return ;
+	}
+	this->_energy_points--;
 	this->_hit_points += amount;
 	std::cout << GREEN
 	<< "DiamondTrap " << this->_name

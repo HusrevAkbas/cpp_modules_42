@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 22:19:21 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/07 11:55:50 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/07 12:18:48 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	main()
 
 	don.attack("Ron");
 	don.whoAmI();
+	don.takeDamage(111);
 	don.beRepaired(10);
+	don.guardGate();
+	don.highFivesGuys();
 
 	return (0);
 }
