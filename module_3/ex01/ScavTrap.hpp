@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:56:26 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 23:08:41 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/07 20:51:05 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class ScavTrap : public ClapTrap
 		ScavTrap( const ScavTrap &other);
 		ScavTrap& operator=( const ScavTrap &other );
 		void attack(const std::string &target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
 		void guardGate();
 };
 

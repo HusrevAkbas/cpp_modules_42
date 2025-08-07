@@ -62,51 +62,6 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 	return (*this);
 }
 
-void	DiamondTrap::takeDamage(unsigned int amount)
-{
-	if (this->_hit_points <= 0)
-	{
-		std::cout << YELLOW << "DiamondTrap " << this->_name
-		<< " is already dead. You can't hurt it anymore." << RESET << std::endl;
-		return ;
-	}
-	this->_hit_points -= amount;
-	std::cout << YELLOW
-	<< "DiamondTrap " << this->_name
-	<< " takes " << amount
-	<< " damage. (Current hit points: " << this->_hit_points << ")"
-	<< RESET << std::endl;
-	if (this->_hit_points <= 0)
-	{
-		std::cout << YELLOW << "DiamondTrap " << this->_name
-		<< " is no more. \\( X _ X )/" << RESET << std::endl;
-		return ;
-	}
-}
-
-void	DiamondTrap::beRepaired(unsigned int amount)
-{
-	if (this->_hit_points <= 0)
-	{
-		std::cout << GREEN << "DiamondTrap " << this->_name
-		<< " is already dead. It can not be repaired. \\( X _ X )/" << RESET << std::endl;
-		return ;
-	}
-	if (this->_energy_points <= 0)
-	{
-		std::cout << GREEN << "DiamondTrap " << this->_name
-		<< " does'nt have any energy. It can not be repaired. /( @ _ @ )\\ " << RESET << std::endl;
-		return ;
-	}
-	this->_energy_points--;
-	this->_hit_points += amount;
-	std::cout << GREEN
-	<< "DiamondTrap " << this->_name
-	<< " repaired " << amount
-	<< " hit points. (Current hit points: " << this->_hit_points << ")"
-	<< RESET << std::endl;
-}
-
 void	DiamondTrap::whoAmI( void )
 {
 	std::cout << GRAY << "My name is DiamondTrap " << this->_name

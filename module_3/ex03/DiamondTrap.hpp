@@ -27,8 +27,6 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		DiamondTrap(const DiamondTrap& other);
 		DiamondTrap &operator=( const DiamondTrap &other );
 		using ScavTrap::attack;
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
 		void	whoAmI( void );
 };
 
