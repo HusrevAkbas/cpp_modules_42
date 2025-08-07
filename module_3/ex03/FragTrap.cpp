@@ -6,28 +6,26 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 15:30:41 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/07 11:52:09 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/07 11:51:13 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
+FragTrap::FragTrap() : ClapTrap("DEFAULT")
 {
 	std::cout << WARN3 << "FragTrap default constructor called" << RESET << std::endl;
-	this->_name = "DEFAULT";
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attak_damage = 30;
 }
 
-FragTrap::FragTrap( const std::string name )
+FragTrap::FragTrap( const std::string name ) : ClapTrap( name )
 {
 	std::cout << WARN3 << "FragTrap " << name << " is constructed" << RESET << std::endl;
-	this->_name = name;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attak_damage = 0;
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attak_damage = 30;
 }
 
 FragTrap::~FragTrap()
@@ -59,6 +57,19 @@ FragTrap& FragTrap::operator=(const FragTrap &other)
 
 void	FragTrap::attack( const std::string& target)
 {
+	if (this->_hit_points <= 0)
+	{
+		std::cout << MAGENT << "FragTrap " << this->_name
+		<< " is already dead. Can't attack. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
+	if (this->_energy_points <= 0)
+	{
+		std::cout << MAGENT << "FragTrap " << this->_name
+		<< " doesn't have any energy. Can't attack. /( @ _ @ )\\" << RESET << std::endl;
+		return ;
+	}
+	this->_energy_points--;
 	std::cout << MAGENT
 	<< "FragTrap " << this->_name
 	<< " attacks " << target
@@ -69,12 +80,12 @@ void	FragTrap::attack( const std::string& target)
 
 void	FragTrap::takeDamage(unsigned int amount)
 {
-	// if (amount > static_cast<unsigned int>(this->_hit_points))
-	// {
-	// 	std::cout << RED << "FragTrap " << this->_name
-	// 	<< " is dead. RIP" << RESET << std::endl;
-	// 	return ;
-	// }
+	if (this->_hit_points <= 0)
+	{
+		std::cout << YELLOW << "FragTrap " << this->_name
+		<< " is already dead. You can't hurt it anymore." << RESET << std::endl;
+		return ;
+	}
 	this->_hit_points -= amount;
 	std::cout << YELLOW
 	<< "FragTrap " << this->_name
@@ -85,6 +96,19 @@ void	FragTrap::takeDamage(unsigned int amount)
 
 void	FragTrap::beRepaired(unsigned int amount)
 {
+	if (this->_hit_points <= 0)
+	{
+		std::cout << GREEN << "FragTrap " << this->_name
+		<< " is already dead. It can not be repaired. \\( X _ X )/" << RESET << std::endl;
+		return ;
+	}
+	if (this->_energy_points <= 0)
+	{
+		std::cout << GREEN << "FragTrap " << this->_name
+		<< " does'nt have any energy. It can not be repaired. /( @ _ @ )\\ " << RESET << std::endl;
+		return ;
+	}
+	this->_energy_points--;
 	this->_hit_points += amount;
 	std::cout << GREEN
 	<< "FragTrap " << this->_name
@@ -95,6 +119,13 @@ void	FragTrap::beRepaired(unsigned int amount)
 
 void	FragTrap::highFivesGuys( void )
 {
+	if (this->_energy_points <= 0)
+	{
+		std::cout << GREEN << "FragTrap " << this->_name
+		<< " does'nt have any energy. No High Fives. /( @ _ @ )\\ " << RESET << std::endl;
+		return ;
+	}
+	this->_energy_points--;
 	std::cout << GRAY
 	<< "FragTrap " << this->_name
 	<< " high fives "
