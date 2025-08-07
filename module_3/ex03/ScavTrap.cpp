@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:02:19 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 23:15:27 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/07 11:52:17 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 	// this = ClapTrap(other._name);
 	std::cout << WARN
 	<< "ScavTrap " << other._name << " replicated" << RESET << std::endl;
-	// if (this != &other)
-	// 	*this = other;
+	if (this != &other)
+		*this = other;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
