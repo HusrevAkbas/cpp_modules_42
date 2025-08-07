@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:21:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/24 16:53:50 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/07 16:45:30 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ int	main ()
 	// Delete all animals one by one
 	for (size_t i = 0; i < count; i++)
 		delete animals[i];
+
+	Cat caddy = Cat();
+	caddy.setIdea(0, "It would be nice to go home.");
+	caddy.setIdea(1, "Take a seat, lean back and enjoy.");
+	Cat canny = Cat(caddy);
+	caddy.setIdea(0, "Hard work .. .. .. Hard work");
+	caddy.setIdea(1, "Take a deep breath than the leap of faith");
+	std::cout << canny.getIdea(0) << std::endl;
+	std::cout << canny.getIdea(1) << std::endl;
+	std::cout << caddy.getIdea(0) << std::endl;
+	std::cout << caddy.getIdea(1) << std::endl;
 
 	return (0);
 }

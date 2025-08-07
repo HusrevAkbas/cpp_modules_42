@@ -30,5 +30,8 @@ class	Cat : public Animal
 		Cat& operator=( const Cat &other);
 		std::string	get_type();
 		void	make_sound( void );
+		std::string	getIdea(int index);
+		void	setIdea(int index, std::string idea);
 };
+
 #endif	//	CAT_H
