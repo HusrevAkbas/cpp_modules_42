@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:06:45 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/24 15:52:07 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/07 14:04:48 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class	Animal
 		std::string	_type;
 	public:
 		Animal ();
-		~Animal ();
+		virtual ~Animal ();
 		Animal( const std::string type );
 		Animal( const Animal &other);
 		Animal& operator=( const Animal &other);

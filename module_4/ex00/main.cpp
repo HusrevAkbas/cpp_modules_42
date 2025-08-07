@@ -6,12 +6,13 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:21:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/24 15:51:20 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/07 13:00:14 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
 
 int	main ()
 {
@@ -31,5 +32,16 @@ int	main ()
 	a->make_sound();
 	std::cout << b->get_type() << " says: ";
 	b->make_sound();
+
+	WrongAnimal	*wrong_animal = new WrongAnimal();
+	WrongAnimal	*wrong_cat = new WrongCat();
+	wrong_animal->make_sound();
+	wrong_cat->make_sound();
+
+	delete meta;
+	delete dog;
+	delete cat;
+	delete a;
+	delete b;
 	return (0);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef	WRONG_CAT_H
+# define	WRONG_CAT_H
 
 # include <iostream>
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class	Cat : public Animal
+class	WrongCat : public WrongAnimal
 {
 	protected:
 		std::string	_type;
 	public:
-		Cat ();
-		~Cat ();
-		Cat( const std::string type );
-		Cat( const Cat &other);
-		Cat& operator=( const Cat &other);
+		WrongCat ();
+		~WrongCat ();
+		WrongCat( const std::string type );
+		WrongCat( const WrongCat &other);
+		WrongCat& operator=( const WrongCat &other);
 		std::string	get_type();
 		void	make_sound( void );
 };
+
+#endif	//	WRONG_CAT_H

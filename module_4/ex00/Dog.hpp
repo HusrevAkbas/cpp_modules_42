@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	DOG_H
-# define	DOG_H
+#pragma once
 
 # include <iostream>
 # include "Animal.hpp"
@@ -29,5 +28,3 @@ class	Dog : public Animal
 		std::string	get_type ( void );
 		void	make_sound( void );
 };
-
-#endif	//	DOG_H
