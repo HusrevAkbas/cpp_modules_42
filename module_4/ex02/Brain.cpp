@@ -36,7 +36,8 @@ Brain& Brain::operator=( const Brain &other )
 	std::cout << WARN4 << "Brain assign" << RESET << std::endl;
 	if (this == &other)
 		return ( *this );
-	*this->_ideas = *other._ideas;
+	for (size_t i = 0; i < 100; i++)
+		this->_ideas[i] = other._ideas[i];
 	return ( *this );
 }
 

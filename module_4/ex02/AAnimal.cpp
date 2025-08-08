@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 15:06:45 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/24 17:09:02 by huakbas          ###   ########.fr       */
+/*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
+/*   Updated: 2025/08/07 17:30:43 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ANIMAL_H
-# define	ANIMAL_H
+#include "AAnimal.hpp"
 
-# include <iostream>
-# include "Brain.hpp"
+AAnimal::AAnimal () {}
 
-class	Animal
+AAnimal::AAnimal ( const AAnimal& other)
 {
-	protected:
-		std::string	_type;
-	public:
-		virtual ~Animal();
-		virtual void	make_sound( void ) = 0;
-};
+	if (this != &other)
+		*this = other;
+}
 
-#endif	//	ANIMAL_H
+AAnimal::~AAnimal(){}
+
+void	AAnimal::make_sound( void )
+{
+	std::cout << MAGENT << "- This animal is quite quiet -" << RESET << std::endl;
+}
