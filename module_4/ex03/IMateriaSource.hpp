@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Characterl.hpp                                         :+:      :+:    :+:   */
+/*   ICharacterl.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CHARACTER_H
-# define	CHARACTER_H
+#pragma once
 
 # include <iostream>
-# include "ICharacter.hpp"
-# include "AMateria.hpp"
 
-class	Character : virtual public ICharacter
+#include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+
+class	IMateriaSource
 {
-	private:
-		std::string	_name;
-		AMateria	*_materia[4];
 	public:
-		Character();
-		~Character();
-		Character( std::string const & name );
-		Character( const Character& other);
-		Character& operator=( const Character& other);
-		std::string const & getName() const;
-		void	equip( AMateria *m );
-		void	unequip( int idx );
-		void	use( int idx, ICharacter &target);
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 };
-#endif	//	CHARACTER_H

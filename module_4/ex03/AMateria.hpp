@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	AMATERIA_H
-# define	AMATERIA_H
+#pragma once
 
 # include <iostream>
 # include "ICharacter.hpp"
@@ -32,5 +31,3 @@ class	AMateria
 		bool	isEquipped();
 		void	setEquipped(bool status);
 };
-
-#endif	//	AMATERIA_H

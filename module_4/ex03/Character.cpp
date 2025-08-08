@@ -12,7 +12,7 @@
 
 #include "Character.hpp"
 
-Character::Character()
+Character::Character() : _name("DEFAULT")
 {
 	for (size_t i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
@@ -27,29 +27,34 @@ Character::~Character()
 	}
 }
 
-Character::Character( std::string const & name )
+Character::Character( std::string const & name ) : _name(name)
 {
-	this->_name = name;
 	for (size_t i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
 }
 
 Character::Character( const Character& other)
 {
-	if (this != &other)
-		*this = other;
+	*this = other;
 }
 
 Character&	Character::operator=( const Character& other)
 {
 	if (this == &other)
 		return (*this);
+	for (size_t i = 0; i < 4; i++)
+		this->_materia[i] = NULL;
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (other._materia[i])
+			this->_materia[i] = other._materia[i]->clone();
+	}
 	this->_name = other.getName();
 	return (*this);
 }
 
 std::string const & Character::getName() const
-{	return (this->_name);		}
+{	return (this->_name);	}
 
 void	Character::equip( AMateria *m )
 {
@@ -78,7 +83,10 @@ void	Character::equip( AMateria *m )
 void	Character::unequip( int idx )
 {
 	if (idx > 3 || idx < 0)
+	{
+		std::cout << "Index is out of limits" << std::endl;
 		return ;
+	}
 	if (this->_materia[idx])
 	{
 		this->_materia[idx]->setEquipped(false);
@@ -88,7 +96,10 @@ void	Character::unequip( int idx )
 void	Character::use( int idx, ICharacter &target)
 {
 	if (idx > 3 || idx < 0)
+	{
+		std::cout << "Index is out of limits" << std::endl;
 		return ;
+	}
 	if (this->_materia[idx])
 		this->_materia[idx]->use(target);
 }
