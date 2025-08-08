@@ -12,13 +12,14 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal ( "Dog" )
-{	this->_type = "Dog";	};
+Dog::Dog() : Animal ( "Dog" ), _type("Dog")
+{	std::cout << WARN3 << "Dog DEFAULT constructed" << RESET << std::endl;	};
 
-Dog::~Dog(){}
+Dog::~Dog()
+{	std::cout << WARN3 << "Dog destructed" << RESET << std::endl;	}
 
-Dog::Dog( const std::string type ) : Animal (type)
-{	this->_type = type;		}
+Dog::Dog( const std::string type ) : Animal ("Dog"), _type("Dog")
+{	std::cout << WARN3 << "Dog (arg:" << type << ") constructed" << RESET << std::endl;		}
 
 Dog::Dog( const Dog &other)
 {

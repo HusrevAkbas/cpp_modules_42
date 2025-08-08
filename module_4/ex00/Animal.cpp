@@ -6,18 +6,20 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
-/*   Updated: 2025/07/24 15:42:28 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/08 13:49:36 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() {}
+Animal::Animal() 
+{	std::cout << WARN << "Animal DEFAULT constructed" << RESET << std::endl;	}
 
-Animal::~Animal() {}
+Animal::~Animal()
+{	std::cout << WARN << "Animal " << this->get_type() << " destructed" << RESET << std::endl;	}
 
-Animal::Animal( const std::string type )
-{	this->_type = type;		}
+Animal::Animal( const std::string type ) : _type(type)
+{	std::cout << WARN << "Animal " << type << " constructed" << RESET << std::endl;	}
 
 Animal::Animal( const Animal &other)
 {
