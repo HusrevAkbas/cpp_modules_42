@@ -7,7 +7,7 @@ COMPILER	=	c++
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 
-NAME		=	war_and_order
+NAME		=	warzone
 
 COLOR = \033[1;32m
 RESET = \033[0m

@@ -35,7 +35,7 @@ Cure&	Cure::operator=( const Cure& other)
 
 Cure*	Cure::clone( void ) const
 {
-	Cure	*new_one = new Cure( "cure");
+	Cure	*new_one = new Cure();
 	*new_one = *this;
 	return (new_one);
 }

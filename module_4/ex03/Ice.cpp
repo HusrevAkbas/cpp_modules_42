@@ -35,7 +35,7 @@ Ice&	Ice::operator=( const Ice& other)
 
 Ice*	Ice::clone( void ) const
 {
-	Ice	*new_one = new Ice( "ice ");
+	Ice	*new_one = new Ice();
 	*new_one = *this;
 	return (new_one);
 }

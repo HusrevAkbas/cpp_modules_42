@@ -53,21 +53,37 @@ std::string const & Character::getName() const
 
 void	Character::equip( AMateria *m )
 {
+	if (!m)
+	{
+		std::cout << "NULL can't be equipped" << std::endl;
+		return ;
+	}
+	if (m->isEquipped())
+	{
+		std::cout << m->getType() << " is already equipped by someone" << std::endl;
+		return ;
+	}
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (!this->_materia[i])
 		{
+			m->setEquipped(true);
+			std::cout << this->_name << " equipped " << m->getType() << std::endl;
 			this->_materia[i] = m;
 			return ;
 		}
 	}
+	std::cout << this->_name << " all materia slots are occupied" << std::endl;
 }
 void	Character::unequip( int idx )
 {
 	if (idx > 3 || idx < 0)
 		return ;
 	if (this->_materia[idx])
+	{
+		this->_materia[idx]->setEquipped(false);
 		this->_materia[idx] = NULL;
+	}
 }
 void	Character::use( int idx, ICharacter &target)
 {
