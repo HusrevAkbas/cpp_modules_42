@@ -12,6 +12,11 @@
 
 #include "Character.hpp"
 
+/*
+	Note: C++ compiler implicitly creates a copy constructor and overloads
+	assignment operator in order to perform shallow copy at compile time.
+*/
+
 Character::Character() : _name("DEFAULT")
 {
 	for (size_t i = 0; i < 4; i++)
@@ -33,8 +38,10 @@ Character::Character( std::string const & name ) : _name(name)
 		this->_materia[i] = NULL;
 }
 
-Character::Character( const Character& other)
+Character::Character( const Character& other) : _name(other._name)
 {
+	for (size_t i = 0; i < 4; i++)
+		this->_materia[i] = NULL;
 	*this = other;
 }
 
@@ -43,13 +50,17 @@ Character&	Character::operator=( const Character& other)
 	if (this == &other)
 		return (*this);
 	for (size_t i = 0; i < 4; i++)
+	{
+		if (this->_materia[i])
+			delete this->_materia[i];
 		this->_materia[i] = NULL;
+	}
+	this->_name = other.getName();
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (other._materia[i])
 			this->_materia[i] = other._materia[i]->clone();
 	}
-	this->_name = other.getName();
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:21:17 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/08 17:07:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/08 17:58:31 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,34 @@
 
 int	main()
 {
-	// AMateria	*ice = new Ice();
-	// AMateria	*cure = new Cure();
-	// AMateria	*ice_clone = ice->clone();
-	// AMateria	*cure_clone = cure->clone();
-	// ICharacter	*rogue = new Character( "rogue" );
-	// ICharacter	*magie = new Character( "magie" );
+	/*	Manual Test	*/
+	AMateria	*ice = new Ice();
+	AMateria	*cure = new Cure();
+	AMateria	*ice_clone = ice->clone();
+	AMateria	*cure_clone = cure->clone();
+	ICharacter	*rogue = new Character( "rogue" );
+	ICharacter	*magie = new Character( "magie" );
 
-	// rogue->equip(ice_clone);
-	// rogue->equip(cure_clone);
-	// rogue->equip(ice);
-	// rogue->equip(NULL);
-	// for (size_t i = 0; i < 4; i++)
-	// 	rogue->use(i, *magie);
-	// rogue->unequip(2);
-	// rogue->unequip(1);
+	rogue->equip(ice_clone);
+	rogue->equip(cure_clone);
+	rogue->equip(ice);
+	rogue->equip(NULL);
+	for (size_t i = 0; i < 4; i++)
+		rogue->use(i, *magie);
+	rogue->unequip(2);
+	rogue->unequip(1);
 
-	// magie->equip(ice);
-	// magie->equip(cure);
-	// magie->equip(cure_clone);
-	// magie->equip(ice_clone);
-	// for (size_t i = 0; i < 4; i++)
-	// 	magie->use(i, *rogue);
+	magie->equip(ice);
+	magie->equip(cure);
+	magie->equip(cure_clone);
+	magie->equip(ice_clone);
+	for (size_t i = 0; i < 4; i++)
+		magie->use(i, *rogue);
 
-	// delete rogue;
-	// delete magie;
+	delete rogue;
+	delete magie;
 
+	/*	Original Test*/
 	// IMateriaSource* src = new MateriaSource();
 	// src->learnMateria(new Ice());
 	// src->learnMateria(new Cure());
@@ -64,13 +66,19 @@ int	main()
 	// delete me;
 	// delete src;
 
+	/*	Deep Copy Test	*/
 	// AMateria	*ice = new Ice();
+	// AMateria	*cure = new Cure();
 	// Character	a = Character("Alpha");
 	// a.equip(ice);
-	// Character	b = a;
-	// a.unequip(0);
-	// delete ice;
+	// Character	b = Character("Beethoven");
+	// b.equip(cure);
 	// a.use(0, b);
+	// b.use(0, a);
+	// b = a;
+	// std::cout << "a uses" << std::endl << a.getName();
+	// a.use(0, b);
+	// std::cout << "b uses" << std::endl << b.getName();
 	// b.use(0, a);
 
 	return (0);
