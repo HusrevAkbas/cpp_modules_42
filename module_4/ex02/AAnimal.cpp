@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/08 13:02:26 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:05:18 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AAnimal::AAnimal () 
 {
-	std::cout << "AAnimal constructor" << std::endl;
+	std::cout << WARN << "AAnimal constructor" << RESET << std::endl;
 }
 
 AAnimal::AAnimal ( const AAnimal& other)
@@ -25,7 +25,7 @@ AAnimal::AAnimal ( const AAnimal& other)
 
 AAnimal::~AAnimal()
 {
-	std::cout << "AAnimal destructor" << std::endl;
+	std::cout << WARN << "AAnimal destructor" << RESET << std::endl;
 }
 
 AAnimal& AAnimal::operator=( const AAnimal &other)
@@ -35,7 +35,7 @@ AAnimal& AAnimal::operator=( const AAnimal &other)
 	return (*this);
 }
 
-void	AAnimal::make_sound( void )
-{
-	std::cout << MAGENT << "- This animal is quite quiet -" << RESET << std::endl;
-}
+// void	AAnimal::make_sound( void )
+// {
+// 	std::cout << MAGENT << "- This animal is quite quiet -" << RESET << std::endl;
+// }

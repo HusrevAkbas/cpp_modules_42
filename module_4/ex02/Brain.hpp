@@ -16,7 +16,7 @@
 # include <iostream>
 
 # define RED	"\e[1;31m"
-# define WARN	"\e[2;3;91m"
+# define WARN	"\e[2;3;95m"
 # define WARN2	"\e[2;3;92m"
 # define WARN3	"\e[2;3;93m"
 # define WARN4	"\e[2;3;94m"
