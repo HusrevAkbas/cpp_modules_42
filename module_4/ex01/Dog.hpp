@@ -30,6 +30,7 @@ class	Dog : public Animal
 		Dog& operator=( const Dog &other);
 		std::string	get_type ( void );
 		void	make_sound( void );
+		Brain	*getBrain();
 };
 
 #endif	//	DOG_H

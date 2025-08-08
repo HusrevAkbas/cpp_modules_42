@@ -54,3 +54,6 @@ std::string	Dog::get_type ( void )
 
 void	Dog::make_sound ()
 {	std::cout << MAGENT << "WooF woOF" << RESET << std::endl;	}
+
+Brain*	Dog::getBrain()
+{	return (this->_brain);	}

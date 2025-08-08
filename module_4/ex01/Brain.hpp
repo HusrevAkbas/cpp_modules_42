@@ -41,6 +41,8 @@ class	Brain
 		Brain& operator=( const Brain &other);
 		std::string*	get_ideas ( void );
 		void	make_sound( void );
+		std::string	getIdea(int index);
+		void	setIdea(int index, std::string idea);
 };
 
 #endif	//	BRAIN_H

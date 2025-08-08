@@ -55,11 +55,5 @@ std::string	Cat::get_type ()
 void	Cat::make_sound ()
 {	std::cout << MAGENT << "MEoW" << RESET << std::endl;	}
 
-std::string	Cat::getIdea(int index)
-{
-	return (this->_brain->get_ideas()[index]);
-}
-void	Cat::setIdea(int index, std::string idea)
-{
-	this->_brain->get_ideas()[index] = idea;
-}
+Brain*	Cat::getBrain()
+{	return (this->_brain);	}
