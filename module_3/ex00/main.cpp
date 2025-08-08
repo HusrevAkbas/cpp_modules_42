@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 16:09:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 22:40:53 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/08 13:10:09 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main()
 	ClapTrap	noname("The Last Warior");
 
 	for (size_t i = 0; i < 7; i++)
-		noname.attack("ENEMY");
+		noname.attack("First Warrior");
 	for (size_t i = 0; i < 7; i++)
 		noname.beRepaired(1);
 	noname.attack("lion");

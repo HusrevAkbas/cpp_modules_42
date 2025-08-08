@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 21:15:27 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/07 20:55:08 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/08 13:15:07 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class FragTrap : public ClapTrap
 {
-	private:
 	public:
 		FragTrap();
 		~FragTrap();

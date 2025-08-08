@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:14:54 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/06 22:58:45 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/08 13:13:55 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main ()
 	rob.takeDamage(1);
 	wendy.takeDamage(222);
 	wendy.attack("Thanos");
+	wendy.beRepaired(12);
 	return (0);
 }
 

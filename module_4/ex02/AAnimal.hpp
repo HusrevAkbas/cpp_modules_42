@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:06:45 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/07 17:31:21 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/08 12:57:27 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	AAnimal
 		AAnimal ();
 		virtual ~AAnimal();
 		AAnimal ( const AAnimal& other);
-		AAnimal operator=(const AAnimal& other);
+		AAnimal& operator=(const AAnimal& other);
 		virtual void	make_sound( void ) = 0;
 };
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:56:26 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/07 20:51:05 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/08 13:15:05 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class ScavTrap : public ClapTrap
 {
-	private:
 	public:
 		ScavTrap();
 		~ScavTrap();

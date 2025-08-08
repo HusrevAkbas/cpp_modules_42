@@ -1,11 +1,12 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
-SRC_FILES	=	main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+SRC_FILES	=	main.cpp AAnimal.cpp Cat.cpp Dog.cpp Brain.cpp
 
 COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
+DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
 NAME		=	zoo
 
@@ -21,6 +22,8 @@ $(NAME)	:	$(OBJS)
 $(OBJDIR)/%.o	:	%.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 c	:	clean
 clean	:

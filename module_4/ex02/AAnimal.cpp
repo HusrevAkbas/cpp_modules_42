@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/07 17:30:43 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/08 13:02:26 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AAnimal.hpp"
 
-AAnimal::AAnimal () {}
+AAnimal::AAnimal () 
+{
+	std::cout << "AAnimal constructor" << std::endl;
+}
 
 AAnimal::AAnimal ( const AAnimal& other)
 {
@@ -20,7 +23,17 @@ AAnimal::AAnimal ( const AAnimal& other)
 		*this = other;
 }
 
-AAnimal::~AAnimal(){}
+AAnimal::~AAnimal()
+{
+	std::cout << "AAnimal destructor" << std::endl;
+}
+
+AAnimal& AAnimal::operator=( const AAnimal &other)
+{
+	if (this == &other)
+	*this = other;
+	return (*this);
+}
 
 void	AAnimal::make_sound( void )
 {
