@@ -17,9 +17,6 @@ WrongCat::WrongCat() : WrongAnimal ( "WrongCat" )
 
 WrongCat::~WrongCat(){}
 
-WrongCat::WrongCat( const std::string type ) : WrongAnimal ( type )
-{	this->_type = type;		}
-
 WrongCat::WrongCat( const WrongCat &other)
 {
 	if (this != &other)

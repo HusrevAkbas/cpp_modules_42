@@ -25,13 +25,6 @@ Dog::~Dog()
 	delete (this->_brain);
 }
 
-Dog::Dog( const std::string type ) : Animal (type)
-{
-	std::cout << WARN3 << "Dog parameter constructor" << RESET << std::endl;
-	this->_type = type;
-	this->_brain = new Brain();
-}
-
 Dog::Dog( const Dog &other)
 {
 	std::cout << WARN3 << "Dog copy" << RESET << std::endl;

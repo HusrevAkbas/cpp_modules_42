@@ -25,7 +25,6 @@ class	Cat : public AAnimal
 	public:
 		Cat ();
 		~Cat ();
-		Cat( const std::string type );
 		Cat( const Cat &other);
 		Cat& operator=( const Cat &other);
 		std::string	get_type();

@@ -25,13 +25,6 @@ Cat::~Cat()
 	delete (this->_brain);
 }
 
-Cat::Cat( const std::string type ) : Animal ( type )
-{
-	std::cout << WARN2 << "Cat parameter constructor" << RESET << std::endl;
-	this->_type = type;
-	this->_brain = new Brain();
-}
-
 Cat::Cat( const Cat &other)
 {
 	std::cout << WARN2 << "Cat copy" << RESET << std::endl;

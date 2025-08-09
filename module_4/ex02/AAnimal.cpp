@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/08 14:05:18 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/09 16:11:07 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 AAnimal::AAnimal () 
 {
 	std::cout << WARN << "AAnimal constructor" << RESET << std::endl;
+}
+
+AAnimal::AAnimal ( const std::string type) : _type(type)
+{
+	std::cout << WARN << "AAnimal parameterized constructor" << RESET << std::endl;
 }
 
 AAnimal::AAnimal ( const AAnimal& other)
