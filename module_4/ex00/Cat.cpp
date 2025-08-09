@@ -18,9 +18,6 @@ Cat::Cat() : Animal ( "Cat" ), _type("Cat")
 Cat::~Cat()
 {	std::cout << WARN2 << "Cat destructed" << RESET << std::endl;	}
 
-Cat::Cat( const std::string type ) : Animal ( "Cat" ), _type("Cat")
-{	std::cout << WARN2 << "Cat (arg:" << type << ") constructed" << RESET << std::endl;	}
-
 Cat::Cat( const Cat &other)
 {
 	if (this != &other)

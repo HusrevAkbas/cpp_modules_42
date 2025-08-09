@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:21:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/08 13:39:55 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/09 15:49:42 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,53 @@ int	main ()
 {
 	Animal	*meta = new Animal ("Bird");
 
+	std::cout << "meta: Animal class" << std::endl;
 	std::cout << meta->get_type() << " says: ";
 	meta->make_sound();
+	delete meta;
 
-	Dog		*dog = new Dog ("Horse");
+	std::cout << "----------------------------" << std::endl;
 
+	Dog		*dog = new Dog ();
+
+	std::cout << "dog: Dog class" << std::endl;
 	std::cout << dog->get_type() << " says: ";
 	dog->make_sound();
+	delete dog;
 
-	Cat		*cat = new Cat ("Zebra");
+	std::cout << "----------------------------" << std::endl;
 
+	Cat		*cat = new Cat ();
+
+	std::cout << "cat: Cat class" << std::endl;
 	std::cout << cat->get_type() << " says: ";
 	cat->make_sound();
+	delete cat;
 
-	Animal	*a = new Cat ("Duck");
+	std::cout << "----------------------------" << std::endl;
 
+	Animal	*a = new Cat ();
+
+	std::cout << "a: Cat class" << std::endl;
 	std::cout << a->get_type() << " says: ";
 	a->make_sound();
+	delete a;
 
-	Animal	*b = new Dog ("Wolf");
+	a = new Dog ();
 
-	std::cout << b->get_type() << " says: ";
-	b->make_sound();
+	std::cout << "a: Dog class" << std::endl;
+	std::cout << a->get_type() << " says: ";
+	a->make_sound();
+	delete a;
+
+	std::cout << "----------------------------" << std::endl;
 
 	WrongAnimal	*wrong_animal = new WrongAnimal();
 	WrongAnimal	*wrong_cat = new WrongCat();
 	wrong_animal->make_sound();
 	wrong_cat->make_sound();
+	delete wrong_animal;
+	delete wrong_cat;
 
-	delete meta;
-	delete dog;
-	delete cat;
-	delete a;
-	delete b;
 	return (0);
 }

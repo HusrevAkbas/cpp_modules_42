@@ -18,9 +18,6 @@ Dog::Dog() : Animal ( "Dog" ), _type("Dog")
 Dog::~Dog()
 {	std::cout << WARN3 << "Dog destructed" << RESET << std::endl;	}
 
-Dog::Dog( const std::string type ) : Animal ("Dog"), _type("Dog")
-{	std::cout << WARN3 << "Dog (arg:" << type << ") constructed" << RESET << std::endl;		}
-
 Dog::Dog( const Dog &other)
 {
 	if (this != &other)
