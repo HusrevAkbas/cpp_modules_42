@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:21:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/09 15:49:42 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/11 16:01:23 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,19 @@ int	main ()
 	std::cout << a->get_type() << " says: ";
 	a->make_sound();
 	delete a;
+
+	std::cout << "----------------------------" << std::endl;
+
+	Dog	dog2;
+	{
+		Dog	dog3 = dog2;
+		dog3.make_sound();
+	}
+	Cat	cat2;
+	{
+		Cat	cat3 = cat2;
+		cat3.make_sound();
+	}
 
 	std::cout << "----------------------------" << std::endl;
 

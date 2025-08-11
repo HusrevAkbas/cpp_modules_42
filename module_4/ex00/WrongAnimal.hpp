@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	WRONG_ANIMAL_H
-# define	WRONG_ANIMAL_H
+#pragma once
 
 # include <iostream>
 
@@ -28,5 +27,3 @@ class	WrongAnimal
 		std::string	get_type( void );
 		void	make_sound( void );
 };
-
-#endif	//	WRONG_ANIMAL_H

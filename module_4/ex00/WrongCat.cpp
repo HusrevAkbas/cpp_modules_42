@@ -12,8 +12,7 @@
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal ( "WrongCat" )
-{	this->_type = "WrongCat";	};
+WrongCat::WrongCat() : WrongAnimal ( "WrongCat" ) {}
 
 WrongCat::~WrongCat(){}
 

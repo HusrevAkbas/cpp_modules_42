@@ -10,16 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	WRONG_CAT_H
-# define	WRONG_CAT_H
+#pragma once
 
-# include <iostream>
 # include "WrongAnimal.hpp"
 
 class	WrongCat : public WrongAnimal
 {
-	protected:
-		std::string	_type;
 	public:
 		WrongCat ();
 		~WrongCat ();
@@ -28,5 +24,3 @@ class	WrongCat : public WrongAnimal
 		std::string	get_type();
 		void	make_sound( void );
 };
-
-#endif	//	WRONG_CAT_H

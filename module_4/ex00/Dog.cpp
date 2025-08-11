@@ -12,7 +12,7 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal ( "Dog" ), _type("Dog")
+Dog::Dog() : Animal ( "Dog" )
 {	std::cout << WARN3 << "Dog DEFAULT constructed" << RESET << std::endl;	};
 
 Dog::~Dog()

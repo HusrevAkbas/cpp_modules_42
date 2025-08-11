@@ -12,7 +12,7 @@
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal ( "Cat" ), _type("Cat")
+Cat::Cat() : Animal ( "Cat" )
 {	std::cout << WARN2 << "Cat DEFAULT constructed" << RESET << std::endl;	};
 
 Cat::~Cat()

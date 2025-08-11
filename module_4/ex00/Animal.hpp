@@ -6,12 +6,11 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:06:45 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/08 13:30:31 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/11 15:57:15 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ANIMAL_H
-# define	ANIMAL_H
+#pragma once
 
 # include <iostream>
 
@@ -40,5 +39,3 @@ class	Animal
 		std::string	get_type( void );
 		virtual void	make_sound( void );
 };
-
-#endif	//	ANIMAL_H
