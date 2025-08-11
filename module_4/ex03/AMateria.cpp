@@ -38,8 +38,8 @@ AMateria& AMateria::operator=(const AMateria& other)
 
 void	AMateria::use(ICharacter& target)
 {
-	std::cout << "* shoots an AMateria at "
-	<< target.getName() << " *" << std::endl;
+	std::cout << MAGENT << "* shoots an AMateria at "
+	<< target.getName() << " *" << RESET << std::endl;
 }
 
 bool	AMateria::isEquipped()

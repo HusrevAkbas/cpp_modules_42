@@ -71,12 +71,12 @@ void	Character::equip( AMateria *m )
 {
 	if (!m)
 	{
-		std::cout << "NULL can't be equipped" << std::endl;
+		std::cout << WARN2 << this->_name << ": NULL can't be equipped" << RESET << std::endl;
 		return ;
 	}
 	if (m->isEquipped())
 	{
-		std::cout << m->getType() << " is already equipped by someone" << std::endl;
+		std::cout << WARN << this->getName() << ": " << m->getType() << " is already equipped by someone" << RESET << std::endl;
 		return ;
 	}
 	for (size_t i = 0; i < 4; i++)
@@ -84,7 +84,7 @@ void	Character::equip( AMateria *m )
 		if (!this->_materia[i])
 		{
 			m->setEquipped(true);
-			std::cout << this->_name << " equipped " << m->getType() << std::endl;
+			std::cout << CYAN << this->_name << " equipped " << m->getType() << RESET << std::endl;
 			this->_materia[i] = m;
 			return ;
 		}
@@ -100,8 +100,8 @@ void	Character::unequip( int idx )
 	}
 	if (this->_materia[idx])
 	{
-		std::cout << this->_name << " leaves the materia "
-		<< this->_materia[idx]->getType() << " on the floor" << std::endl;
+		std::cout << YELLOW << this->_name << " leaves the materia "
+		<< this->_materia[idx]->getType() << " on the floor" << RESET << std::endl;
 		this->_materia[idx]->setEquipped(false);
 		this->_materia[idx] = NULL;
 	}
@@ -115,7 +115,7 @@ void	Character::use( int idx, ICharacter &target)
 	}
 	if (this->_materia[idx])
 	{
-		std::cout << this->getName() << ": ";
+		std::cout << CYAN << this->getName() << ": " << RESET;
 		this->_materia[idx]->use(target);
 	}
 }

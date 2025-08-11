@@ -14,6 +14,20 @@
 
 #include <iostream>
 
+# define RED	"\e[1;31m"
+# define WARN	"\e[2;3;95m"
+# define WARN2	"\e[2;3;91m"
+# define WARN3	"\e[2;3;93m"
+# define WARN4	"\e[2;3;94m"
+# define GREEN	"\e[1;32m"
+# define YELLOW	"\e[1;33m"
+# define BLUE	"\e[1;34m"
+# define MAGENT	"\e[1;35m"
+# define CYAN	"\e[1;96m"
+# define GRAY	"\e[1;90m"
+# define BG		"\e[1;105m"
+# define RESET	"\e[0m"
+
 class AMateria;
 
 class	ICharacter
