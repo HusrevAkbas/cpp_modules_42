@@ -1,4 +1,4 @@
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRC_FILES	=	main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 

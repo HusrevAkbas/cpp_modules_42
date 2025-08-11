@@ -1,4 +1,4 @@
-CFLAGS		=	-Wall -Wextra -Werror -MMD -MP -g
+CFLAGS		=	-Wall -Wextra -Werror -MMD -MP
 
 SRC_FILES	=	main.cpp
 
@@ -6,6 +6,7 @@ COMPILER	=	c++
 
 OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
+DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
 NAME		=	megaphone
 
@@ -21,6 +22,8 @@ $(NAME)	:	$(OBJS)
 $(OBJDIR)/%.o	:	%.cpp
 	@mkdir -p $(dir $@)
 	@$(COMPILER) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 c	:	clean
 clean	:
