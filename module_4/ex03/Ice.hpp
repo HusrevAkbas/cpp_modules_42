@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ICE_H
-# define	ICE_H
+#pragma once
 
-# include <iostream>
-# include "ICharacter.hpp"
-# include "AMateria.hpp"
+#include <iostream>
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class	Ice : public AMateria
 {
@@ -28,5 +27,3 @@ class	Ice : public AMateria
 		Ice*	clone( void ) const;
 		void	use( ICharacter& target );
 };
-
-#endif	//	ICE_H

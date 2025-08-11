@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CURE_H
-# define	CURE_H
+#pragma once
 
-# include <iostream>
-# include "ICharacter.hpp"
-# include "AMateria.hpp"
+#include <iostream>
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class	Cure : public AMateria
 {
@@ -28,5 +27,3 @@ class	Cure : public AMateria
 		Cure*	clone( void ) const;
 		void	use( ICharacter& target );
 };
-
-#endif	//	CURE_H

@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CHARACTER_H
-# define	CHARACTER_H
+#pragma once
 
-# include <iostream>
-# include "ICharacter.hpp"
-# include "AMateria.hpp"
+#include <iostream>
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class	Character : virtual public ICharacter
 {
@@ -33,4 +32,3 @@ class	Character : virtual public ICharacter
 		void	unequip( int idx );
 		void	use( int idx, ICharacter &target);
 };
-#endif	//	CHARACTER_H

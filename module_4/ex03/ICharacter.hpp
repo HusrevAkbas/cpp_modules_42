@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ICHARACTER_H
-# define	ICHARACTER_H
+#pragma once
 
-# include <iostream>
+#include <iostream>
 
 class AMateria;
 
@@ -26,5 +25,3 @@ class	ICharacter
 		virtual	void	unequip( int idx ) = 0;
 		virtual	void	use( int idx, ICharacter &target) = 0;
 };
-
-#endif	//	ICHARACTER_H

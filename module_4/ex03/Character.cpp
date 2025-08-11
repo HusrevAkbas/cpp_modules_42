@@ -100,6 +100,8 @@ void	Character::unequip( int idx )
 	}
 	if (this->_materia[idx])
 	{
+		std::cout << this->_name << " leaves the materia "
+		<< this->_materia[idx]->getType() << " on the floor" << std::endl;
 		this->_materia[idx]->setEquipped(false);
 		this->_materia[idx] = NULL;
 	}
@@ -112,5 +114,8 @@ void	Character::use( int idx, ICharacter &target)
 		return ;
 	}
 	if (this->_materia[idx])
+	{
+		std::cout << this->getName() << ": ";
 		this->_materia[idx]->use(target);
+	}
 }
