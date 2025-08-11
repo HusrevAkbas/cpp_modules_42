@@ -27,6 +27,7 @@ Cat::~Cat()
 
 Cat::Cat( const Cat &other)
 {
+	this->_brain = NULL;
 	std::cout << WARN2 << "Cat copy" << RESET << std::endl;
 	if (this != &other)
 		*this = other;
@@ -38,6 +39,8 @@ Cat& Cat::operator=( const Cat &other )
 	if (this == &other)
 		return ( *this );
 	this->_type = other._type;
+	if (this->_brain)
+		delete this->_brain;
 	this->_brain = new Brain(*other._brain);
 	return ( *this );
 }

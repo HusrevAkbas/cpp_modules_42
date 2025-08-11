@@ -10,18 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CAT_H
-# define	CAT_H
+#pragma once
 
-# include <iostream>
-# include "Animal.hpp"
+#include "Animal.hpp"
 
 class	Cat : public Animal
 {
 	private:
 		Brain	*_brain;
-	protected:
-		std::string	_type;
 	public:
 		Cat ();
 		~Cat ();
@@ -31,5 +27,3 @@ class	Cat : public Animal
 		void	make_sound( void );
 		Brain*	getBrain();
 };
-
-#endif	//	CAT_H

@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:21:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/11 12:52:00 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/11 17:02:40 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,25 @@ int	main ()
 	std::cout << canny.getBrain()->getIdea(1) << std::endl;
 	std::cout << caddy.getBrain()->getIdea(0) << std::endl;
 	std::cout << caddy.getBrain()->getIdea(1) << std::endl;
+
+	Dog daddy = Dog();
+	daddy.getBrain()->setIdea(0, "Daddy It would be nice to go home.");
+	daddy.getBrain()->setIdea(1, "Daddy Take a seat, lean back and enjoy.");
+	Dog danny = Dog();
+	danny = daddy;
+	std::cout << danny.getBrain()->getIdea(0) << std::endl;
+	std::cout << danny.getBrain()->getIdea(1) << std::endl;
+	std::cout << daddy.getBrain()->getIdea(0) << std::endl;
+	std::cout << daddy.getBrain()->getIdea(1) << std::endl;
+
+	std::cout << "--------------------------------------" << std::endl;
+
+	daddy.getBrain()->setIdea(0, "Daddy Hard work .. .. .. Hard work");
+	daddy.getBrain()->setIdea(1, "Daddy Take a deep breath than the leap of faith");
+	std::cout << danny.getBrain()->getIdea(0) << std::endl;
+	std::cout << danny.getBrain()->getIdea(1) << std::endl;
+	std::cout << daddy.getBrain()->getIdea(0) << std::endl;
+	std::cout << daddy.getBrain()->getIdea(1) << std::endl;
 
 	return (0);
 }

@@ -10,18 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	DOG_H
-# define	DOG_H
+#pragma once
 
-# include <iostream>
-# include "Animal.hpp"
+#include "Animal.hpp"
 
 class	Dog : public Animal
 {
 	private:
 		Brain	*_brain;
-	protected:
-		std::string	_type;
 	public:
 		Dog ();
 		~Dog ();
@@ -31,5 +27,3 @@ class	Dog : public Animal
 		void	make_sound( void );
 		Brain	*getBrain();
 };
-
-#endif	//	DOG_H
