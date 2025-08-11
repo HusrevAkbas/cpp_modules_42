@@ -25,7 +25,7 @@ $(OBJDIR)/%.o	:	%.cpp
 c	:	clean
 clean	:
 	@rm -rf $(OBJDIR)
-	@echo "$(COLOR)SOURCE FILES REMOVED$(RESET)"
+	@echo "$(COLOR)OBJECT FILES REMOVED$(RESET)"
 
 f	: fclean
 fclean	:	clean
