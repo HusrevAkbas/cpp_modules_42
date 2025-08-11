@@ -23,6 +23,16 @@ AMateria::~AMateria(){}
 AMateria::AMateria( const AMateria& other) :
 	_type(other._type), _equipped(other._equipped) {}
 
+
+AMateria& AMateria::operator=(const AMateria& other)
+{
+	if (this == &other)
+		return (*this);
+	this->_type = other._type;
+	this->_equipped = other._equipped;
+	return (*this);
+}
+
  std::string const & AMateria::getType( void) const
 {	return (this->_type);	}
 
