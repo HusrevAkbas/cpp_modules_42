@@ -44,7 +44,7 @@ Brain& Brain::operator=( const Brain &other )
 std::string*	Brain::get_ideas ( void )
 {	return (this->_ideas);	}
 
-std::string	Brain::getIdea(int index)
+std::string	Brain::getIdea(int index) const
 {
 	return (this->_ideas[index]);
 }
