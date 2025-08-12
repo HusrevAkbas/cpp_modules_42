@@ -10,27 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CAT_H
-# define	CAT_H
+#pragma once
 
-# include <iostream>
-# include "AAnimal.hpp"
+#include "AAnimal.hpp"
 
 class	Cat : public AAnimal
 {
 	private:
 		Brain	*_brain;
-	protected:
-		std::string	_type;
 	public:
 		Cat ();
 		~Cat ();
 		Cat( const Cat &other);
 		Cat& operator=( const Cat &other);
-		std::string	get_type();
 		void	make_sound( void );
-		std::string	getIdea(int index);
-		void	setIdea(int index, std::string idea);
+		Brain*	getBrain();
 };
-
-#endif	//	CAT_H

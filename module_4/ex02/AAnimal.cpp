@@ -6,13 +6,13 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/09 16:11:07 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/12 15:46:01 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AAnimal.hpp"
 
-AAnimal::AAnimal () 
+AAnimal::AAnimal () : _type("DEFAULT")
 {
 	std::cout << WARN << "AAnimal constructor" << RESET << std::endl;
 }

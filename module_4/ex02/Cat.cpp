@@ -12,10 +12,9 @@
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : AAnimal ( "Cat" )
 {	
 	std::cout << WARN2 << "Cat default constructor" << RESET << std::endl;
-	this->_type = "Cat";
 	this->_brain = new Brain();
 };
 
@@ -27,6 +26,7 @@ Cat::~Cat()
 
 Cat::Cat( const Cat &other)
 {
+	this->_brain = NULL;
 	std::cout << WARN2 << "Cat copy" << RESET << std::endl;
 	if (this != &other)
 		*this = other;
@@ -38,21 +38,14 @@ Cat& Cat::operator=( const Cat &other )
 	if (this == &other)
 		return ( *this );
 	this->_type = other._type;
+	if (this->_brain)
+		delete this->_brain;
 	this->_brain = new Brain(*other._brain);
 	return ( *this );
 }
 
-std::string	Cat::get_type ()
-{	return (this->_type);	}
-
 void	Cat::make_sound ()
 {	std::cout << MAGENT << "MEoW" << RESET << std::endl;	}
 
-std::string	Cat::getIdea(int index)
-{
-	return (this->_brain->get_ideas()[index]);
-}
-void	Cat::setIdea(int index, std::string idea)
-{
-	this->_brain->get_ideas()[index] = idea;
-}
+Brain*	Cat::getBrain()
+{	return (this->_brain);	}

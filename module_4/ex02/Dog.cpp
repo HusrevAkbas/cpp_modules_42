@@ -12,10 +12,9 @@
 
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : AAnimal ( "Dog" )
 {
 	std::cout << WARN3 << "Dog default constructor" << RESET << std::endl;
-	this->_type = "Dog";
 	this->_brain = new Brain();
 };
 
@@ -27,6 +26,7 @@ Dog::~Dog()
 
 Dog::Dog( const Dog &other)
 {
+	this->_brain = NULL;
 	std::cout << WARN3 << "Dog copy" << RESET << std::endl;
 	if (this != &other)
 		*this = other;
@@ -38,12 +38,14 @@ Dog& Dog::operator=( const Dog &other )
 	if (this == &other)
 		return ( *this );
 	this->_type = other._type;
-	this->_brain = other._brain;
+	if (this->_brain)
+		delete this->_brain;
+	this->_brain = new Brain(*other._brain);
 	return ( *this );
 }
 
-std::string	Dog::get_type ( void )
-{	return (this->_type);	}
-
 void	Dog::make_sound ()
 {	std::cout << MAGENT << "WooF woOF" << RESET << std::endl;	}
+
+Brain*	Dog::getBrain()
+{	return (this->_brain);	}
