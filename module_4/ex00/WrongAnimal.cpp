@@ -33,8 +33,7 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal &other )
 	return ( *this );
 }
 void	WrongAnimal::make_sound( void )
-{
-	std::cout << "- This animal makes wrong noise -" << std::endl;
-}
+{	std::cout << "- This animal makes wrong noise -" << std::endl;	}
 
-std::string	WrongAnimal::get_type(){	return (this->_type);	}
+std::string	WrongAnimal::get_type() const
+{	return (this->_type);	}

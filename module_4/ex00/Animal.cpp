@@ -6,13 +6,13 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:08:23 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/08 13:49:36 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/12 13:52:36 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() 
+Animal::Animal() : _type("DEFAULT")
 {	std::cout << WARN << "Animal DEFAULT constructed" << RESET << std::endl;	}
 
 Animal::~Animal()
@@ -39,5 +39,5 @@ void	Animal::make_sound( void )
 	std::cout << "- This animal is quite quiet -" << std::endl;
 }
 
-std::string	Animal::get_type()
+std::string	Animal::get_type() const
 {	return (this->_type);	}

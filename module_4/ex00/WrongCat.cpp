@@ -30,7 +30,5 @@ WrongCat& WrongCat::operator=( const WrongCat &other )
 	return ( *this );
 }
 
-std::string	WrongCat::get_type ()
-{	return (this->_type);	}
-
-void	WrongCat::make_sound (){	std::cout << "MEoW" << std::endl;	}
+void	WrongCat::make_sound ()
+{	std::cout << "MEoW" << std::endl;	}

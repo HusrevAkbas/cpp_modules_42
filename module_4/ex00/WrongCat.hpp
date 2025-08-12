@@ -21,6 +21,5 @@ class	WrongCat : public WrongAnimal
 		~WrongCat ();
 		WrongCat( const WrongCat &other);
 		WrongCat& operator=( const WrongCat &other);
-		std::string	get_type();
 		void	make_sound( void );
 };

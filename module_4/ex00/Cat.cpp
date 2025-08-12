@@ -32,8 +32,5 @@ Cat& Cat::operator=( const Cat &other )
 	return ( *this );
 }
 
-std::string	Cat::get_type ()
-{	return (this->_type);	}
-
 void	Cat::make_sound ()
 {	std::cout << "MEoW" << std::endl;	}

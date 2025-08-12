@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:06:45 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/11 15:57:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/12 13:51:36 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ class	Animal
 		Animal( const std::string type );
 		Animal( const Animal &other);
 		Animal& operator=( const Animal &other);
-		std::string	get_type( void );
+		std::string	get_type( void ) const;
 		virtual void	make_sound( void );
 };

@@ -21,6 +21,5 @@ class	Cat : public Animal
 		~Cat ();
 		Cat( const Cat &other);
 		Cat& operator=( const Cat &other);
-		std::string	get_type();
 		void	make_sound( void );
 };
