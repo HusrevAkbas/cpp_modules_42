@@ -12,11 +12,7 @@
 
 #pragma once
 
-# include <iostream>
-
 #include "AMateria.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
 
 class	IMateriaSource
 {

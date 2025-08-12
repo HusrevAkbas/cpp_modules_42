@@ -6,13 +6,14 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:21:17 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/11 14:05:25 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:45:46 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
 #include "Character.hpp"
 #include "MateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 int	main()
 {
