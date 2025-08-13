@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:46:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 18:15:26 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:19:47 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main()
 {
 	try
 	{
-		Form	form("A form", 44, 22);
+		AForm	form("A form", 44, 22);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -24,7 +24,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		Form	form("B form", 151, 22);
+		AForm	form("B form", 151, 22);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -32,7 +32,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		Form	form("C form", 24, 151);
+		AForm	form("C form", 24, 151);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -40,7 +40,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		Form	form("CA form", 0, 22);
+		AForm	form("CA form", 0, 22);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -48,7 +48,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		Form	form("CB form", 24, 0);
+		AForm	form("CB form", 24, 0);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -57,7 +57,7 @@ int	main()
 	try
 	{
 		Bureaucrat	b("Bob", 99);
-		Form	form("D form", 124, 22);
+		AForm	form("D form", 124, 22);
 		std::cout << form << std::endl;
 		std::cout << b << std::endl;
 		b.signForm(form);
@@ -69,7 +69,7 @@ int	main()
 	try
 	{
 		Bureaucrat	b("Bob", 99);
-		Form	form("E form", 14, 22);
+		AForm	form("E form", 14, 22);
 		std::cout << form << std::endl;
 		std::cout << b << std::endl;
 		b.signForm(form);

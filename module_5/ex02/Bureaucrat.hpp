@@ -6,14 +6,14 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 18:19:47 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:22:20 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 # define	RED		"\e[31m"
 # define	GREEN	"\e[32m"
