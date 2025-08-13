@@ -6,12 +6,11 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/04 17:26:55 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/13 16:43:48 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	BUREAUCRAT_H
-# define	BUREAUCRAT_H
+#pragma once
 
 # include <iostream>
 
@@ -33,8 +32,10 @@ class Bureaucrat
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &a);
 		Bureaucrat& operator=(const Bureaucrat &a);
-		const std::string	getName();
-		int	getGrade();
+		const std::string	getName() const;
+		int	getGrade() const;
+		void	promote();
+		void	demote();
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -48,5 +49,3 @@ class Bureaucrat
 	};
 
 std::ostream& operator<< (std::ostream &o, Bureaucrat &b);
-
-#endif	//	BUREAUCRAT_H

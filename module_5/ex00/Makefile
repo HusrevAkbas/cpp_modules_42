@@ -35,8 +35,6 @@ else ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 	MSG3:=⠀⠀⠀⠀⠀COMPILED⠀⠀⠀⠀⠀⠀⠀
 endif
 
-$(echo $(MSG4))
-
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJS)

@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:36 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/02 16:58:24 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/13 16:51:40 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,25 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &a)
 	return (*this);
 }
 
-const std::string	Bureaucrat::getName()
+const std::string	Bureaucrat::getName() const
 {	return (this->_name);	}
 
-int	Bureaucrat::getGrade()
+int	Bureaucrat::getGrade() const
 {	return (this->_grade);	}
+
+void	Bureaucrat::promote()
+{
+	if (this->_grade == 1)
+		throw Bureaucrat::GradeTooHighException();
+	this->_grade--;
+}
+
+void	Bureaucrat::demote()
+{
+	if (this->_grade == 150)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade++;
+}
 
 std::ostream& operator<< (std::ostream& o, Bureaucrat &b)
 {
