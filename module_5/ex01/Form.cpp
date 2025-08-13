@@ -24,7 +24,12 @@ Form::Form( std::string name, int grade_to_sign, int grade_to_execute ) :
 	_signed(false),
 	_grade_to_sign(grade_to_sign),
 	_grade_to_execute(grade_to_execute)
-{}
+{
+	if (_grade_to_execute < 1 || _grade_to_sign < 1)
+		throw Form::GradeTooHighException();
+	if (_grade_to_execute > 150 || _grade_to_sign > 150)
+		throw Form::GradeTooLowException();
+}
 
 Form::~Form(){}
 
@@ -53,11 +58,12 @@ int	Form::getGradeToSign()
 bool	Form::isSigned()
 {	return (this->_signed);	}
 
-void	Form::beSigned(Bureaucrat &b)
+void	Form::beSigned(const Bureaucrat &b)
 {
-	(void) b;
-	this->_signed = 1;
-	std::cout << b.getName() << " signed " << this->getName() << std::endl;
+	if (b.getGrade() <= this->getGradeToSign())
+		this->_signed = true;
+	else
+		throw Form::GradeTooLowException();
 }
 
 std::ostream& operator<< (std::ostream &o, Form &b)
@@ -65,6 +71,16 @@ std::ostream& operator<< (std::ostream &o, Form &b)
 	o << "Form: " << GREEN << b.getName()
 	<< (b.isSigned() ? "\e[34m (signed)" : "\e[35m (not signed)") << RESET
 	<< ", grade to sign: " << YELLOW << b.getGradeToSign() << RESET
-	<< ", grade to execute: " << CYAN << b.getGradeToExecute() << RESET << std::endl;
+	<< ", grade to execute: " << CYAN << b.getGradeToExecute() << RESET;
 	return (o);
+}
+
+const char*	Form::GradeTooHighException::what () const throw ()
+{
+	return ("\e[1;3;31mForm::Exception: Grade is too high\e[0m");
+}
+
+const char*	Form::GradeTooLowException::what () const throw ()
+{
+	return ("\e[1;3;31mForm::Exception: Grade is too low\e[0m");
 }

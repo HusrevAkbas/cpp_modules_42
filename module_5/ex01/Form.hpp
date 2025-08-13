@@ -15,6 +15,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class	Bureaucrat;
+
 class Form
 {
 	private:
@@ -42,7 +44,7 @@ class Form
 		bool	isSigned();
 		int	getGradeToSign();
 		int	getGradeToExecute();
-		void	beSigned(Bureaucrat &b);
+		void	beSigned(const Bureaucrat &b);
 };
 
 std::ostream& operator<< (std::ostream &o, Form &f);
