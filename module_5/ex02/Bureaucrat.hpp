@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/14 16:30:09 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:40:56 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class Bureaucrat
 		void	promote();
 		void	demote();
 		void	signForm(AForm &form) const;
+		void	executeForm(AForm const &form) const;
 		class GradeTooHighException : public std::exception
 		{
 			public:

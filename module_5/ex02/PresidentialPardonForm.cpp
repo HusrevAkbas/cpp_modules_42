@@ -43,20 +43,9 @@ std::ostream& operator<< (std::ostream &o, PresidentialPardonForm &b)
 
 void	PresidentialPardonForm::execute(const Bureaucrat  & executor) const
 {
-	try
+	if ((*this).AForm::mayExecute(executor))
 	{
-		if ((*this).AForm::mayExecute(executor))
-		{
-			std::cout << MAGENT << this->getTarget() << RESET
-			<< " has been pardoned by Zaphod Beeblebrox" << std::endl;
-		}
-		else
-			std::cout << GREEN << this->getName() << RESET
-			<< " not executed because it is not signed" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << GREEN << this->getName() << RESET
-		<< " not executed because " << e.what() << std::endl;
+		std::cout << MAGENT << this->getTarget() << RESET
+		<< " has been pardoned by Zaphod Beeblebrox" << std::endl;
 	}
 }

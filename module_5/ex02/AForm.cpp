@@ -75,7 +75,7 @@ void	AForm::beSigned(const Bureaucrat &b)
 bool	AForm::mayExecute(const Bureaucrat &b) const
 {
 	if (!this->isSigned())
-		return (false);
+		throw AForm::FormIsNotSignedException();
 	if (b.getGrade() <= this->getGradeToExecute())
 		return (true);
 	else
@@ -99,4 +99,9 @@ const char*	AForm::GradeTooHighException::what () const throw ()
 const char*	AForm::GradeTooLowException::what () const throw ()
 {
 	return ("\e[1;3;31mForm::Exception: Grade is too low\e[0m");
+}
+
+const char*	AForm::FormIsNotSignedException::what () const throw ()
+{
+	return ("\e[1;3;31mForm::Exception: Form is not signed\e[0m");
 }
