@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:36 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/14 14:33:06 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/14 16:20:23 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void	Bureaucrat::demote()
 
 void	Bureaucrat::signForm(AForm &form) const
 {
+	if (form.isSigned())
+	{
+		std::cout << GREEN << form.getName() << RESET << " is already signed!" << std::endl;
+		return ;
+	}
 	try
 	{
 		form.beSigned(*this);

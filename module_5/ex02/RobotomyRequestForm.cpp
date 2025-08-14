@@ -10,29 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() :
-	AForm("ShrubberyCreationForm", 145, 137, "DEFAULT TARGET")
+RobotomyRequestForm::RobotomyRequestForm() :
+	AForm("RobotomyRequestForm", 72, 45, "DEFAULT TARGET")
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target) :
-	AForm("ShrubberyCreationForm", 145, 137, target)
+RobotomyRequestForm::RobotomyRequestForm( std::string target) :
+	AForm("RobotomyRequestForm", 72, 45, target)
 {}
 
-ShrubberyCreationForm::~ShrubberyCreationForm(){}
+RobotomyRequestForm::~RobotomyRequestForm(){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &a) :
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &a) :
 	AForm(a.AForm::getName(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
 {}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &a)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &a)
 {
 	(void) a;
 	return (*this);
 }
 
-std::ostream& operator<< (std::ostream &o, ShrubberyCreationForm &b)
+std::ostream& operator<< (std::ostream &o, RobotomyRequestForm &b)
 {
 	o << "Form: " << GREEN << b.getName()
 	<< (b.isSigned() ? "\e[34m (signed)" : "\e[35m (not signed)") << RESET
@@ -41,25 +41,18 @@ std::ostream& operator<< (std::ostream &o, ShrubberyCreationForm &b)
 	return (o);
 }
 
-void	ShrubberyCreationForm::execute(const Bureaucrat  & executor) const
+void	RobotomyRequestForm::execute(const Bureaucrat  & executor) const
 {
-	std::ofstream	oFile(this->getTarget().c_str(), std::ofstream::app);
+	srand(time(0));
 	try
 	{
 		if ((*this).AForm::mayExecute(executor))
 		{
-			// oFile.open(this->getTarget().c_str());
-			if (!oFile)
-			{
-				std::cerr << "Error on creating file" << std::endl;
-				std::cout << GREEN << this->getName() << RESET
-				<< " not executed because " << MAGENT << this->getTarget() << RESET << " is invalid" << std::endl;
-				return ;
-			}
-			oFile << "Shrubbery planted here and there" << std::endl;
-			std::cout << GREEN << this->getName() << RESET
-			<< " executed and your shrubberies are planted to "
-			<< MAGENT <<  this->getTarget() << RESET << std::endl;
+			std::cout << " ** make some noise ** " << std::endl;
+			if (rand() % 2 == 0)
+				std::cout << MAGENT << this->getTarget() << RESET << " is robotomized! " << std::endl;
+			else
+				std::cout << RED << "Robotomy failed for " << MAGENT << this->getTarget() << RESET << std::endl;
 		}
 		else
 			std::cout << GREEN << this->getName() << RESET

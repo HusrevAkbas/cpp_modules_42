@@ -1,6 +1,7 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC_FILES	=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRC_FILES	=	main.cpp Bureaucrat.cpp AForm.cpp\
+				ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 
 COMPILER	=	c++
 
