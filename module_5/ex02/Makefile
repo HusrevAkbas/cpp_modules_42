@@ -10,36 +10,42 @@ DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
 NAME		=	bureaucrat
 
-COLOR = \033[1;32m
-RESET = \033[0m
+RED		=	\033[1;31m
+GREEN	=	\033[1;32m
+YELLOW	=	\033[1;33m
+RESET	=	\033[0m
+MSG_COMP	=	⠀⠀⠀⠀$(GREEN)COMPILED$(RESET)⠀⠀⠀⠀⠀⠀⠀⠀
+MSG_OBJS	=	$(YELLOW)OBJECT FILES REMOVED$(RESET)
+MSG_EXT		=	⠀$(RED)EXECUTABLE REMOVED$(RESET)⠀
+MSG_EMPTY	=	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
 ifeq ($(firstword $(MAKECMDGOALS)),)
-	MSG1:=⠀⠀⠀⠀COMPILED⠀⠀⠀⠀⠀⠀⠀⠀
-	MSG2:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-	MSG3:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	MSG1:=$(MSG_COMP)
+	MSG2:=$(MSG_EMPTY)
+	MSG3:=$(MSG_EMPTY)
 else ifneq ($(filter $(firstword $(MAKECMDGOALS)),all $(NAME)),)
-	MSG1:=⠀⠀⠀⠀COMPILED⠀⠀⠀⠀⠀⠀⠀⠀
-	MSG2:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-	MSG3:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	MSG1:=$(MSG_COMP)
+	MSG2:=$(MSG_EMPTY)
+	MSG3:=$(MSG_EMPTY)
 else ifneq ($(filter $(firstword $(MAKECMDGOALS)),c clean),)
-	MSG1:=OBJECT FILES REMOVED
-	MSG2:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-	MSG3:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	MSG1:=$(MSG_OBJS)
+	MSG2:=$(MSG_EMPTY)
+	MSG3:=$(MSG_EMPTY)
 else ifneq ($(filter $(firstword $(MAKECMDGOALS)),f flean),)
-	MSG1:=OBJECT FILES REMOVED
-	MSG2:=⠀EXECUTABLE REMOVED⠀
-	MSG3:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	MSG1:=$(MSG_OBJS)
+	MSG2:=$(MSG_EXT)
+	MSG3:=$(MSG_EMPTY)
 else ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
-	MSG1:=OBJECT FILES REMOVED
-	MSG2:=⠀EXECUTABLE REMOVED⠀
-	MSG3:=⠀⠀⠀⠀⠀COMPILED⠀⠀⠀⠀⠀⠀⠀
+	MSG1:=$(MSG_OBJS)
+	MSG2:=$(MSG_EXT)
+	MSG3:=$(MSG_COMP)
 endif
 
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJS)
 	@$(COMPILER) $(OBJS) -o $(NAME)
-	@echo "$(COLOR)COMPILED!$(RESET)"
+	@echo "$(GREEN)COMPILED!$(RESET)"
 
 ifeq ($(firstword $(MAKECMDGOALS)),)
 	@echo "$(PIKACHU)"
@@ -56,7 +62,7 @@ $(OBJDIR)/%.o	:	%.cpp
 c	:	clean
 clean	:
 	@rm -rf $(OBJDIR)
-	@echo "$(COLOR)OBJECT FILES REMOVED$(RESET)"
+	@echo "$(GREEN)OBJECT FILES REMOVED$(RESET)"
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),c clean),)
 	@echo "$(PIKACHU)"
@@ -65,14 +71,14 @@ endif
 f	: fclean
 fclean	:	clean
 	@rm -rf $(NAME)
-	@echo "$(COLOR)EXECUTABLES REMOVED$(RESET)"
+	@echo "$(GREEN)EXECUTABLES REMOVED$(RESET)"
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),f fclean),)
 	@echo "$(PIKACHU)"
 endif
 
 re	: fclean all
-	@echo "$(COLOR)RE_MADE!$(RESET)"
+	@echo "$(GREEN)RE_MADE!$(RESET)"
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 	@echo "$(PIKACHU)"
