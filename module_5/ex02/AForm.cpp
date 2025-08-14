@@ -16,14 +16,16 @@ AForm::AForm() :
 	_name("Default"),
 	_signed(false),
 	_grade_to_sign(22),
-	_grade_to_execute(11)
+	_grade_to_execute(11),
+	_target("DEFAULT TARGET")
 {}
 
-AForm::AForm( std::string name, int grade_to_sign, int grade_to_execute ) :
+AForm::AForm( std::string name, int grade_to_sign, int grade_to_execute, std::string target ) :
 	_name(name),
 	_signed(false),
 	_grade_to_sign(grade_to_sign),
-	_grade_to_execute(grade_to_execute)
+	_grade_to_execute(grade_to_execute),
+	_target(target)
 {
 	if (_grade_to_execute < 1 || _grade_to_sign < 1)
 		throw AForm::GradeTooHighException();
@@ -37,7 +39,8 @@ AForm::AForm(const AForm &a) :
 	_name(a._name),
 	_signed(a._signed),
 	_grade_to_sign(a._grade_to_sign),
-	_grade_to_execute(a._grade_to_execute)
+	_grade_to_execute(a._grade_to_execute),
+	_target(a._target)
 {}
 
 AForm& AForm::operator=(const AForm &a)
@@ -46,22 +49,35 @@ AForm& AForm::operator=(const AForm &a)
 	return (*this);
 }
 
-const std::string	AForm::getName()
+const std::string	AForm::getName() const
 {	return (this->_name);	}
 
-int	AForm::getGradeToExecute()
+const std::string	AForm::getTarget() const
+{	return (this->_target);	}
+
+int	AForm::getGradeToExecute() const
 {	return (this->_grade_to_execute);	}
 
-int	AForm::getGradeToSign()
+int	AForm::getGradeToSign() const
 {	return (this->_grade_to_sign);	}
 
-bool	AForm::isSigned()
+bool	AForm::isSigned() const
 {	return (this->_signed);	}
 
 void	AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= this->getGradeToSign())
 		this->_signed = true;
+	else
+		throw AForm::GradeTooLowException();
+}
+
+bool	AForm::mayExecute(const Bureaucrat &b) const
+{
+	if (!this->isSigned())
+		return (false);
+	if (b.getGrade() <= this->getGradeToExecute())
+		return (true);
 	else
 		throw AForm::GradeTooLowException();
 }
