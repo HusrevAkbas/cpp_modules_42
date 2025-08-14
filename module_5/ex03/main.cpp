@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:46:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/14 17:39:04 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/14 18:05:40 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main()
 	{
 		Intern	intern;
 		AForm	*form = intern.makeForm("shrubbery creation", "ANTARTICA");
-		Bureaucrat	adam = Bureaucrat("Adam", 146);
+		Bureaucrat	adam = Bureaucrat("Adam", 16);
 		std::cout << adam << std::endl;
 		if (form)
 		{
 			std::cout << *form << std::endl;
 			adam.signForm(*form);
-			form->execute(adam);
+			adam.executeForm(*form);
 		}
 
 		delete form;
@@ -38,7 +38,7 @@ int	main()
 		{
 			std::cout << *form << std::endl;
 			adam.signForm(*form);
-			form->execute(adam);
+			adam.executeForm(*form);
 		}
 
 		delete form;

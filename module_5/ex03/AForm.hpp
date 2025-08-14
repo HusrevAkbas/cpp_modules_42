@@ -41,6 +41,11 @@ class AForm
 			public:
 				const char	*what() const throw ();
 		};
+		class FormIsNotSignedException : public std::exception
+		{
+			public:
+				const char	*what() const throw ();
+		};
 		const std::string	getName() const;
 		const std::string	getTarget() const;
 		bool	isSigned() const;

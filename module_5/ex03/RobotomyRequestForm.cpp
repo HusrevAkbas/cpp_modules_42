@@ -44,23 +44,12 @@ std::ostream& operator<< (std::ostream &o, RobotomyRequestForm &b)
 void	RobotomyRequestForm::execute(const Bureaucrat  & executor) const
 {
 	srand(time(0));
-	try
+	if ((*this).AForm::mayExecute(executor))
 	{
-		if ((*this).AForm::mayExecute(executor))
-		{
-			std::cout << " ** make some noise ** " << std::endl;
-			if (rand() % 2 == 0)
-				std::cout << MAGENT << this->getTarget() << RESET << " is robotomized! " << std::endl;
-			else
-				std::cout << RED << "Robotomy failed for " << MAGENT << this->getTarget() << RESET << std::endl;
-		}
+		std::cout << " ** make some noise ** " << std::endl;
+		if (rand() % 2 == 0)
+			std::cout << MAGENT << this->getTarget() << RESET << " is robotomized! " << std::endl;
 		else
-			std::cout << GREEN << this->getName() << RESET
-			<< " not executed because it is not signed" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << GREEN << this->getName() << RESET
-		<< " not executed because " << e.what() << std::endl;
+			std::cout << RED << "Robotomy failed for " << MAGENT << this->getTarget() << RESET << std::endl;
 	}
 }

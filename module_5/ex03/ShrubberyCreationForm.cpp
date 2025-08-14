@@ -44,30 +44,18 @@ std::ostream& operator<< (std::ostream &o, ShrubberyCreationForm &b)
 void	ShrubberyCreationForm::execute(const Bureaucrat  & executor) const
 {
 	std::ofstream	oFile(this->getTarget().c_str(), std::ofstream::app);
-	try
+	if ((*this).AForm::mayExecute(executor))
 	{
-		if ((*this).AForm::mayExecute(executor))
+		if (!oFile)
 		{
-			// oFile.open(this->getTarget().c_str());
-			if (!oFile)
-			{
-				std::cerr << "Error on creating file" << std::endl;
-				std::cout << GREEN << this->getName() << RESET
-				<< " not executed because " << MAGENT << this->getTarget() << RESET << " is invalid" << std::endl;
-				return ;
-			}
-			oFile << "Shrubbery planted here and there" << std::endl;
+			std::cerr << "Error on creating file" << std::endl;
 			std::cout << GREEN << this->getName() << RESET
-			<< " executed and your shrubberies are planted to "
-			<< MAGENT <<  this->getTarget() << RESET << std::endl;
+			<< " not executed because " << MAGENT << this->getTarget() << RESET << " is invalid" << std::endl;
+			return ;
 		}
-		else
-			std::cout << GREEN << this->getName() << RESET
-			<< " not executed because it is not signed" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
+		oFile << "Shrubbery planted here and there" << std::endl;
 		std::cout << GREEN << this->getName() << RESET
-		<< " not executed because " << e.what() << std::endl;
+		<< " executed and your shrubberies are planted to "
+		<< MAGENT <<  this->getTarget() << RESET << std::endl;
 	}
 }
