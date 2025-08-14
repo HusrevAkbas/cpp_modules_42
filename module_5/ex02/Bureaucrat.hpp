@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 18:22:20 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/14 16:30:09 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define	RESET	"\e[0m"
 # define	BOLD	"\e[1m"
 # define	ITALIC	"\e[3m"
+# define	BG_W	"\e[47m"
 
 class	AForm;
 

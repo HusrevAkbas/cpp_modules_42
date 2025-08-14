@@ -13,19 +13,18 @@
 #pragma once
 
 #include <iostream>
-#include <cstdlib>
 #include "AForm.hpp"
 
 class	Bureaucrat;
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	public:
-		RobotomyRequestForm();
-		~RobotomyRequestForm();
-		RobotomyRequestForm(RobotomyRequestForm &a);
-		RobotomyRequestForm( std::string name);
-		RobotomyRequestForm& operator=(const RobotomyRequestForm &a);
+		PresidentialPardonForm();
+		~PresidentialPardonForm();
+		PresidentialPardonForm(PresidentialPardonForm &a);
+		PresidentialPardonForm( std::string name);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm &a);
 
 		void	execute( Bureaucrat const & executer) const;
 };
