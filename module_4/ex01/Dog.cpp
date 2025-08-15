@@ -25,7 +25,7 @@ Dog::~Dog()
 	delete (this->_brain);
 }
 
-Dog::Dog( const Dog &other)
+Dog::Dog( const Dog &other) : Animal (other)
 {
 	this->_brain = NULL;
 	std::cout << WARN3 << "Dog copy" << RESET << std::endl;

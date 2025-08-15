@@ -25,7 +25,7 @@ Cat::~Cat()
 	delete (this->_brain);
 }
 
-Cat::Cat( const Cat &other)
+Cat::Cat( const Cat &other) : Animal (other)
 {
 	this->_brain = NULL;
 	std::cout << WARN2 << "Cat copy" << RESET << std::endl;
