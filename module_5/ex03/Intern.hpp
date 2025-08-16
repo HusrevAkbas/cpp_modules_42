@@ -20,10 +20,13 @@
 class Intern
 {
 	private:
+		AForm	*makeShrubberyCreationForm(std::string target);
+		AForm	*makeRobotomyRequestForm(std::string target);
+		AForm	*makePresidentialPardonForm(std::string target);
 	public:
 		Intern();
 		~Intern();
 		Intern(const Intern &a);
 		Intern& operator=(const Intern &a);
-		AForm	*makeForm(std::string formName, std::string target) const;
+		AForm	*makeForm(std::string formName, std::string target);
 };

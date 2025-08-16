@@ -25,33 +25,43 @@ Intern& Intern::operator=(const Intern &a)
 	return (*this);
 }
 
-AForm*	Intern::makeForm(std::string formName, std::string target) const
+AForm	*Intern::makeShrubberyCreationForm(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm	*Intern::makeRobotomyRequestForm(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm	*Intern::makePresidentialPardonForm(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+AForm*	Intern::makeForm(std::string formName, std::string target)
 {
 	AForm	*form = NULL;
-	int	id = -1;
-	std::string	list[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	AForm	*(Intern::*formList[3])(std::string) = 
+	{
+		&Intern::makeShrubberyCreationForm,
+		&Intern::makeRobotomyRequestForm,
+		&Intern::makePresidentialPardonForm
+	};
+	std::string	list[3] = { "shrubbery creation", "robotomy request", "presidential pardon" };
+	
 	for (size_t i = 0; i < 3; i++)
 	{
 		if (formName == list[i])
-			id = i;
+		{
+			form = (this->*formList[i])(target);
+			break ;
+		}
 	}
-	switch (id)
-	{
-	case 0:
-		form = new ShrubberyCreationForm(target);
-		break;
-	case 1:
-		form = new RobotomyRequestForm(target);
-		break;
-	case 2:
-		form = new PresidentialPardonForm(target);
-		break;
-	default:
-		if (form)
-			std::cout << "intern creates " << GREEN << form->getName() << RESET << std::endl;
-		else
-			std::cout << RED << "intern could'nt find " << formName << RESET << std::endl;
-		break;
-	}
+	if (form)
+		std::cout << "Intern creates " << GREEN << form->getName() << RESET << std::endl;
+	else
+		std::cout << RED << "Intern could'nt find " << formName << RESET << std::endl;
 	return (form);
 }

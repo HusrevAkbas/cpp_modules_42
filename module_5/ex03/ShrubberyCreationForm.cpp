@@ -45,7 +45,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat  & executor) const
 {
 	std::string	filename = this->getTarget() + "_shrubbery";
 	std::ofstream	oFile(filename.c_str(), std::ofstream::app);
-	if ((*this).AForm::mayExecute(executor))
+	if ((*this).mayExecute(executor))
 	{
 		if (!oFile)
 		{
