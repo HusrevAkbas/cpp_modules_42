@@ -66,7 +66,7 @@ $(OBJDIR)/%.o	:	%.cpp
 
 c	:	clean
 clean	:
-	@rm -rf $(OBJDIR) TARGET ANTARTICA
+	@rm -rf $(OBJDIR) *_shrubbery
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),c clean),)
 	@echo "$(PIKACHU)"

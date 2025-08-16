@@ -43,7 +43,8 @@ std::ostream& operator<< (std::ostream &o, ShrubberyCreationForm &b)
 
 void	ShrubberyCreationForm::execute(const Bureaucrat  & executor) const
 {
-	std::ofstream	oFile(this->getTarget().c_str(), std::ofstream::app);
+	std::string	filename = this->getTarget() + "_shrubbery";
+	std::ofstream	oFile(filename.c_str(), std::ofstream::app);
 	if ((*this).AForm::mayExecute(executor))
 	{
 		if (!oFile)
