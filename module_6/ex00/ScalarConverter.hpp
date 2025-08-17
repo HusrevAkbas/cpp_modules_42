@@ -18,6 +18,8 @@
 #include <sstream>
 #include <limits>
 #include <limits.h>
+#include <cmath>
+#include <iomanip>
 
 #define RED	"\e[1;31m"
 #define WARN	"\e[2;3;91m"

@@ -51,14 +51,14 @@ bool	ScalarConverter::isNumber(std::string input)
 void	ScalarConverter::convertToChar(std::string input)
 {
 	std::istringstream	ss(input);
-	int	ch;
+	double	ch;
 	ss >> ch;
-	if (ss.fail() || ch > std::numeric_limits<char>::max() || ch < std::numeric_limits<char>::min())
+	if (ss.fail() || ch > std::numeric_limits<char>::max() || ch < 0)
 		std::cout << RED << "char: impossible" << RESET << std::endl;
 	else if (!std::isprint(ch))
 		std::cout << YELLOW << "char: non displayable" << RESET << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(ch) << std::endl;
+		std::cout << "char: '" << static_cast<char>(ch) << "'" << std::endl;
 }
 
 void	ScalarConverter::convertToInt(std::string input)
@@ -76,22 +76,50 @@ void	ScalarConverter::convertToFloat(std::string input)
 {
 	float	numf;
 	std::istringstream	ss(input);
-	ss >> numf;
+
+	if (input == "inf" || input == "+inf")
+		numf = static_cast<float>(std::numeric_limits<double>::infinity());
+	else if (input == "inff" || input == "+inff")
+		numf = std::numeric_limits<float>::infinity();
+	else if (input == "-inf")
+		numf = static_cast<float>(-std::numeric_limits<double>::infinity());
+	else if (input == "-inff")
+		numf = -std::numeric_limits<float>::infinity();
+	else if (input == "nan")
+		numf = static_cast<float>(std::numeric_limits<double>::quiet_NaN());
+	else if (input == "nanf")
+		numf = std::numeric_limits<float>::quiet_NaN();
+	else
+		ss >> numf;
 	if (ss.fail())
 		std::cout << RED << "float: impossible" << RESET << std::endl;
 	else
-		std::cout << std::fixed << "float: " << numf << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << "float: " << numf << "f" << std::endl;
 }
 
 void	ScalarConverter::convertToDouble(std::string input)
 {
 	double	numd;
 	std::istringstream	ss(input);
-	ss >> numd;
+
+	if (input == "inf" || input == "+inf")
+		numd = std::numeric_limits<double>::infinity();
+	else if (input == "inff" || input == "+inff")
+		numd = static_cast<double>(std::numeric_limits<float>::infinity());
+	else if (input == "-inf")
+		numd = -std::numeric_limits<double>::infinity();
+	else if (input == "-inff")
+		numd = static_cast<double>(-std::numeric_limits<float>::infinity());
+	else if (input == "nanf")
+		numd = static_cast<double>(std::numeric_limits<float>::quiet_NaN());
+	else if (input == "nan")
+		numd = std::numeric_limits<double>::quiet_NaN();
+	else
+		ss >> numd;
 	if (ss.fail())
 		std::cout << RED << "double: impossible" << RESET << std::endl;
 	else
-		std::cout << "double: " << std::fixed << numd << std::endl;
+		std::cout << "double: " << std::setprecision(1) << std::fixed << numd << std::endl;
 }
 
 void	ScalarConverter::convert(std::string input)
