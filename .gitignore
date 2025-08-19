@@ -29,6 +29,7 @@ zoo
 bureaucrat
 converter
 serializer
+identifier
 
 # test output files
 out
