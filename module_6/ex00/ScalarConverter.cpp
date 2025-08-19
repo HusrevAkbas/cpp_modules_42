@@ -25,27 +25,47 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter &a)
 	return (*this);
 }
 
-bool	ScalarConverter::isChar(std::string input)
+int	ScalarConverter::getType(std::string input)
 {
-	return (input.length() == 1 && !std::isdigit(input[0]) && std::isprint(input[0]));
-}
-
-bool	ScalarConverter::isNumber(std::string input)
-{
-	int	points = 0;
-	for (size_t i = 0; i < input.length(); i++)
+	size_t	has_e = 0;
+	size_t	has_f = 0;
+	size_t	has_sign = 0;
+	// check invalid chars
+	if (input.find_first_not_of("0123456789-+ef") != std::string::npos)
+		return (0);
+	// check char
+	if (input.length() == 0 && !std::isdigit(input[0])) // && std::isprint(input[0]))
+		return (1);
+	// check sign
+	has_sign = input.find_first_of("+-", 1);
+	if (has_sign != std::string::npos && input[has_sign - 1] != 'e')
+		return (0);
+	// check signtific notation
+	has_e = input.find("e");
+	if (has_e != std::string::npos)
 	{
-		while (input[i] == '-' || input[i] == '+')
-			i++;
-		if (input[i] == '.')
-			points++;
-		if ((!std::isdigit(input[i]) && input[i] != '.') || points > 1)
-		{
-			std::cout << "Bad input at index: " << i << std::endl;
-			return (false);
-		}
+		if (has_e == input.length() - 1)
+			return (0);
+		if (!std::isdigit(input[has_e + 1]) && input[has_e + 1] != '+' && input[has_e + 1] != '-')
+			return (0);
 	}
-	return (true);
+	// check float suffix
+	has_f = input.find("f");
+	if (has_f == input.length() - 1)
+		return (3);
+	if (has_f != std::string::npos)
+		return (0);
+	if (has_e != std::string::npos)
+		return (4);
+	// check int
+	double	numd;
+	std::istringstream	ss(input);
+	ss >> numd;
+	if (ss.fail())
+		return (0);
+	if (numd <= std::numeric_limits<int>::max() && numd >= std::numeric_limits<int>::min())
+		return (2);
+	return (4);
 }
 
 void	ScalarConverter::convertToChar(std::string input)
@@ -63,7 +83,7 @@ void	ScalarConverter::convertToChar(std::string input)
 
 void	ScalarConverter::convertToInt(std::string input)
 {
-	double	numd;
+	int	numd;
 	std::istringstream	ss(input);
 	ss >> numd;
 	if (ss.fail() ||numd > std::numeric_limits<int>::max() || numd < std::numeric_limits<int>::min())
@@ -94,7 +114,7 @@ void	ScalarConverter::convertToFloat(std::string input)
 	if (ss.fail())
 		std::cout << RED << "float: impossible" << RESET << std::endl;
 	else
-		std::cout << std::fixed << std::setprecision(1) << "float: " << numf << "f" << std::endl;
+		std::cout << std::fixed << "float: " << numf << "f" << std::endl;
 }
 
 void	ScalarConverter::convertToDouble(std::string input)
@@ -119,17 +139,15 @@ void	ScalarConverter::convertToDouble(std::string input)
 	if (ss.fail())
 		std::cout << RED << "double: impossible" << RESET << std::endl;
 	else
-		std::cout << "double: " << std::setprecision(1) << std::fixed << numd << std::endl;
+		std::cout << "double: " << std::fixed << numd << std::endl;
 }
 
 void	ScalarConverter::convert(std::string input)
 {
-	if (isChar(input))
-	{
-		std::ostringstream	ss;
-		ss << static_cast<int>(input[0]);
-		input = ss.str();
-	}
+	int	type;
+
+	type = getType(input);
+	std::cout << MAGENT << type << std::endl;
 	convertToChar(input);
 	convertToInt(input);
 	convertToFloat(input);

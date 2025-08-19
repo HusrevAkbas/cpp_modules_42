@@ -38,8 +38,7 @@
 class ScalarConverter
 {
 	private:
-		static bool	isChar(std::string input);
-		static bool	isNumber(std::string input);
+		static int	getType(std::string input);
 		static void	convertToChar(std::string input);
 		static void	convertToInt(std::string input);
 		static void	convertToFloat(std::string input);
