@@ -39,10 +39,10 @@ class ScalarConverter
 {
 	private:
 		static int	getType(std::string input);
-		static void	convertToChar(std::string input);
-		static void	convertToInt(std::string input);
-		static void	convertToFloat(std::string input);
-		static void	convertToDouble(std::string input);
+		static void	convertChar(char input);
+		static void	convertInt(int input);
+		static void	convertFloat(float input);
+		static void	convertDouble(double input);
 	public:
 		ScalarConverter();
 		~ScalarConverter();
