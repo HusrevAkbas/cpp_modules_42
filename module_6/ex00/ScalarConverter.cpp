@@ -31,6 +31,15 @@ int	ScalarConverter::getType(std::string input)
 	size_t	has_e = 0;
 	size_t	has_f = 0;
 	size_t	has_sign = 0;
+	// check pseudo literals
+	if (input == "inff" || input == "+inff" || input == "-inff")
+		return (5);
+	if (input == "inf" || input == "+inf" || input == "-inf")
+		return (6);
+	if (input == "nanf")
+		return (7);
+	if (input == "nan")
+		return (8);
 	// check char
 	if (input.length() == 1 && !std::isdigit(input[0])) // && std::isprint(input[0]))
 		return (1);
@@ -127,41 +136,68 @@ void	ScalarConverter::convertDouble(double input)
 void	ScalarConverter::convert(std::string input)
 {
 	int	type;
+	int	num;
+	float	numf;
+	double	numd;
 	std::istringstream	ss(input);
 
 	type = getType(input);
-	std::cout << MAGENT << type << RESET << std::endl;
 	switch (type)
 	{
 	case 0:
 		std::cout << RED << "Impossible to convert" << RESET << std::endl;
 		break;
 	case 1:
+		std::cout << WARN << "input detected as " << BLUE << "char" << RESET << std::endl;
 		ScalarConverter::convertChar(input[0]);
 		break;
 	case 2:
-		int	num;
 		ss >> num;
+		std::cout << WARN << "input detected as " << BLUE << "int" << RESET << std::endl;
 		ScalarConverter::convertInt(num);
 		break;
 	case 3:
-		float	numf;
 		ss >> numf;
 		if (ss.fail())
 		{
 			std::cout << RED << "Impossible to convert" << RESET << std::endl;
 			return ;
 		}
+		std::cout << WARN << "input detected as " << BLUE << "float" << RESET << std::endl;
 		ScalarConverter::convertFloat(numf);
 		break;
 	case 4:
-		double	numd;
 		ss >> numd;
 		if (ss.fail())
 		{
 			std::cout << RED << "Impossible to convert" << RESET << std::endl;
 			return ;
 		}
+		std::cout << WARN << "input detected as " << BLUE << "double" << RESET << std::endl;
+		ScalarConverter::convertDouble(numd);
+		break;
+	case 5:
+		std::cout << WARN << "input detected as " << BLUE << "float" << RESET << std::endl;
+		numf = std::numeric_limits<float>::infinity();
+		if (input[0] == '-')
+			numf = -std::numeric_limits<float>::infinity();
+		ScalarConverter::convertFloat(numf);
+		break;
+	case 6:
+		std::cout << WARN << "input detected as " << BLUE << "double" << RESET << std::endl;
+		numd = std::numeric_limits<double>::infinity();
+		if (input[0] == '-')
+			numd = -std::numeric_limits<double>::infinity();
+		ScalarConverter::convertDouble(numd);
+		break;
+	case 7:
+		std::cout << WARN << "input detected as " << BLUE << "float" << RESET << std::endl;
+		numf = std::numeric_limits<float>::quiet_NaN();
+		ScalarConverter::convertFloat(numf);
+		break;
+	case 8:
+		std::cout << WARN << "input detected as " << BLUE << "double" << RESET << std::endl;
+		numd = std::numeric_limits<double>::quiet_NaN();
 		ScalarConverter::convertDouble(numd);
 		break;
 	default:

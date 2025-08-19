@@ -13,15 +13,11 @@
 #pragma once
 
 #include <iostream>
-#include <stdlib.h>
-#include <string>
 #include <sstream>
 #include <limits>
-#include <limits.h>
-#include <cmath>
-#include <iomanip>
+//#include <cmath>
 
-#define RED	"\e[1;31m"
+#define RED		"\e[1;31m"
 #define WARN	"\e[2;3;91m"
 #define WARN2	"\e[2;3;92m"
 #define WARN3	"\e[2;3;93m"
