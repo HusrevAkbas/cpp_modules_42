@@ -39,10 +39,10 @@ class ScalarConverter
 		static void	convertInt(int input);
 		static void	convertFloat(float input);
 		static void	convertDouble(double input);
+		// ScalarConverter();
+		// ~ScalarConverter();
+		// ScalarConverter(const ScalarConverter &a);
+		// ScalarConverter& operator=(const ScalarConverter &a);
 	public:
-		ScalarConverter();
-		~ScalarConverter();
-		ScalarConverter(const ScalarConverter &a);
-		ScalarConverter& operator=(const ScalarConverter &a);
 		static void	convert(std::string input);
 };
