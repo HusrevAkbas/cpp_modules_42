@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 23:02:58 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/19 23:26:52 by husrevakbas      ###   ########.fr       */
+/*   Created: 2025/08/19 23:10:51 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/08/19 23:26:14 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-int	main()
+uintptr_t	Serializer::serialize(Data *ptr)
 {
-	Data	d;
-
-	d.name = "fortytwo";
-	d.num = 42;
-	std::cout << "pointer: " << &d << ", name: " << d.name << ", num: " << d.num << std::endl;
-	
-	uintptr_t	ptr = Serializer::serialize(&d);
-	std::cout << "ptr: " << ptr << std::endl;
-	Data	*d_ptr = Serializer::deserialize(ptr);
-	std::cout << "pointer: " << d_ptr << ", name: " << d_ptr->name << ", num: " << d_ptr->num << std::endl;
-	
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+Data*		Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data*>(raw));
 }

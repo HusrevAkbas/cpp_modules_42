@@ -28,6 +28,7 @@ DiamondTrap
 zoo
 bureaucrat
 converter
+serializer
 
 # test output files
 out
