@@ -1,53 +1,71 @@
-#include <iostream>
-#include <Array.hpp>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 21:24:02 by husrevakbas       #+#    #+#             */
+/*   Updated: 2025/08/20 22:52:54 by husrevakbas      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define MAX_VAL 750
-int main(int, char**)
+#include "Array.tpp"
+
+int	main()
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	Array<int>	arr(10);
+	
+	for (size_t i = 0; i < arr.size(); i++)
+	{
+		arr[i] = (int)i;
+	}
+	for (size_t i = 0; i < arr.size(); i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+	
+	{
+		Array<int> tmp = arr;
+		Array<int> tmp2(tmp);
+		for (size_t i = 0; i < tmp2.size(); i++)
+		{
+			tmp2[i] = (int)(i * 5);
+		}
+		for (size_t i = 0; i < tmp2.size(); i++)
+		{
+		std::cout << tmp2[i] << " ";
+		}
+		std::cout << std::endl;
+	}
+	
+	for (size_t i = 0; i < arr.size(); i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << std::endl;
+	Array<char>	arr2(26);
+	{
+		Array<char> tmp = arr2;
+	}
+	for (size_t i = 0; i < arr2.size(); i++)
+		arr2[i] = static_cast<char>(i + 65);
+	
+	for (size_t i = 0; i < arr2.size(); i++)
+	{
+		std::cout << arr2[i] << " ";
+	}
+	std::cout << std::endl;
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+	try
+	{
+		arr2[27];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+	return (0);
 }
