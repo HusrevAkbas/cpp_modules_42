@@ -30,6 +30,7 @@ bureaucrat
 converter
 serializer
 identifier
+whatever
 
 # test output files
 out
