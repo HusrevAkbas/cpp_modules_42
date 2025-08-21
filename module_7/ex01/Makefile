@@ -8,7 +8,7 @@ OBJDIR		=	objs
 OBJS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.o))
 DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
-NAME		=	identifier
+NAME		=	whatever
 
 RED			=	\033[1;31m
 GREEN		=	\033[1;32m
