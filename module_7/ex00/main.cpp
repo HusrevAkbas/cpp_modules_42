@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 10:56:45 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/20 11:08:58 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:36:11 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ int	main()
 	std::string c = "chaine1";
 	std::string d = "chaine2";
 	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "\nc = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 
 	char e = 'A';
 	char f = 'a';
 	::swap( e, f );
-	std::cout << "a = " << e << ", b = " << f << std::endl;
-	std::cout << "min( a, b ) = " << ::min( e, f ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( e, f ) << std::endl;
+	std::cout << "\ne = " << e << ", f = " << f << std::endl;
+	std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
+	std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
 
 	float g = 12.42f;
 	float h = 12.24f;
 	::swap( g, h );
-	std::cout << "a = " << g << ", b = " << h << std::endl;
-	std::cout << "min( a, b ) = " << ::min( g, h ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( g, h ) << std::endl;
+	std::cout << "\ng = " << g << ", h = " << h << std::endl;
+	std::cout << "min( g, h ) = " << ::min( g, h ) << std::endl;
+	std::cout << "max( g, h ) = " << ::max( g, h ) << std::endl;
 
 
 	return (0);
