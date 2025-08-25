@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:36 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 18:21:50 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/25 12:57:15 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void	Bureaucrat::demote()
 
 void	Bureaucrat::signForm(AForm &form) const
 {
+	if (form.isSigned())
+	{
+		std::cout << GREEN2 << this->getName() << RESET
+		<< " couldn't sign " << GREEN << form.getName() << RESET
+		<< " because the form is already signed." << std::endl;
+		return ;
+	}
 	try
 	{
 		form.beSigned(*this);
@@ -64,8 +71,8 @@ void	Bureaucrat::signForm(AForm &form) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->getName() << " couldn't sign " << form.getName()
-		<< " because " << e.what() << std::endl;
+		std::cout << GREEN2 << this->getName() << RESET << " couldn't sign "
+		<< GREEN << form.getName() << RESET << " because " << e.what() << std::endl;
 	}
 }
 

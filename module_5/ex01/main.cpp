@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:46:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 18:19:47 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/25 12:55:45 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b("Bob", 99);
 		AForm	form("D form", 124, 22);
+		Bureaucrat	b("Bob", 99);
 		std::cout << form << std::endl;
 		std::cout << b << std::endl;
+		b.signForm(form);
+		std::cout << form << std::endl;
 		b.signForm(form);
 		std::cout << form << std::endl;
 	}
@@ -68,8 +70,8 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	b("Bob", 99);
 		AForm	form("E form", 14, 22);
+		Bureaucrat	b("Bob", 99);
 		std::cout << form << std::endl;
 		std::cout << b << std::endl;
 		b.signForm(form);

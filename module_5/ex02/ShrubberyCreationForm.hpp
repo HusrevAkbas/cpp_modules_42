@@ -27,5 +27,18 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm( std::string name);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &a);
 
-		void	execute( Bureaucrat const & executer) const;
+		void	doTheJob(void) const;
 };
+
+#define	SHRUBBERY	"\n     ,\\\n\
+    # (_\n\
+      _)\\##\n\
+  ###/((_\n\
+       ))\\####\n\
+     _((     \n\
+####/  )\n\
+     ,;;\"`;, \n\
+    (_______)\n\
+      \\===/\n\
+      /===\\\n\
+     /=aat=\\\n"

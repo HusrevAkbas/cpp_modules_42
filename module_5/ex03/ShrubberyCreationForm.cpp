@@ -13,17 +13,17 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() :
-	AForm("ShrubberyCreationForm", 145, 137, "DEFAULT TARGET")
+	AForm("ShrubberyCreationForm", false, 145, 137, "DEFAULT TARGET")
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target) :
-	AForm("ShrubberyCreationForm", 145, 137, target)
+	AForm("ShrubberyCreationForm", false, 145, 137, target)
 {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &a) :
-	AForm(a.AForm::getName(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
+	AForm(a.AForm::getName(), a.isSigned(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
 {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &a)
@@ -41,22 +41,19 @@ std::ostream& operator<< (std::ostream &o, ShrubberyCreationForm &b)
 	return (o);
 }
 
-void	ShrubberyCreationForm::execute(const Bureaucrat  & executor) const
+void	ShrubberyCreationForm::doTheJob(void) const
 {
 	std::string	filename = this->getTarget() + "_shrubbery";
 	std::ofstream	oFile(filename.c_str(), std::ofstream::app);
-	if ((*this).mayExecute(executor))
+	if (!oFile)
 	{
-		if (!oFile)
-		{
-			std::cerr << "Error on creating file" << std::endl;
-			std::cout << GREEN << this->getName() << RESET
-			<< " not executed because " << MAGENT << this->getTarget() << RESET << " is invalid" << std::endl;
-			return ;
-		}
-		oFile << "Shrubbery planted here and there" << std::endl;
+		std::cerr << "Error on creating file" << std::endl;
 		std::cout << GREEN << this->getName() << RESET
-		<< " executed and your shrubberies are planted to "
-		<< MAGENT <<  this->getTarget() << RESET << std::endl;
+		<< " not executed because " << MAGENT << this->getTarget() << RESET << " is invalid" << std::endl;
+		return ;
 	}
+	oFile << SHRUBBERY << std::endl;
+	std::cout << GREEN << this->getName() << RESET
+	<< " executed and your shrubberies are planted to "
+	<< MAGENT <<  this->getTarget() << RESET << std::endl;
 }

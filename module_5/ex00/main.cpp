@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 16:14:19 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 16:52:21 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/25 12:39:27 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main()
 	}
 	try
 	{
-		Bureaucrat	vip("Hase", 150);
+		Bureaucrat	vip("Hamster", 150);
 		vip.demote();
 		std::cout << vip << std::endl;
 	}

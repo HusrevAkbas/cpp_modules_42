@@ -13,17 +13,17 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() :
-	AForm("PresidentialPardonForm", 25, 5, "DEFAULT TARGET")
+	AForm("PresidentialPardonForm", false, 25, 5, "DEFAULT TARGET")
 {}
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target) :
-	AForm("PresidentialPardonForm", 25, 5, target)
+	AForm("PresidentialPardonForm", false, 25, 5, target)
 {}
 
 PresidentialPardonForm::~PresidentialPardonForm(){}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &a) :
-	AForm(a.AForm::getName(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
+	AForm(a.AForm::getName(), a.isSigned(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
 {}
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &a)
@@ -41,11 +41,8 @@ std::ostream& operator<< (std::ostream &o, PresidentialPardonForm &b)
 	return (o);
 }
 
-void	PresidentialPardonForm::execute(const Bureaucrat  & executor) const
+void	PresidentialPardonForm::doTheJob(void) const
 {
-	if ((*this).AForm::mayExecute(executor))
-	{
-		std::cout << MAGENT << this->getTarget() << RESET
-		<< " has been pardoned by Zaphod Beeblebrox" << std::endl;
-	}
+	std::cout << MAGENT << this->getTarget() << RESET
+	<< " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

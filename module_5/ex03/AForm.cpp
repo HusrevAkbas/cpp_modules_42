@@ -20,9 +20,9 @@ AForm::AForm() :
 	_target("DEFAULT TARGET")
 {}
 
-AForm::AForm( std::string name, int grade_to_sign, int grade_to_execute, std::string target ) :
+AForm::AForm( std::string name, bool sign, int grade_to_sign, int grade_to_execute, std::string target ) :
 	_name(name),
-	_signed(false),
+	_signed(sign),
 	_grade_to_sign(grade_to_sign),
 	_grade_to_execute(grade_to_execute),
 	_target(target)
@@ -72,14 +72,13 @@ void	AForm::beSigned(const Bureaucrat &b)
 		throw AForm::GradeTooLowException();
 }
 
-bool	AForm::mayExecute(const Bureaucrat &b) const
+void	AForm::execute(const Bureaucrat &b) const
 {
 	if (!this->isSigned())
 		throw AForm::FormIsNotSignedException();
-	if (b.getGrade() <= this->getGradeToExecute())
-		return (true);
-	else
+	if (b.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
+	this->doTheJob();
 }
 
 std::ostream& operator<< (std::ostream &o, AForm &b)

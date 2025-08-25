@@ -13,17 +13,17 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() :
-	AForm("RobotomyRequestForm", 72, 45, "DEFAULT TARGET")
+	AForm("RobotomyRequestForm", false, 72, 45, "DEFAULT TARGET")
 {}
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target) :
-	AForm("RobotomyRequestForm", 72, 45, target)
+	AForm("RobotomyRequestForm", false, 72, 45, target)
 {}
 
 RobotomyRequestForm::~RobotomyRequestForm(){}
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &a) :
-	AForm(a.AForm::getName(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
+	AForm(a.AForm::getName(), a.isSigned(), a.AForm::getGradeToExecute(), a.AForm::getGradeToSign(), a.AForm::getTarget())
 {}
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &a)
@@ -41,15 +41,11 @@ std::ostream& operator<< (std::ostream &o, RobotomyRequestForm &b)
 	return (o);
 }
 
-void	RobotomyRequestForm::execute(const Bureaucrat  & executor) const
+void	RobotomyRequestForm::doTheJob(void) const
 {
-	srand(time(0));
-	if ((*this).AForm::mayExecute(executor))
-	{
-		std::cout << " ** make some noise ** " << std::endl;
-		if (rand() % 2 == 0)
-			std::cout << MAGENT << this->getTarget() << RESET << " is robotomized! " << std::endl;
-		else
-			std::cout << RED << "Robotomy failed for " << MAGENT << this->getTarget() << RESET << std::endl;
-	}
+	std::cout << " ** make some noise ** " << std::endl;
+	if (rand() % 2 == 0)
+		std::cout << MAGENT << this->getTarget() << RESET << " is robotomized! " << std::endl;
+	else
+		std::cout << RED << "Robotomy failed for " << MAGENT << this->getTarget() << RESET << std::endl;
 }
