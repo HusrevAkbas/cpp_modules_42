@@ -12,18 +12,18 @@
 
 #include "ScalarConverter.hpp"
 
-// ScalarConverter::ScalarConverter(){}
+ScalarConverter::ScalarConverter(){}
 
-// ScalarConverter::~ScalarConverter(){}
+ScalarConverter::~ScalarConverter(){}
 
-// ScalarConverter::ScalarConverter(const ScalarConverter &a)
-// {	*this = a;	}
+ScalarConverter::ScalarConverter(const ScalarConverter &a)
+{	*this = a;	}
 
-// ScalarConverter& ScalarConverter::operator=(const ScalarConverter &a)
-// {
-// 	(void) a;
-// 	return (*this);
-// }
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter &a)
+{
+	(void) a;
+	return (*this);
+}
 
 int	ScalarConverter::getType(std::string input)
 {

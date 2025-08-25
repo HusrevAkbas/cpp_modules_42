@@ -15,7 +15,6 @@
 #include <iostream>
 #include <sstream>
 #include <limits>
-//#include <cmath>
 
 #define RED		"\e[1;31m"
 #define WARN	"\e[2;3;91m"
@@ -39,10 +38,10 @@ class ScalarConverter
 		static void	convertInt(int input);
 		static void	convertFloat(float input);
 		static void	convertDouble(double input);
-		// ScalarConverter();
-		// ~ScalarConverter();
-		// ScalarConverter(const ScalarConverter &a);
-		// ScalarConverter& operator=(const ScalarConverter &a);
+		ScalarConverter();
+		~ScalarConverter();
+		ScalarConverter(const ScalarConverter &a);
+		ScalarConverter& operator=(const ScalarConverter &a);
 	public:
 		static void	convert(std::string input);
 };

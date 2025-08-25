@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identify.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 23:37:07 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/20 00:20:37 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/25 14:52:55 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	identify(Base &p)
 {
 	try
 	{
-		dynamic_cast<A&>(p);
+		A	a = dynamic_cast<A&>(p);
 		std::cout << "referenced class is A" << std::endl;
 		return ;
 	}
@@ -59,7 +59,7 @@ void	identify(Base &p)
 	{}
 	try
 	{
-		dynamic_cast<B&>(p);
+		B	b = dynamic_cast<B&>(p);
 		std::cout << "referenced class is B" << std::endl;
 		return ;
 	}
@@ -67,7 +67,7 @@ void	identify(Base &p)
 	{}
 	try
 	{
-		dynamic_cast<C&>(p);
+		C	c = dynamic_cast<C&>(p);
 		std::cout << "referenced class is C" << std::endl;
 		return ;
 	}
@@ -90,6 +90,7 @@ int	main(int argc, char **argv)
 		if (ss.fail())
 			loop = 1;
 	}
+	srand(time(0));
 	for (size_t i = 0; i < loop; i++)
 	{
 		Base	*cl = generate();

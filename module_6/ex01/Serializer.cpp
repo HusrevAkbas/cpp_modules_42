@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 23:10:51 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/19 23:26:14 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/25 14:45:58 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+
+Serializer::Serializer(){}
+Serializer::~Serializer(){}
+Serializer::Serializer(const Serializer &s)
+{	(void) s;	}
+Serializer& Serializer::operator=(const Serializer &s)
+{
+	(void) s;
+	return (*this);
+}
 
 uintptr_t	Serializer::serialize(Data *ptr)
 {
