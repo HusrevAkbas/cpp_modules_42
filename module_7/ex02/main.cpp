@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 21:24:02 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/20 22:52:54 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/25 16:10:21 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,7 @@ int	main()
 		std::cout << arr[i] << " ";
 	}
 	std::cout << std::endl;
-	
-	{
-		Array<int> tmp = arr;
-		Array<int> tmp2(tmp);
-		for (size_t i = 0; i < tmp2.size(); i++)
-		{
-			tmp2[i] = (int)(i * 5);
-		}
-		for (size_t i = 0; i < tmp2.size(); i++)
-		{
-		std::cout << tmp2[i] << " ";
-		}
-		std::cout << std::endl;
-	}
-	
-	for (size_t i = 0; i < arr.size(); i++)
-	{
-		std::cout << arr[i] << " ";
-	}
-	std::cout << std::endl;
+
 	Array<char>	arr2(26);
 	{
 		Array<char> tmp = arr2;
@@ -61,6 +42,31 @@ int	main()
 	try
 	{
 		arr2[27];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	Array<std::string>	arr3(5);
+	{
+		Array<std::string> tmp (arr3);
+	}
+	for (size_t i = 0; i < arr3.size(); i++)
+	{
+		arr3[i] = "word_0";
+		arr3[i][5] += i;
+	}
+	
+	for (size_t i = 0; i < arr3.size(); i++)
+	{
+		std::cout << arr3[i] << " ";
+	}
+	std::cout << std::endl;
+
+	try
+	{
+		arr3[-1];
 	}
 	catch(const std::exception& e)
 	{

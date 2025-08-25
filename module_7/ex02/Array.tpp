@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/20 22:41:53 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/25 16:03:40 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ const char* Array<T>::IndexOutOfRangeException::what(void) const throw()
 }
 
 template <typename T>
-T& Array<T>::operator[](int index)
+T& Array<T>::operator[](size_t index)
 {
-	if (index < 0 || index >= static_cast<int>(this->_size))
+	if (index >= this->_size)
 		throw Array<T>::IndexOutOfRangeException();
 	return (this->_array[index]);
 }
