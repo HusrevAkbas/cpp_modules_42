@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 23:03:52 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/25 14:41:17 by huakbas          ###   ########.fr       */
+/*   Created: 2025/08/25 14:40:02 by huakbas           #+#    #+#             */
+/*   Updated: 2025/08/25 14:40:55 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <stdint.h>
 #include <iostream>
 
-#include "data.hpp"
-
-class Serializer
+struct Data
 {
-	public:
-		static uintptr_t	serialize(Data *ptr);
-		static Data*		deserialize(uintptr_t raw);
+	std::string	name;
+	int			num;
 };
