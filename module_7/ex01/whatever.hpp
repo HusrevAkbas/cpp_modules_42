@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 11:15:13 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/20 11:46:22 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/25 15:57:54 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 #include <iostream>
 
 template <typename T>
-void	iter(T arr[], size_t size, void func(T&))
+void	iter(T *arr, size_t size, void func(T &))
 {
 	for (size_t i = 0; i < size; i++)
 		func(arr[i]);
 }
 
 template <typename T>
-void	printT(T const item)
+void	iter(const T *arr, size_t size, void func(const T &))
+{
+	for (size_t i = 0; i < size; i++)
+		func(arr[i]);
+}
+
+template <typename T>
+void	printT(T const &item)
 {
 	std::cout << item << " ";
 }
