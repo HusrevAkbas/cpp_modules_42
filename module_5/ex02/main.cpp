@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:46:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/25 13:42:55 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/26 17:10:18 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -40,6 +41,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -52,6 +54,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -64,6 +67,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -76,6 +80,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -88,6 +93,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -100,6 +106,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -112,6 +119,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
@@ -124,6 +132,7 @@ int	main()
 		std::cout << adam << std::endl;
 		adam.signForm(*form);
 		adam.executeForm(*form);
+		delete form;
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
