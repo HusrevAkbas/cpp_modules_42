@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <iterator>
 
 Span::Span() : _numbers(new int[0]), _size(0), _index(0)
 {}
@@ -54,6 +55,28 @@ void	Span::addNumber(int num)
 	this->_index++;
 }
 
+void	Span::addNumbers(size_t count, int num)
+{
+	for (size_t i = 0; i < count; i++)
+	{
+		if (this->_index >= this->_size)
+			throw Span::IndexIsOutOfRangeException();
+		this->_numbers[_index] = num;
+		this->_index++;
+	}
+}
+
+void	Span::addNumbers(int *arr, size_t size)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		if (this->_index >= this->_size)
+			throw Span::IndexIsOutOfRangeException();
+		this->_numbers[_index] = arr[i];
+		this->_index++;
+	}
+}
+
 int	Span::getNumber(unsigned int index) const
 {
 	if (index >= this->_index)
@@ -89,7 +112,7 @@ int	Span::longestSpan()
 
 const char* Span::IndexIsOutOfRangeException::what() const throw ()
 {
-	return ("\e[1;31mIndex in out of range\e[0m");
+	return ("\e[1;31mIndex is out of range\e[0m");
 }
 
 const char* Span::NotEnoughElementsException::what() const throw ()

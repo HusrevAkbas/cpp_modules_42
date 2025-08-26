@@ -31,6 +31,8 @@ class Span
 		Span& operator=(const Span &a);
 		size_t	size() const;
 		void	addNumber(int num);
+		void	addNumbers(size_t count, int num);
+		void	addNumbers(int *num_array, size_t size);
 		int		getNumber(unsigned int num) const;
 		int		shortestSpan();
 		int		longestSpan();
