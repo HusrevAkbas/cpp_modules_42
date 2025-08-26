@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:46:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/25 13:55:41 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/26 17:12:07 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,24 @@ int	main()
 			std::cout << *form << std::endl;
 			adam.signForm(*form);
 			adam.executeForm(*form);
+			delete form;
 		}
 
-		delete form;
 		form = intern.makeForm("robotomy request", "B_42");
 		if (form)
 		{
 			std::cout << *form << std::endl;
 			adam.signForm(*form);
 			adam.executeForm(*form);
+			delete form;
 		}
 
-		delete form;
 		form = intern.makeForm("presidential pardon", "CILLYWOOD");
 		if (form)
+		{
 			std::cout << *form << std::endl;
+			delete form;
+		}
 	}
 	catch(const std::exception& e)
 	{	std::cerr << e.what() << '\n';	}
