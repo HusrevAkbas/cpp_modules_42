@@ -31,8 +31,20 @@ class Span
 		Span& operator=(const Span &a);
 		size_t	size() const;
 		void	addNumber(int num);
-		void	addNumbers(size_t count, int num);
-		void	addNumbers(int *num_array, size_t size);
+		void	addNumberMany(size_t count, int num);
+
+		template <typename ITERATOR>
+		void	addNumbers(ITERATOR begin, ITERATOR end)
+		{
+			for (ITERATOR i = begin; i != end; ++i)
+			{
+				if (this->_index >= this->_size)
+					throw IndexIsOutOfRangeException();
+				this->_numbers[this->_index] = *i;
+				this->_index++;
+			}
+		}
+
 		int		getNumber(unsigned int num) const;
 		int		shortestSpan();
 		int		longestSpan();

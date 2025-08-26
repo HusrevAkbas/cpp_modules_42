@@ -6,11 +6,12 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:40:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/26 13:26:30 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:04:35 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <iterator>
 #include <vector>
 #include <list>
 
@@ -62,13 +63,14 @@ int	main()
 	
 	std::cout << "------------------------------------------" << std::endl;
 	Span	greater(11111);
-	
-	int	a = 123;
-	int	arr[10] = { 12, 23, 33, 43, 54, 65, 76, 87, 98, 100 };
-	greater.addNumbers(arr, 10);
+
+	greater.addNumberMany(1000, 888);
+	std::vector<int>	vec(10000, 222);
+	std::list<int>		lst(111, 111);
 	try
 	{
-		greater.addNumbers(11111, a);
+		greater.addNumbers(vec.begin(), vec.end());
+		greater.addNumbers(lst.begin(), lst.end());
 	}
 	catch(const std::exception& e)
 	{

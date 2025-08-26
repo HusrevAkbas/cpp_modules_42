@@ -55,24 +55,13 @@ void	Span::addNumber(int num)
 	this->_index++;
 }
 
-void	Span::addNumbers(size_t count, int num)
+void	Span::addNumberMany(size_t count, int num)
 {
 	for (size_t i = 0; i < count; i++)
 	{
 		if (this->_index >= this->_size)
-			throw Span::IndexIsOutOfRangeException();
+			throw IndexIsOutOfRangeException();
 		this->_numbers[_index] = num;
-		this->_index++;
-	}
-}
-
-void	Span::addNumbers(int *arr, size_t size)
-{
-	for (size_t i = 0; i < size; i++)
-	{
-		if (this->_index >= this->_size)
-			throw Span::IndexIsOutOfRangeException();
-		this->_numbers[_index] = arr[i];
 		this->_index++;
 	}
 }
