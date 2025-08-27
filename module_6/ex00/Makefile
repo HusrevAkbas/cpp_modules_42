@@ -25,7 +25,7 @@ else ifneq ($(filter $(firstword $(MAKECMDGOALS)),c clean),)
 	MSG1:=OBJECT FILES REMOVED
 	MSG2:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 	MSG3:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-else ifneq ($(filter $(firstword $(MAKECMDGOALS)),f flean),)
+else ifneq ($(filter $(firstword $(MAKECMDGOALS)),f fclean),)
 	MSG1:=OBJECT FILES REMOVED
 	MSG2:=⠀EXECUTABLE REMOVED⠀
 	MSG3:=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
