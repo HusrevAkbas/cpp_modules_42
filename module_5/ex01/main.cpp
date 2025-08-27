@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:46:59 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/25 12:55:45 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/27 11:54:21 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main()
 {
 	try
 	{
-		AForm	form("A form", 44, 22);
+		Form	form("A form", 44, 22);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -24,7 +24,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		AForm	form("B form", 151, 22);
+		Form	form("B form", 151, 22);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -32,7 +32,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		AForm	form("C form", 24, 151);
+		Form	form("C form", 24, 151);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -40,7 +40,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		AForm	form("CA form", 0, 22);
+		Form	form("CA form", 0, 22);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -48,7 +48,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		AForm	form("CB form", 24, 0);
+		Form	form("CB form", 24, 0);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
@@ -56,7 +56,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		AForm	form("D form", 124, 22);
+		Form	form("D form", 124, 22);
 		Bureaucrat	b("Bob", 99);
 		std::cout << form << std::endl;
 		std::cout << b << std::endl;
@@ -70,7 +70,7 @@ int	main()
 	std::cout << "--------------------------------" << std::endl;
 	try
 	{
-		AForm	form("E form", 14, 22);
+		Form	form("E form", 14, 22);
 		Bureaucrat	b("Bob", 99);
 		std::cout << form << std::endl;
 		std::cout << b << std::endl;

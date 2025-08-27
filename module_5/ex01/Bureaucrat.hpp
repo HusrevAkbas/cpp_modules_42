@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:50 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/13 18:19:47 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/27 11:54:06 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define	BOLD	"\e[1m"
 # define	ITALIC	"\e[3m"
 
-class	AForm;
+class	Form;
 
 class Bureaucrat
 {
@@ -43,7 +43,7 @@ class Bureaucrat
 		int	getGrade() const;
 		void	promote();
 		void	demote();
-		void	signForm(AForm &form) const;
+		void	signForm(Form &form) const;
 		class GradeTooHighException : public std::exception
 		{
 			public:

@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 16:45:36 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/25 12:57:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/27 11:53:22 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	Bureaucrat::demote()
 	this->_grade++;
 }
 
-void	Bureaucrat::signForm(AForm &form) const
+void	Bureaucrat::signForm(Form &form) const
 {
 	if (form.isSigned())
 	{
