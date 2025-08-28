@@ -27,28 +27,20 @@ class MutantStack	:	public std::stack< TYPE, std::vector<TYPE> >
 		MutantStack(const MutantStack &a);
 		MutantStack& operator=(const MutantStack &a);
 
-		class iterator	:	public std::iterator
-		<
-			std::forward_iterator_tag,
-			TYPE,
-			TYPE,
-			const TYPE*,
-			TYPE
-		>	{
+		class iterator : public std::iterator<std::forward_iterator_tag, TYPE>
+		{
 			private:
-				TYPE	*start;
+				TYPE *data;
 			public:
-				iterator(TYPE& top, size_t size)	//default constructor
-				{
-					std::cout << top << " | " << size << std::endl;
-					start = &top - (size - 1) * sizeof(TYPE);
-				}
-				iterator&	operator++();		// pre increment
-				iterator	operator++(int);	// post increment
-				bool		operator== (iterator other) const;
-				bool		operator!= (iterator other) const;
-				TYPE&		operator* () const;
+				iterator(TYPE *x) : data(x){}
+				TYPE&	operator*() {	return (*data);	}
+				iterator	&operator++() {	data += 1; return (*this);	}
+				iterator	operator++(int) {	iterator tmp = *this; data += 1; return (tmp);	}
+				bool	operator==(const iterator& other) const {	return (data == other.data);	}
+				bool	operator!=(const iterator& other) const {	return (data != other.data);	}
 		};
 		iterator	begin();
 		iterator	end();
 };
+
+#include "MutantStack.tpp"

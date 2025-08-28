@@ -33,18 +33,15 @@ MutantStack<TYPE>& MutantStack<TYPE>::operator=(const MutantStack<TYPE> &a)
 template <typename TYPE>
 typename MutantStack<TYPE>::iterator MutantStack<TYPE>::begin()
 {
-	return (MutantStack<TYPE>::iterator(this->top(), this->size()));
+	TYPE *ptr = &(this->top());
+	ptr -= this->size() - 1;
+	return (MutantStack<TYPE>::iterator(ptr));
 }
 
 template <typename TYPE>
 typename MutantStack<TYPE>::iterator MutantStack<TYPE>::end()
 {
-	return (MutantStack<TYPE>::iterator(this->top(), -1));
-}
-
-// TODO: work on this one
-template <typename TYPE>
-TYPE& MutantStack<TYPE>::iterator::operator*() const
-{
-	return ((TYPE&) *this);
+	TYPE *ptr	= &(this->top());
+	ptr++;
+	return (MutantStack<TYPE>::iterator(ptr));
 }
