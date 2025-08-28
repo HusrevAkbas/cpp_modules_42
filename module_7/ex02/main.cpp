@@ -6,11 +6,11 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 21:24:02 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/25 16:10:21 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:05:43 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.tpp"
+#include "Array.hpp"
 
 int	main()
 {
@@ -27,12 +27,27 @@ int	main()
 	std::cout << std::endl;
 
 	Array<char>	arr2(26);
-	{
-		Array<char> tmp = arr2;
-	}
 	for (size_t i = 0; i < arr2.size(); i++)
 		arr2[i] = static_cast<char>(i + 65);
+	{
+		Array<char> tmp;
+		tmp = arr2;
+		std::cout << "tmp: ";
+		for (size_t i = 0; i < tmp.size(); i++)
+		{
+			std::cout << tmp[i] << " ";
+		}
+		std::cout << "\n";
+		Array<char> tmp2(tmp);
+		std::cout << "tmp2: ";
+		for (size_t i = 0; i < tmp2.size(); i++)
+		{
+			std::cout << tmp2[i] << " ";
+		}
+		std::cout << "\n";
+	}
 	
+		std::cout << "arr2: ";
 	for (size_t i = 0; i < arr2.size(); i++)
 	{
 		std::cout << arr2[i] << " ";

@@ -6,13 +6,16 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/25 16:03:53 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:02:50 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+
+# define	YELLOW	"\e[3;33m"
+# define	RESET	"\e[0m"
 
 template <typename T>
 class Array
@@ -34,3 +37,5 @@ class Array
 				const char *what() const throw ();
 		};
 };
+
+#include	"Array.tpp"

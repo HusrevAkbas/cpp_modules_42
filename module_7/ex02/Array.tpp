@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/25 16:03:40 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:58:14 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 template <typename T>
 Array<T>::Array() : _array(new T[0]), _size(0)
 {
-	std::cout << "default const " << this->_size << std::endl;
+	std::cout << YELLOW << "default const " << this->_size << RESET << std::endl;
 }
 
 template <typename T>
@@ -27,7 +27,7 @@ Array<T>::~Array()
 template <typename T>
 Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n)
 {
-	std::cout << "parameter const " << this->_size << std::endl;
+	std::cout << YELLOW << "parameter const " << this->_size << RESET << std::endl;
 }
 
 template <typename T>
@@ -35,7 +35,7 @@ Array<T>::Array(const Array<T> &a) : _array(new T[0])
 {
 	if (this != &a)
 		*this = a;
-	std::cout << "copy const " << this->_size << std::endl;
+	std::cout << YELLOW << "copy const " << this->_size << RESET << std::endl;
 }
 
 template <typename T>
