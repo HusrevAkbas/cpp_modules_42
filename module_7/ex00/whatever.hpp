@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 10:55:12 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/20 11:03:03 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/28 13:31:29 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	swap(T &a, T &b)
 	tmp = a;
 	a = b;
 	b = tmp;
+}
+
+template <typename T>
+void	swap(const T &a, const T &b)
+{
+	(void) a;
+	(void) b;
+	std::cout << "\e[1;31mCan't assign and swap const values!\e[0m" << std::endl;
 }
 
 template <typename T>

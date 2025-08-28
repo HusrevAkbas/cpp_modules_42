@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 10:56:45 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/25 15:36:11 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:27:37 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	main()
 	std::cout << "\ng = " << g << ", h = " << h << std::endl;
 	std::cout << "min( g, h ) = " << ::min( g, h ) << std::endl;
 	std::cout << "max( g, h ) = " << ::max( g, h ) << std::endl;
+
+	const int i = 12;
+	const int k = 13;
+	::swap( i, k );
+	std::cout << "\ni = " << i << ", k = " << k << std::endl;
+	std::cout << "min( g, h ) = " << ::min( i, k ) << std::endl;
+	std::cout << "max( g, h ) = " << ::max( i, k ) << std::endl;
 
 
 	return (0);
