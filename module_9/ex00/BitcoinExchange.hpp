@@ -18,22 +18,27 @@
 #include <map>
 #include <algorithm>
 #include <ctime>
+#include <iterator>
+#include <limits>
 
 #define	RED		"\e[1;31m"
 #define	RESET	"\e[0m"
 
+const time_t	SECS_PER_DAY = 24 * 60 * 60;
+
 class BitcoinExchange
 {
 	private:
-		std::map<double, double>	_data;
+		std::map<time_t, double>	_data;
 		std::string					_db_filename;
-		void	getData();
-		static void	trim(std::string &str);
-		void	validateDate(std::string &date);
+		void		getData();
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
 		BitcoinExchange(std::string data_file);
 		BitcoinExchange(const BitcoinExchange &a);
 		BitcoinExchange& operator=(const BitcoinExchange &a);
+		time_t		validateDate(std::string &date);
+		double		validateValue(std::string &value);
+		double		getValue(time_t	time) const;
 };

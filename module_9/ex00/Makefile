@@ -1,4 +1,4 @@
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
 SRC_FILES	=	main.cpp BitcoinExchange.cpp
 
@@ -39,7 +39,6 @@ all	:	$(NAME)
 
 $(NAME)	:	$(OBJS)
 	@$(COMPILER) $(OBJS) -o $(NAME)
-	@echo "$(COLOR)COMPILED!$(RESET)"
 
 ifeq ($(firstword $(MAKECMDGOALS)),)
 	@echo "$(PIKACHU)"
@@ -56,7 +55,6 @@ $(OBJDIR)/%.o	:	%.cpp
 c	:	clean
 clean	:
 	@rm -rf $(OBJDIR)
-	@echo "$(COLOR)OBJECT FILES REMOVED$(RESET)"
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),c clean),)
 	@echo "$(PIKACHU)"
@@ -65,21 +63,19 @@ endif
 f	: fclean
 fclean	:	clean
 	@rm -rf $(NAME)
-	@echo "$(COLOR)EXECUTABLES REMOVED$(RESET)"
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),f fclean),)
 	@echo "$(PIKACHU)"
 endif
 
 re	: fclean all
-	@echo "$(COLOR)RE_MADE!$(RESET)"
 
 ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 	@echo "$(PIKACHU)"
 endif
 
 run	:	all
-	@./$(NAME)
+	@./$(NAME) input.txt
 
 val	:	all
 	@valgrind --track-origins=yes ./$(NAME)

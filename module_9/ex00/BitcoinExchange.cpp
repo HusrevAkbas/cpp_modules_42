@@ -49,55 +49,118 @@ void	BitcoinExchange::getData()
 	std::string		line;
 	std::string		date;
 	std::string		value;
+	time_t			the_time;
 	size_t			index_delimiter;
+	double			value_d;
+
 	if (!input_file)
-		std::cout << RED << "Database couldn't found!\n" << RESET;
+	{
+		std::cerr << RED << "Database couldn't found!\n" << RESET;
+		exit(1);
+	}
 
 	std::getline(input_file, line);	// skip titles
+	if (input_file.eof())
+	{
+		std::cerr << RED << "Database is empty!\n" << RESET;
+		exit(2);
+	}
 	std::getline(input_file, line);
 	while (!input_file.eof())
 	{
-		// std::cout << line << "\n";
-		BitcoinExchange::trim(line);
 		index_delimiter = line.find(",");
 		date = line.substr(0, index_delimiter);
-		validateDate(date);
+		the_time = validateDate(date);
+		if (!the_time)
+		{
+			std::cerr << date << RED << "Invalid date in database! Abort..." << RESET << "\n";
+			exit(3);
+		}
 		value = line.substr(index_delimiter + 1);
-		// std::cout << index_delimiter << " " << date << " " << value << "\n";
-
+		value_d = validateValue(value);
+		if (value_d < 0)
+		{
+			std::cerr << RED << value << " " << value_d << " Invalid value in database! Abort...\n" << RESET;
+			exit(4);
+		}
+		// save time_t for days, ignore hours and smaller units, divide by SECS_PER_DAY
+		this->_data.insert(std::pair<time_t, double>(the_time / SECS_PER_DAY, value_d));
 		std::getline(input_file, line);
 	}
-	
-	
+
+	// print map values TEST ONLY
+	// for (std::map<time_t, double>::iterator i = this->_data.begin(); i != this->_data.end(); i++)
+	// {
+	// 	std::cout << (*i).first << " "<< std::fixed << (*i).second << "\n";
+	// }
 }
 
-void	BitcoinExchange::trim(std::string &str)
-{
-	std::remove_if(str.begin(), str.end(), isspace);
-}
-
-void	BitcoinExchange::validateDate(std::string &date)
+time_t	BitcoinExchange::validateDate(std::string &date)
 {
 	std::stringstream	ss(date);
-	tm	my_time;
+	tm	*my_time;
+	time_t	the_time;
+
+	// get rid of valgrind uninitialized value error 
+	// inits all values in tm with current time
+	time(&the_time);
+	my_time = gmtime(&the_time);
 
 	// set date values
-	ss >> my_time.tm_year;
-	ss >> my_time.tm_mon;
-	ss >> my_time.tm_mday;
+	ss >> my_time->tm_year;
+	ss >> my_time->tm_mon;
+	ss >> my_time->tm_mday;
 
 	// adjust struct expectations
-	my_time.tm_year -= 1900;
-	my_time.tm_mon *= -1;
-	my_time.tm_mon -= 1;
-	my_time.tm_mday *= -1;
+	my_time->tm_year -= 1900;
+	my_time->tm_mon *= -1;
+	my_time->tm_mon -= 1;
+	my_time->tm_mday *= -1;
 
-	tm	original = my_time;
+	tm	original = *my_time;
 
 	// normalize overflows or invalid values
-	mktime(&my_time);
+	the_time = mktime(my_time);
 
 	// compare if mktime changed anything
-	if (my_time.tm_year != original.tm_year ||my_time.tm_mon != original.tm_mon ||my_time.tm_mday != original.tm_mday)
-		std::cout << RED << "invalid date" << RESET << "\n";
+	if (my_time->tm_year != original.tm_year
+		|| my_time->tm_mon != original.tm_mon
+		||my_time->tm_mday != original.tm_mday)
+			return (0);
+	return (the_time);
+}
+
+
+double	BitcoinExchange::validateValue(std::string &value)
+{
+	std::stringstream	ss(value);
+	double	num;
+
+	// TODO	work on trim if value is " -1"
+	if (value.find_first_not_of("1234567890. -") != std::string::npos
+		|| value.find("-", 1) != std::string::npos )
+		return (-1);
+	if (std::count(value.begin(), value.end(), '.') > 1)
+		return (-1);
+	ss >> num;
+	if (ss.fail())
+		return (-1);
+	if (num > std::numeric_limits<int>::max())
+		return (-2);
+	if (num < 0)
+		return (-3);
+	return (num);
+}
+
+
+double	BitcoinExchange::getValue(time_t const	time) const
+{
+	// if date is earlier than the begin date
+	if (time < this->_data.begin()->first)
+		return (-1);
+	std::map<time_t, double>::const_iterator it = this->_data.upper_bound(time);
+	// if the date doesnt match find previous date
+	if (it == this->_data.end() || (it->second != time && it != this->_data.begin()))
+		it--;
+	return ((*it).second);
 }
