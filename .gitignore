@@ -32,6 +32,7 @@ serializer
 identifier
 whatever
 container
+btc
 
 # test output files
 out
