@@ -68,6 +68,7 @@ void	BitcoinExchange::getData()
 	std::getline(input_file, line);
 	while (!input_file.eof())
 	{
+		BitcoinExchange::trim(line);
 		index_delimiter = line.find(",");
 		date = line.substr(0, index_delimiter);
 		the_time = validateDate(date);
@@ -163,4 +164,11 @@ double	BitcoinExchange::getValue(time_t const	time) const
 	if (it == this->_data.end() || (it->second != time && it != this->_data.begin()))
 		it--;
 	return ((*it).second);
+}
+
+void	BitcoinExchange::trim(std::string &str)
+{
+	// std::remove_if(str.begin(), str.end(), isspace);
+	// std::replace(str.begin(), str.end(), ' ', '');
+	str.erase(std::remove_if(str.begin(), str.end(), isspace), str.end());
 }

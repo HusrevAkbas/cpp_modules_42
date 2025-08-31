@@ -6,7 +6,7 @@
 /*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 15:25:20 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/31 00:58:52 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/08/31 15:36:21 by husrevakbas      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
+	// reads database and sets map
 	BitcoinExchange	btc;
+
+	// read input file
 	std::string	filename(argv[1]);
 	std::fstream	inputFile(filename.c_str(), std::fstream::in);
 	if (!inputFile)
@@ -47,8 +50,9 @@ int	main(int argc, char **argv)
 		return (2);
 	}
 
+	// read first line and skip titles
 	std::string	line;
-	std::getline(inputFile, line);	// skip titles
+	std::getline(inputFile, line);
 	if (inputFile.eof())
 	{
 		std::cerr << RED << "Input file is empty!\n" << RESET;
@@ -61,9 +65,11 @@ int	main(int argc, char **argv)
 	double		value_d;
 	size_t		index_delimiter;
 
+	// get dates and values line by line
 	std::getline(inputFile, line);
 	while (!inputFile.eof())
 	{
+		BitcoinExchange::trim(line);
 		index_delimiter = line.find('|');
 		if (index_delimiter == std::string::npos)
 		{
@@ -85,12 +91,16 @@ int	main(int argc, char **argv)
 		// get value and validate
 		value = line.substr(index_delimiter + 1);
 		value_d = btc.validateValue(value);
+		if (value_d > 1000)
+			value_d = -2;
 		if (value_d < 0)
 		{
 			printValueError(value_d);
 			std::getline(inputFile, line);
 			continue ;
 		}
+
+		// find currency in database
 		double	btc_value = btc.getValue(date_time / SECS_PER_DAY);
 		if (btc_value == -1)
 		{
@@ -98,7 +108,11 @@ int	main(int argc, char **argv)
 			std::getline(inputFile, line);
 			continue ;
 		}
+
+		// print result
 		std::cout << date << " => " << value_d << " = " << value_d * btc_value << "\n";
+
+		// get next line
 		std::getline(inputFile, line);
 	}
 	return (0);

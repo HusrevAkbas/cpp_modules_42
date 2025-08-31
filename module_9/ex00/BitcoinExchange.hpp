@@ -41,4 +41,5 @@ class BitcoinExchange
 		time_t		validateDate(std::string &date);
 		double		validateValue(std::string &value);
 		double		getValue(time_t	time) const;
+		static void		trim(std::string &str);
 };
