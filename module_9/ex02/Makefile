@@ -87,7 +87,7 @@ ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 endif
 
 run	:	all
-	./$(NAME) 3 2 1 5 6 8 10 11 4 7
+	./$(NAME) 8 6 10 11 3 2 1 5 4 7
 
 val	:	all
 	@valgrind --track-origins=yes ./$(NAME)
