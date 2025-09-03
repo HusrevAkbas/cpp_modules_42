@@ -1,6 +1,7 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC_FILES	=	main.cpp initializer.cpp jacobsthal.cpp swap_pairs.cpp
+SRC_FILES	=	main.cpp initializer.cpp jacobsthal.cpp swap_pairs.cpp\
+				utils.cpp
 
 COMPILER	=	c++
 
@@ -87,7 +88,7 @@ ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 endif
 
 run	:	all
-	./$(NAME) 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
+	./$(NAME) 15 11 10 14 9 8 7 13 12 6 5 4 3 2 1
 
 val	:	all
 	@valgrind --track-origins=yes ./$(NAME)

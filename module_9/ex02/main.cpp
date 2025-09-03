@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 11:55:48 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/03 16:15:31 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:28:48 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ std::vector<int>::iterator	search_binary(std::vector<int> *main_chain, std::vect
 	std::vector<int>::iterator	middle;
 
 	start = main_chain->begin();
-	end = main_chain->end() - 1;
+	end = main_chain->end();
 	size_t	diff = (end - start) / item_per_pair / 2;
 	middle = start + diff * item_per_pair - 1;
 	std::cout << "diff: " << diff << " middle: " << *middle << std::endl;
@@ -40,12 +40,26 @@ void	insert_pending_to_main_chain(std::vector<int> *main_chain, std::vector<int>
 	if (pending->size() == 0)
 		return ;
 	items_to_insert = get_next_Jacobsthal_difference(false);
-	// if (pending->size() <= items_to_insert * item_per_pair)
-	// {
+
+	if (items_to_insert >= pending->size() / item_per_pair)
+	{
 		last_of_next_insertion = pending->end() - 1;
 		first_of_next_insertion = pending->end() - item_per_pair;
-		search_binary(main_chain, last_of_next_insertion, item_per_pair);
-	// }
+	}
+	else
+	{
+		last_of_next_insertion = pending->begin() + item_per_pair * items_to_insert - 1;
+		first_of_next_insertion = pending->begin() + item_per_pair * (items_to_insert - 1);
+	}
+
+	std::cout << items_to_insert << " | " << *last_of_next_insertion << " | " << *first_of_next_insertion << "\n";
+	
+	// find item to insert next in pending
+	// binary search item in main_chain
+	// insert item to main chain, go next
+	// remove inserted elements from pending
+	// repeat as many times until nothing left to insert in pending
+
 	get_next_Jacobsthal_difference(true);
 }
 

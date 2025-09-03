@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:44:08 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/03 15:51:58 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:17:14 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	ft_divide_and_swap_pairs(std::vector<int> *vec, size_t item_per_pair)
 	// std::cout << item_per_pair << " : ";
 	// for (std::vector<int>::iterator i = vec->begin(); i != vec->end(); i++)
 	// {
+	// 	if ((i - vec->begin()) % item_per_pair == 0)
+	// 		switch_output_color();
 	// 	std::cout << *i << " ";
 	// }
-	// std::cout << "\n";
+	// std::cout << RESET << "\n";
 
 	for (size_t i = item_per_pair - 1; i + item_per_pair < vec->size(); i += item_per_pair * 2)
 	{
