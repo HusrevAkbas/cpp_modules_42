@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:37:04 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/03 18:13:15 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/04 13:12:01 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@ void	init_vector(std::vector<std::string> &arguments, std::vector<int> *vec, std
 void	init_arguments(int argc, char **argv, std::vector<std::string> *arguments);
 void	ft_divide_and_swap_pairs(std::vector<int> *vec, size_t item_per_pair);
 void	switch_output_color();
+void	print_vector(std::vector<int> &vec, std::string note, size_t item_per_pair);
