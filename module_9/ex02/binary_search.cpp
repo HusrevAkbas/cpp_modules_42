@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:33:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/06 15:25:12 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/06 17:35:13 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,9 @@
 
 std::vector<int>::iterator	binary_search(std::vector<int> *main_chain, int search, size_t item_per_pair)
 {
-	// std::vector<int>::iterator	left;
-	// std::vector<int>::iterator	right;
-	// std::vector<int>::iterator	middle;
-	// size_t						pair_size;
-	// size_t						pair_index;
-
 	size_t	left;
 	size_t	right;
 	size_t	middle;
-
-	// print_vector(*main_chain, "", item_per_pair);
-	// std::cout << search << "\n";
 
 	left = 1;
 	right = main_chain->size() / item_per_pair;
@@ -40,8 +31,28 @@ std::vector<int>::iterator	binary_search(std::vector<int> *main_chain, int searc
 		else
 			break ;
 	}
-	// std::cout << middle << " : " << *(main_chain->begin() + (middle - 1) * item_per_pair) << "\n";
-	// std::cout << left << " : " << *(main_chain->begin() + (left - 1) * item_per_pair) << "\n";
+	return (main_chain->begin() + (left - 1) * item_per_pair);
+}
+
+std::deque<int>::iterator	binary_search_deque(std::deque<int> *main_chain, int search, size_t item_per_pair)
+{
+	size_t	left;
+	size_t	right;
+	size_t	middle;
+
+	left = 1;
+	right = main_chain->size() / item_per_pair;
+
+	while (left <= right)
+	{
+		middle = left + (right - left) / 2;
+		if ((*main_chain)[middle * item_per_pair - 1] > search)
+			right = middle - 1;
+		else if ((*main_chain)[middle * item_per_pair - 1] < search)
+			left = middle + 1;
+		else
+			break ;
+	}
 	return (main_chain->begin() + (left - 1) * item_per_pair);
 }
 

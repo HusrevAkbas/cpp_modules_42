@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 18:06:07 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/04 13:27:59 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/06 16:41:33 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ void	print_vector(std::vector<int> &vec, std::string note, size_t item_per_pair)
 	if (!note.empty())
 		std::cout << note << "\n";
 	for (std::vector<int>::iterator i = vec.begin(); i != vec.end(); i++)
+	{
+		if ( i - vec.begin() != 0 && (i - vec.begin()) % (2 * item_per_pair) == 0)
+			std::cout << RESET << "- ";
+		if ((i - vec.begin()) % item_per_pair == 0)
+			switch_output_color();
+		std::cout << *i << " ";
+	}
+	std::cout << RESET << std::endl;
+}
+
+void	print_deque(std::deque<int> &vec, std::string note, size_t item_per_pair)
+{
+	if (!note.empty())
+		std::cout << note << "\n";
+	for (std::deque<int>::iterator i = vec.begin(); i != vec.end(); i++)
 	{
 		if ( i - vec.begin() != 0 && (i - vec.begin()) % (2 * item_per_pair) == 0)
 			std::cout << RESET << "- ";

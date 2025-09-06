@@ -1,7 +1,7 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRC_FILES	=	main.cpp initializer.cpp jacobsthal.cpp swap_pairs.cpp\
-				utils.cpp binary_search.cpp
+				utils.cpp binary_search.cpp ford_johnson_algorithm.cpp
 
 COMPILER	=	c++
 
