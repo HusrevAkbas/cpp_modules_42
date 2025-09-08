@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 12:45:57 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/22 17:21:02 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/09/08 12:38:41 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,24 @@
 	Elements can be accessed by index.
 */
 #include <vector>
+
 /*
 	Stores elements sequentially, where each element is connected to the next.
 	Adding and removing of elements can be done at both ends.
 	Not accessible by index.
 */
 #include <list>
+
 /*
 	Stores unique elements. Not accessible by index.
 */
 #include <set>
+
 /*
 	Stores elements in "key/value" pairs. Accessible by keys (not by index).
+	#include <map>	// associative container
 */
-#include <map>	// associative container
-/*
-	Stores elements in a specific order, called LIFO (Last In, First Out),
-	where elements can only be added and removed from the top.
-	Not accessible by index.
-*/
-#include <stack>	// doesn't have iterator
-/*
-	Stores elements in a specific order, called FIFO (First In, First Out),
-	where elements are added at the end and removed from the front.
-	Not accessible by index.
-*/
-#include <queue>	// doesn't have iterator
+
 /*
 	Stores elements in a double-ended queue, where elements can be added
 	and removed from both ends.
@@ -113,6 +105,19 @@ int	main()
 		std::cout << easyfind(dq, 33) << std::endl;
 		std::cout << easyfind(dq, 3) << std::endl;
 		std::cout << easyfind(dq, 5) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	const std::vector<int>	vector_const(5,5);
+
+	try
+	{
+		std::cout << easyfind(vector_const, 5) << std::endl;
+		std::cout << easyfind(vector_const, 3) << std::endl;
+		std::cout << easyfind(vector_const, 5) << std::endl;
 	}
 	catch(const std::exception& e)
 	{

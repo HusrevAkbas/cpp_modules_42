@@ -27,7 +27,7 @@ class MutantStack	:	public std::stack< TYPE, std::vector<TYPE> >
 		MutantStack(const MutantStack &a);
 		MutantStack& operator=(const MutantStack &a);
 
-		class iterator : public std::iterator<std::forward_iterator_tag, TYPE>
+		class iterator : public std::iterator<std::bidirectional_iterator_tag, TYPE>
 		{
 			private:
 				TYPE *data;
@@ -36,11 +36,23 @@ class MutantStack	:	public std::stack< TYPE, std::vector<TYPE> >
 				TYPE&	operator*() {	return (*data);	}
 				iterator	&operator++() {	data += 1; return (*this);	}
 				iterator	operator++(int) {	iterator tmp = *this; data += 1; return (tmp);	}
+				iterator	&operator--() {	data -= 1; return (*this);	}
+				iterator	operator--(int) {	iterator tmp = *this; data -= 1; return (tmp);	}
+				iterator	operator+(int range) {	data += range; return (*this);	}
+				iterator	operator-(int range) {	data -= range; return (*this);	}
 				bool	operator==(const iterator& other) const {	return (data == other.data);	}
 				bool	operator!=(const iterator& other) const {	return (data != other.data);	}
 		};
 		iterator	begin();
 		iterator	end();
+		TYPE&		operator[](size_t index);
+
+		class IndexIsOutOfRangeException : public std::exception
+		{
+			public:
+				const char	*what() const throw ()
+				{	return ("\e[1;31mIndex is out of range!\e[0m");	}
+		};
 };
 
 #include "MutantStack.tpp"

@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 15:40:33 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/26 14:04:35 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/08 12:57:41 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,22 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
+
+	srand(time(0));
 	try
 	{
 		for (size_t i = 1; i < span.size(); i++)
 		{
-			if (i % 2 == 0)
-				span.addNumber((i + 5) * 3);
-			else
-				span.addNumber((i + 3) * 5);
+			span.addNumber(rand() % 1000 + 1);
 		}
+		std::cout << "shortest span: " << span.shortestSpan() << std::endl;
+		std::cout << "longest  span: " << span.longestSpan() << std::endl;
 		for (size_t i = 0; i < span.size() ; i++)
 		{
 			std::cout << span.getNumber(i) << " ";
 		}
-		std::cout << std::endl << "shortest span: " << span.shortestSpan() << std::endl;
-		std::cout << "longest  span: " << span.longestSpan() << std::endl;
-		for (size_t i = 0; i < 111; i++)
+		std::cout << std::endl;
+		for (size_t i = span.size() - 1; i < span.size() + 1; i++)
 		{
 			span.addNumber(i*10);
 		}
@@ -78,10 +77,10 @@ int	main()
 	}
 	try
 	{
-		for (size_t i = 0; i < greater.size(); i++)
-		{
-			std::cout << greater.getNumber(i) << " ";
-		}
+		// for (size_t i = 0; i < greater.size(); i++)
+		// {
+		// 	std::cout << greater.getNumber(i) << " ";
+		// }
 	}
 	catch(const std::exception& e)
 	{

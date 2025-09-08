@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 12:43:41 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/21 14:55:04 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/09/08 12:31:12 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int	easyfind(const T &container, int num)
 	// 	if (container.at(i) == num)
 	// 		return (container.at(i));
 	// }
-	throw ElementNotFoundException();
+	// throw ElementNotFoundException();
 }

@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:03:09 by huakbas           #+#    #+#             */
-/*   Updated: 2025/08/28 16:31:01 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:37:20 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,42 @@
 
 int	main()
 {
+	std::cout << "-------------FLOAT STACK--------------------------" << std::endl;
+	std::cout << "init variable and assign values\n";
+
 	MutantStack<float>	st;
 	st.push(3e4f);
 	st.push(3e4f);
 	st.push(4e4f);
 	st.push(2e4f);
-	std::cout << st.top() << std::endl;
 	st.push(5e4f);
-	std::cout << st.top() << std::endl;
 
-	MutantStack<float>::iterator it = st.begin();
-	std::cout << "first item: " << *it << " " <<  "\n";
-
-	std::replace(st.begin(), st.end(), 20000, 99999);
+	std::cout << "\nstack:\n";
 	for (MutantStack<float>::iterator i = st.begin(); i != st.end(); ++i)
 	{
 		std::cout << *i << " ";
 	}
 	std::cout << "\n";
 
+	std::cout << "\nreplace a value using STL algorithm\n";
+	std::replace(st.begin(), st.end(), 20000, 99999);
+
+	std::cout << "\nstack after replace:\n";
+	for (MutantStack<float>::iterator i = st.begin(); i != st.end(); ++i)
+	{
+		std::cout << *i << " ";
+	}
+	std::cout << "\n";
+
+	std::cout << "\nfind items using iterator:\n";
+	MutantStack<float>::iterator it = st.begin();
+	std::cout << "first item: " << *it << " " <<  "\n";
+
+	std::cout << "third item: " << *(it + 2) << " " <<  "\n";
+	std::cout << "last item: " << *(st.end() - 1) << " " <<  "\n";
+
+
+	std::cout << "\nfind items using STL algorithm:\n";
 	float number = 22222;
 	MutantStack<float>::iterator res = std::find(st.begin(), st.end(), number);
 	if (res == st.end())
@@ -53,7 +70,7 @@ int	main()
 	<< std::count(st.begin(), st.end(), number)
 	<< "\e[0m times." << "\n";
 
-	std::cout << "---------------------------------------" << std::endl;
+	std::cout << "\n-------------STRING STACK--------------------------" << std::endl;
 
 	MutantStack<std::string>	strstc;
 	strstc.push("Algea");
@@ -74,11 +91,21 @@ int	main()
 	else
 		std::cout << "Found: " << *res2 << "\n";
 
-	toFind = "Eagle";
+	toFind = "Beatle";
 	res2 = std::find(strstc.begin(), strstc.end(), toFind);
 	if (res2 == strstc.end())
 		std::cout << "Not found: " << toFind << "\n";
 	else
 		std::cout << "Found: " << *res2 << "\n";
+
+	try
+	{
+		std::cout << strstc[4] << std::endl;
+		std::cout << strstc[5] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

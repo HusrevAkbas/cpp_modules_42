@@ -45,3 +45,11 @@ typename MutantStack<TYPE>::iterator MutantStack<TYPE>::end()
 	ptr++;
 	return (MutantStack<TYPE>::iterator(ptr));
 }
+
+template <typename TYPE>
+TYPE& MutantStack<TYPE>::operator[](size_t index)
+{
+	if (index >= this->size())
+		throw MutantStack<TYPE>::IndexIsOutOfRangeException();
+	return (*(this->begin() + index));
+}
