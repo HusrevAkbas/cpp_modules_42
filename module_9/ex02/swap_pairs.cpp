@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:44:08 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/06 17:34:10 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/09 12:48:46 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_divide_and_swap_pairs(std::vector<int> *vec, size_t item_per_pair)
 		it_last_of_first_pair = vec->begin() + i;
 		it_last_of_second_pair = vec->begin() + i + item_per_pair;
 		it_swap = it_last;
+		counter++;
 		if (*it_last_of_first_pair > *it_last_of_second_pair)
 			std::swap_ranges(it_first, it_last, it_swap);
 	}

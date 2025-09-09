@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:37:04 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/09 12:42:48 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/09 12:54:06 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@
 # define WHITE	"\e[1;37m"
 # define RESET	"\e[0m"
 
+extern int	counter;
+
 size_t	get_next_Jacobsthal_difference(bool	reset);
-void	init_vector(std::vector<std::string> &arguments, std::vector<int> *vec, std::deque<int> *deq);
+void	init_vector(std::vector<std::string> &arguments, std::vector<int> *vec);
+void	init_deque(std::vector<std::string> &arguments, std::deque<int> *deq);
 void	init_arguments(int argc, char **argv, std::vector<std::string> *arguments);
 void	ft_divide_and_swap_pairs(std::vector<int> *vec, size_t item_per_pair);
 void	switch_output_color();

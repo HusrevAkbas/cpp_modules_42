@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 13:33:53 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/06 17:35:13 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/09 12:49:46 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ std::vector<int>::iterator	binary_search(std::vector<int> *main_chain, int searc
 
 	while (left <= right)
 	{
+		counter++;
 		middle = left + (right - left) / 2;
 		if ((*main_chain)[middle * item_per_pair - 1] > search)
 			right = middle - 1;
