@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:37:04 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/06 16:42:47 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/09 12:42:48 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <algorithm>
+#include <ctime>
 
 #include <vector>
 #include <deque>
