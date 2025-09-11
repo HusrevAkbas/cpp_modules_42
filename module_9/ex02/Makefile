@@ -11,6 +11,8 @@ DEPS		=	$(addprefix $(OBJDIR)/, $(SRC_FILES:.cpp=.d))
 
 NAME		=	PmergeMe
 
+N			?=	3000
+
 #####################################################################
 RED			=	\033[1;31m
 GREEN		=	\033[1;32m
@@ -88,7 +90,11 @@ ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 endif
 
 run	:	all
-	./$(NAME) 33 15 11 10 14 9 8 7 13 12 6 5 22 4 3 2 1
+	./$(NAME) 33 1 11 10 14 9 8 7 13 12 6 5 22 4 3 2 35
+
+shuffle:	all
+	echo $3
+	 ./$(NAME) `shuf -i 1-100000 -n $(N) | tr "\n" " "`
 
 val	:	all
 	@valgrind --track-origins=yes ./$(NAME)
