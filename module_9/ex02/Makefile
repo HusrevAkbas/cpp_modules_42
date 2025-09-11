@@ -1,4 +1,4 @@
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
 SRC_FILES	=	main.cpp initializer.cpp jacobsthal.cpp swap_pairs.cpp\
 				utils.cpp binary_search.cpp ford_johnson_algorithm.cpp
@@ -90,16 +90,15 @@ ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 endif
 
 run	:	all
-	./$(NAME) 33 1 11 10 14 9 8 7 13 12 6 5 22 4 3 2 35
+	@./$(NAME) 33 1 11 10 14 9 8 7 13 12 6 5 22 4 3 2 35
 
 shuffle:	all
-	echo $3
-	 ./$(NAME) `shuf -i 1-100000 -n $(N) | tr "\n" " "`
+	@./$(NAME) `shuf -i 1-100000 -n $(N) | tr "\n" " "`
 
 val	:	all
-	@valgrind --track-origins=yes ./$(NAME)
+	@valgrind --track-origins=yes --leak-check=full ./$(NAME) `shuf -i 1-100000 -n $(N) | tr "\n" " "`
 
-.phony	:	all c clean f fclean re run val
+.phony	:	all c clean f fclean re run val shuffle
 
 PIKACHU	=⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸$(BG_YELLOW)⣿⣷$(RESET)⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\

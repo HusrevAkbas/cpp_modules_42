@@ -6,14 +6,14 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:38:44 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/09 12:53:14 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/11 15:35:12 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 // inits containers with arguments for vector given in quotes: "3 2 1"
-void	init_vector(std::vector<std::string> &arguments, std::vector<int> *vec)
+void	init_vector(std::vector<std::string> &arguments, std::vector<int> &vec)
 {
 	int					num;
 	std::stringstream	sspart;
@@ -28,12 +28,12 @@ void	init_vector(std::vector<std::string> &arguments, std::vector<int> *vec)
 			std::cerr << RED << "Error: invalid input: " << *it << "\n" << RESET;
 			exit(2);
 		}
-		vec->push_back(num);
+		vec[it - arguments.begin()] = num;
 	}
 }
 
 // inits containers with arguments for deque given in quotes: "3 2 1"
-void	init_deque(std::vector<std::string> &arguments, std::deque<int> *deq)
+void	init_deque(std::vector<std::string> &arguments, std::deque<int> &deq)
 {
 	int					num;
 	std::stringstream	sspart;
@@ -48,7 +48,7 @@ void	init_deque(std::vector<std::string> &arguments, std::deque<int> *deq)
 			std::cerr << RED << "Error: invalid input: " << *it << "\n" << RESET;
 			exit(2);
 		}
-		deq->push_back(num);
+		deq[it - arguments.begin()] = num;
 	}
 }
 

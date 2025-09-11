@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:31:47 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/11 14:59:05 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/11 15:09:11 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ static void	insert_pending_to_main_chain_vector(std::vector<int> *main_chain, st
 static void	insert_pending_to_main_chain_deque(std::deque<int> *main_chain, std::deque<int> *pending, size_t item_per_pair)
 {
 	size_t	items_to_insert;
+	size_t	items_inserted;
 	std::deque<int>::iterator	last_of_next_insertion;
 	std::deque<int>::iterator	first_of_next_insertion;
 	std::deque<int>::iterator	insert_in_main_chain;
+	size_t	upper_bound = 1;
 
 	if (pending->size() == 0)
 		return ;
@@ -72,23 +74,20 @@ static void	insert_pending_to_main_chain_deque(std::deque<int> *main_chain, std:
 	{
 		items_to_insert = get_next_Jacobsthal_difference(false);
 
+		if (items_to_insert > pending->size() / item_per_pair)
+			items_to_insert = pending->size() / item_per_pair;
+
+		upper_bound += items_to_insert;
+		items_inserted = items_to_insert;
+
 		while (items_to_insert > 0)
 		{
 			// find item to insert next in pending
-			if (items_to_insert >= pending->size() / item_per_pair)
-			{
-				last_of_next_insertion = pending->end() - 1;
-				first_of_next_insertion = pending->end() - item_per_pair;
-				items_to_insert = pending->size() / item_per_pair;
-			}
-			else
-			{
-				last_of_next_insertion = pending->begin() + item_per_pair * items_to_insert - 1;
-				first_of_next_insertion = pending->begin() + item_per_pair * (items_to_insert - 1);
-			}
+			last_of_next_insertion = pending->begin() + item_per_pair * items_to_insert - 1;
+			first_of_next_insertion = pending->begin() + item_per_pair * (items_to_insert - 1);
 
 			// find insert index by binary search in main_chain
-			insert_in_main_chain = binary_search_deque(main_chain, *last_of_next_insertion, item_per_pair);
+			insert_in_main_chain = binary_search_deque(main_chain, *last_of_next_insertion, item_per_pair, upper_bound);
 
 			// insert next sequence into main chain
 			main_chain->insert(insert_in_main_chain, first_of_next_insertion, last_of_next_insertion + 1);
@@ -99,6 +98,7 @@ static void	insert_pending_to_main_chain_deque(std::deque<int> *main_chain, std:
 			// go to next item to insert (previous index)
 			items_to_insert--;
 		}
+		upper_bound += items_inserted;
 		// repeat as many times until nothing left to insert in pending
 	}
 
