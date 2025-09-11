@@ -17,7 +17,7 @@ BitcoinExchange::BitcoinExchange() : _db_filename("data.csv")
 	getData();
 }
 
-BitcoinExchange::BitcoinExchange(std::string db_file = "data.csv")
+BitcoinExchange::BitcoinExchange(std::string db_file)
 : _db_filename(db_file)
 {
 	getData();

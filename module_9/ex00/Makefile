@@ -78,7 +78,7 @@ run	:	all
 	@./$(NAME) input.txt
 
 val	:	all
-	@valgrind --track-origins=yes ./$(NAME)
+	@valgrind --track-origins=yes ./$(NAME) input.txt
 
 .phony	:	all c clean f fclean re run val
 
