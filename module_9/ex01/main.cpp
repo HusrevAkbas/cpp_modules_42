@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:44:42 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/31 16:36:57 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/09/13 14:44:23 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ bool	isoperator(char ch)
 	return (false);
 }
 
-void	operate(char op, std::stack<int> *numbers)
+void	operate(char op, std::stack<double> *numbers)
 {
-	int	operand2 = numbers->top();
+	double	operand2 = numbers->top();
 	numbers->pop();
-	int operand = numbers->top();
+	double operand = numbers->top();
 	numbers->pop();
 
 	//	COMMENT OUT TO SEE CALCULATION STEP BY STEP
@@ -59,13 +59,13 @@ void	operate(char op, std::stack<int> *numbers)
 	}
 }
 
-void	calculate(char op, std::stack<int>	*numbers)
+void	calculate(char op, std::stack<double>	*numbers)
 {
 	if (isdigit(op))
 		numbers->push(op - 48);
 	else if (numbers->size() < 2)
 	{
-		std::cerr << RED << "Error: not enough numbers to calculate!\n" << RESET;
+		std::cerr << RED << "Error: not enough numbers to calculate before operator!\n" << RESET;
 		exit(4);
 	}
 	else
@@ -75,7 +75,7 @@ void	calculate(char op, std::stack<int>	*numbers)
 int	main(int argc, char **argv)
 {
 
-	std::stack<int>	numbers;
+	std::stack<double>	numbers;
 	
 	if (argc != 2)
 	{
