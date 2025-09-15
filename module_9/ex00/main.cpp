@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 15:25:20 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/31 15:36:21 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/09/15 15:12:16 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,25 @@ int	main(int argc, char **argv)
 		return (2);
 	}
 
-	// read first line and skip titles
 	std::string	line;
-	std::getline(inputFile, line);
-	if (inputFile.eof())
-	{
-		std::cerr << RED << "Input file is empty!\n" << RESET;
-		return (3);
-	}
-
 	std::string	date;
 	std::string	value;
 	time_t		date_time;
 	double		value_d;
 	size_t		index_delimiter;
+	bool		title_pass = false;
 
 	// get dates and values line by line
-	std::getline(inputFile, line);
-	while (!inputFile.eof())
+	while (std::getline(inputFile, line))
 	{
+		// skip empty lines
+		if (line.empty())
+			continue ;
 		BitcoinExchange::trim(line);
 		index_delimiter = line.find('|');
 		if (index_delimiter == std::string::npos)
 		{
 			std::cerr << RED << "Error: bad input => " << RESET << line << "\n";
-			std::getline(inputFile, line);
 			continue ;
 		}
 
@@ -83,8 +77,13 @@ int	main(int argc, char **argv)
 		date_time = btc.validateDate(date);
 		if (!date_time)
 		{
-			std::cerr << RED << "Error: invalid date => " << RESET << line << "\n";
-			std::getline(inputFile, line);
+			if (!title_pass)
+			{
+				title_pass = true;
+				continue ;
+			}
+			else
+				std::cerr << RED << "Error: invalid date => " << RESET << line << "\n";
 			continue ;
 		}
 
@@ -96,7 +95,7 @@ int	main(int argc, char **argv)
 		if (value_d < 0)
 		{
 			printValueError(value_d);
-			std::getline(inputFile, line);
+			title_pass = true;
 			continue ;
 		}
 
@@ -105,15 +104,13 @@ int	main(int argc, char **argv)
 		if (btc_value == -1)
 		{
 			std::cerr << RED << "Error: date is too early " << RESET << date << "\n";
-			std::getline(inputFile, line);
+			title_pass = true;
 			continue ;
 		}
 
 		// print result
 		std::cout << date << " => " << value_d << " = " << value_d * btc_value << "\n";
-
-		// get next line
-		std::getline(inputFile, line);
+		title_pass = true;
 	}
 	return (0);
 }

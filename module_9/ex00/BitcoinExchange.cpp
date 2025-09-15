@@ -98,6 +98,13 @@ void	BitcoinExchange::getData()
 
 time_t	BitcoinExchange::validateDate(std::string &date)
 {
+
+	if (date.find_last_not_of("1234567890- ") != std::string::npos)
+		return (0);
+
+	if (date[4] != '-' || date[7] != '-')
+		return (0);
+
 	std::stringstream	ss(date);
 	tm	*my_time;
 	time_t	the_time;
