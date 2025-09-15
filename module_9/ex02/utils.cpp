@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 18:06:07 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/06 16:41:33 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:35:23 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	switch_output_color()
 	switch (i % 4)
 	{
 	case 0:
-		std::cout << RED;
+		std::cout << CYAN;
 		break;
 	case 1:
 		std::cout << MAGENT;
@@ -27,7 +27,7 @@ void	switch_output_color()
 		std::cout << BLUE;
 		break;
 	case 3:
-		std::cout << CYAN;
+		std::cout << RED;
 		break;
 	default:
 		break;

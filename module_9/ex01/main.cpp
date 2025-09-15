@@ -6,13 +6,14 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:44:42 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/09/15 17:28:26 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:37:04 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <algorithm>
 #include <stack>
+#include <list>
 
 #define	RED		"\e[1;31m"
 #define	RESET	"\e[0m"
@@ -30,7 +31,7 @@ bool	isoperator(char ch)
 	return (false);
 }
 
-void	operate(char op, std::stack<double> *numbers)
+void	operate(char op, std::stack<double, std::list<double> > *numbers)
 {
 	double	operand2 = numbers->top();
 	numbers->pop();
@@ -59,7 +60,7 @@ void	operate(char op, std::stack<double> *numbers)
 	}
 }
 
-void	calculate(char op, std::stack<double>	*numbers)
+void	calculate(char op, std::stack<double, std::list<double> >	*numbers)
 {
 	if (isdigit(op))
 		numbers->push(op - 48);
@@ -75,7 +76,7 @@ void	calculate(char op, std::stack<double>	*numbers)
 int	main(int argc, char **argv)
 {
 
-	std::stack<double>	numbers;
+	std::stack<double, std::list<double> >	numbers;
 	
 	if (argc != 2)
 	{

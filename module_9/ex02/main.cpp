@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 11:55:48 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/11 15:37:44 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:34:09 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	merge_insertion_sort_or_the_Ford_Johnson_algorithm_deque(&deq, 1);
 	const double	deque_end = std::clock();
 
-	print_vector(vec, "", 1000);
+	print_vector(vec, "", vec.size());
 	std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : "
 	<< (vector_end - vector_start) * 1000 / CLOCKS_PER_SEC << " ms. Comparison count: " << counter << "\n";
 	std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : "

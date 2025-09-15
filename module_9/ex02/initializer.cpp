@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:38:44 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/11 15:35:12 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:50:44 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	init_vector(std::vector<std::string> &arguments, std::vector<int> &vec)
 		if (sspart.fail())
 		{
 			std::cerr << RED << "Error: invalid input: " << *it << "\n" << RESET;
+			exit(2);
+		}
+		if (num <= 0)
+		{
+			std::cerr << RED << "Error: number is not positive: " << *it << "\n" << RESET;
 			exit(2);
 		}
 		vec[it - arguments.begin()] = num;
@@ -54,6 +59,7 @@ void	init_deque(std::vector<std::string> &arguments, std::deque<int> &deq)
 
 void	init_arguments(int argc, char **argv, std::vector<std::string> *arguments)
 {
+	std::string			part;
 	if (argc < 2)
 	{
 		std::cerr << RED << "Error: need integer arguments. Example: \n" << RESET;
@@ -65,15 +71,28 @@ void	init_arguments(int argc, char **argv, std::vector<std::string> *arguments)
 		int	i = 1;
 		while (argv[i])
 		{
-			arguments->push_back(argv[i]);
+			part = argv[i];
+			if (part.find_first_not_of("1234567890 ") != std::string::npos)
+			{
+				std::cerr << RED << "Error: invalid char in sequence " << part << RESET << "\n";
+				exit (3);
+			}
+			arguments->push_back(part);
 			i++;
 		}
 	}
 	else
 	{
 		std::stringstream	ss(argv[1]);
-		std::string			part;
 		while (std::getline(ss, part, ' '))
-			arguments->push_back(part);
+		{
+			if (part.find_first_not_of("1234567890 ") != std::string::npos)
+			{
+				std::cerr << RED << "Error: invalid char in sequence " << part << RESET << "\n";
+				exit (3);
+			}
+			if (!part.empty())
+				arguments->push_back(part);
+		}
 	}
 }
