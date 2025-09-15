@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:44:42 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/09/13 14:44:23 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/15 17:28:26 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,26 @@ int	main(int argc, char **argv)
 	}
 
 	std::string	input = argv[1];
-	trim(input);
-
+	
 	// check invalid characters
-	if (input.find_first_not_of("1234567890+-*/") != std::string::npos)
+	if (input.find_first_not_of("1234567890+-*/ ") != std::string::npos)
 	{
 		std::cerr << RED << "Error: Invalid char in sequence: " << RESET
 		<< input[input.find_first_not_of("1234567890+-*/")] <<"\n";
 		return (2);
 	}
 
+	for(std::string::iterator it = input.begin(); (it + 1) != input.end(); ++it)
+	{
+		if (std::isdigit(*it) && std::isdigit(*(it + 1)))
+		{
+			std::cerr << RED << "Error: number is too big" << RESET
+			<< input[input.find_first_not_of("1234567890+-*/")] <<"\n";
+			return (3);
+		}
+	}
+
+	trim(input);
 	// check digits and operators count
 	if (std::count_if(input.begin(), input.end(), isdigit) != std::count_if(input.begin(), input.end(), isoperator) + 1)
 	{
