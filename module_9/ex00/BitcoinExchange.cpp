@@ -85,7 +85,18 @@ void	BitcoinExchange::getData()
 			exit(4);
 		}
 		// save time_t for days, ignore hours and smaller units, divide by SECS_PER_DAY
-		this->_data.insert(std::pair<time_t, double>(the_time / SECS_PER_DAY, value_d));
+		the_time = the_time / SECS_PER_DAY;
+
+		std::map<time_t, double>::iterator it = this->_data.find(the_time);
+		if (it == this->_data.end())
+			this->_data.insert(std::pair<time_t, double>(the_time, value_d));
+		else
+		{
+			std::cerr << YELLOW << "Warning: duplicate date in database, value is updated\n"
+			<< date << " old value: " << it->second << " new value: " << value_d << "\n" << RESET;
+			it->second = value_d;
+		}
+
 		std::getline(input_file, line);
 	}
 

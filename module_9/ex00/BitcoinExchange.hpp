@@ -22,6 +22,7 @@
 #include <limits>
 
 #define	RED		"\e[1;31m"
+#define	YELLOW	"\e[1;33m"
 #define	RESET	"\e[0m"
 
 const time_t	SECS_PER_DAY = 24 * 60 * 60;
