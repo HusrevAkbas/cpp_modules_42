@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 11:55:48 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/19 11:41:49 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/19 14:26:25 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ int	main(int argc, char **argv)
 	std::deque<int>				deq;
 	
 	init_arguments(argc, argv, &argumentList);
+
+	if (argumentList.size() == 0)
+	{
+		std::cerr << RED << "Error: need integer arguments. Example: \n" << RESET;
+		std::cerr << RED << "./PmergeMe 3 2 1\n" << RESET;
+		exit (1);
+	}
 
 	std::cout << GREEN;
 	for (std::vector<std::string>::iterator it = argumentList.begin(); it != argumentList.end(); ++it)
