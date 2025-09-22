@@ -43,6 +43,8 @@ class BitcoinExchange
 		time_t		validateDate(std::string &date);
 		double		validateValue(std::string &value);
 		double		getValue(time_t	time) const;
+		bool		databaseReady();
+		void		calculateExchange(std::string filename);
 		static void		trim(std::string &str);
 
 		class DatabaseErrorException : public std::exception {
