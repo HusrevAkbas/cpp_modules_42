@@ -1,6 +1,6 @@
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC_FILES	=	main.cpp
+SRC_FILES	=	main.cpp RPN.cpp
 
 COMPILER	=	c++
 
@@ -90,7 +90,7 @@ run	:	all
 	@./$(NAME) "3 2 1 + -"
 
 val	:	all
-	@valgrind --track-origins=yes ./$(NAME)
+	@valgrind --track-origins=yes ./$(NAME) "4 3 2 1 + + -"
 
 .phony	:	all c clean f fclean re run val
 
