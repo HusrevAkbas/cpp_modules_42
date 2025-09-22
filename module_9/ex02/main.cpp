@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 11:55:48 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/19 14:26:25 by huakbas          ###   ########.fr       */
+/*   Created: 2025/09/22 17:17:55 by huakbas           #+#    #+#             */
+/*   Updated: 2025/09/22 17:18:21 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-int	counter = 0;
 
 int	main(int argc, char **argv)
 {
