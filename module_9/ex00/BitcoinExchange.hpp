@@ -20,6 +20,7 @@
 #include <ctime>
 #include <iterator>
 #include <limits>
+#include <exception>
 
 #define	RED		"\e[1;31m"
 #define	YELLOW	"\e[1;33m"
@@ -43,4 +44,10 @@ class BitcoinExchange
 		double		validateValue(std::string &value);
 		double		getValue(time_t	time) const;
 		static void		trim(std::string &str);
+
+		class DatabaseErrorException : public std::exception {
+			const char *what () const throw () {
+				return "\e[1;31mDatabase Error\e[0m";
+			}
+		};
 };

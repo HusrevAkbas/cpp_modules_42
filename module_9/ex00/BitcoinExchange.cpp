@@ -14,13 +14,27 @@
 
 BitcoinExchange::BitcoinExchange() : _db_filename("data.csv")
 {
-	getData();
+	try
+	{
+		getData();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 BitcoinExchange::BitcoinExchange(std::string db_file)
 : _db_filename(db_file)
 {
-	getData();
+	try
+	{
+		getData();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 BitcoinExchange::~BitcoinExchange(){}
@@ -56,14 +70,14 @@ void	BitcoinExchange::getData()
 	if (!input_file)
 	{
 		std::cerr << RED << "Database couldn't found!\n" << RESET;
-		exit(1);
+		throw DatabaseErrorException();
 	}
 
 	std::getline(input_file, line);	// skip titles
 	if (input_file.eof())
 	{
 		std::cerr << RED << "Database is empty!\n" << RESET;
-		exit(2);
+		throw DatabaseErrorException();
 	}
 	std::getline(input_file, line);
 	while (!input_file.eof())
@@ -75,14 +89,14 @@ void	BitcoinExchange::getData()
 		if (!the_time)
 		{
 			std::cerr << date << RED << "Invalid date in database! Abort..." << RESET << "\n";
-			exit(3);
+			throw DatabaseErrorException();
 		}
 		value = line.substr(index_delimiter + 1);
 		value_d = validateValue(value);
 		if (value_d < 0)
 		{
 			std::cerr << RED << value << " " << value_d << " Invalid value in database! Abort...\n" << RESET;
-			exit(4);
+			throw DatabaseErrorException();
 		}
 		// save time_t for days, ignore hours and smaller units, divide by SECS_PER_DAY
 		the_time = the_time / SECS_PER_DAY;
@@ -111,6 +125,9 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 {
 
 	if (date.find_last_not_of("1234567890- ") != std::string::npos)
+		return (0);
+
+	if (std::count(date.begin() + 1, date.end(), '-') > 2)
 		return (0);
 
 	if (date[4] != '-' || date[7] != '-')
@@ -155,7 +172,6 @@ double	BitcoinExchange::validateValue(std::string &value)
 	std::stringstream	ss(value);
 	double	num;
 
-	// TODO	work on trim if value is " -1"
 	if (value.find_first_not_of("1234567890. -") != std::string::npos
 		|| value.find("-", 1) != std::string::npos )
 		return (-1);

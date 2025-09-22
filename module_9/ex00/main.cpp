@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 15:25:20 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/09/15 15:12:16 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/22 13:37:21 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
-	// reads database and sets map
+	// reads database and sets map in constructor
 	BitcoinExchange	btc;
 
 	// read input file
