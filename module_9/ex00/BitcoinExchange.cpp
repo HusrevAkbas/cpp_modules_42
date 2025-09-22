@@ -266,8 +266,13 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 	double		value_d;
 	size_t		index_delimiter;
 
+	if (!std::getline(inputFile, line))
+	{
+		std::cerr << RED << "Input file is empty\n" << RESET;
+		return ;
+	}
+
 	// check titles
-	std::getline(inputFile, line);
 	if (line != "date | value")
 	{
 		std::cerr << RED << "Input file must start with the line\n" << RESET << "date | value\n";
@@ -300,6 +305,9 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 		// get value and validate
 		value = line.substr(index_delimiter + 1);
 		value_d = this->validateValue(value);
+		// check .00001 fraction
+		if (value_d == 1000 && value.find_first_of("123456789", value.find('.')) != std::string::npos)
+			value_d = -2;
 		if (value_d > 1000)
 			value_d = -2;
 		if (value_d < 0)
