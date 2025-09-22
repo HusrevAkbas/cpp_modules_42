@@ -79,6 +79,13 @@ void	BitcoinExchange::getData()
 		std::cerr << RED << "Database is empty!\n" << RESET;
 		throw DatabaseErrorException();
 	}
+
+	if (line != "date,exchange_rate")
+	{
+		std::cerr << RED << "Database must start with the line:\n" << RESET << "date,exchange_rate\n";
+		throw DatabaseErrorException();
+	}
+
 	std::getline(input_file, line);
 	while (!input_file.eof())
 	{
@@ -123,6 +130,10 @@ void	BitcoinExchange::getData()
 
 time_t	BitcoinExchange::validateDate(std::string &date)
 {
+	size_t	day_limit;
+	size_t	mon_limit;
+
+	BitcoinExchange::trim(date);
 
 	if (date.find_last_not_of("1234567890- ") != std::string::npos)
 		return (0);
@@ -130,10 +141,14 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 	if (std::count(date.begin() + 1, date.end(), '-') > 2)
 		return (0);
 
-	if (date[4] != '-' || date[7] != '-')
+	// if (date[4] != '-' || date[7] != '-')
+	// 	return (0);
+
+	day_limit = date.find_last_of('-');
+	mon_limit = date.find_last_of('-', day_limit - 1);
+	if (day_limit - mon_limit != 3 || date.begin() + day_limit + 3 != date.end())
 		return (0);
 
-	std::stringstream	ss(date);
 	tm	*my_time;
 	time_t	the_time;
 
@@ -143,15 +158,13 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 	my_time = gmtime(&the_time);
 
 	// set date values
-	ss >> my_time->tm_year;
-	ss >> my_time->tm_mon;
-	ss >> my_time->tm_mday;
+	my_time->tm_mday = std::atoi(&date[day_limit + 1]);
+	my_time->tm_mon = std::atoi(&date[mon_limit + 1]);
+	my_time->tm_year = std::atoi(date.c_str());
 
 	// adjust struct expectations
 	my_time->tm_year -= 1900;
-	my_time->tm_mon *= -1;
-	my_time->tm_mon -= 1;
-	my_time->tm_mday *= -1;
+	my_time->tm_mon -= 1;	// [0 - 11]
 
 	tm	original = *my_time;
 
@@ -169,10 +182,18 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 
 double	BitcoinExchange::validateValue(std::string &value)
 {
+	// remove whitespaces at the beginning
+	while (isspace(value[0]))
+		value = &value[1];
+
+	// remove whitespaces at the end
+	while (isspace(*(value.end() - 1)))
+		value.erase(value.end() - 1, value.end());
+
 	std::stringstream	ss(value);
 	double	num;
 
-	if (value.find_first_not_of("1234567890. -") != std::string::npos
+	if (value.find_first_not_of("1234567890.-") != std::string::npos
 		|| value.find("-", 1) != std::string::npos )
 		return (-1);
 	if (std::count(value.begin(), value.end(), '.') > 1)
@@ -180,8 +201,6 @@ double	BitcoinExchange::validateValue(std::string &value)
 	ss >> num;
 	if (ss.fail())
 		return (-1);
-	if (num > std::numeric_limits<int>::max())
-		return (-2);
 	if (num < 0)
 		return (-3);
 	return (num);
@@ -217,7 +236,7 @@ static void	printValueError(int err_code)
 	switch (err_code)
 	{
 	case -1:
-		std::cerr << RED << "Error: value is not a number\n" << RESET;
+		std::cerr << RED << "Error: value is not a valid number\n" << RESET;
 		break;
 	case -2:
 		std::cerr << RED << "Error: too large number\n" << RESET;
@@ -246,7 +265,14 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 	time_t		date_time;
 	double		value_d;
 	size_t		index_delimiter;
-	bool		title_pass = false;
+
+	// check titles
+	std::getline(inputFile, line);
+	if (line != "date | value")
+	{
+		std::cerr << RED << "Input file must start with the line\n" << RESET << "date | value\n";
+		return ;
+	}
 
 	// get dates and values line by line
 	while (std::getline(inputFile, line))
@@ -254,7 +280,7 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 		// skip empty lines
 		if (line.empty())
 			continue ;
-		BitcoinExchange::trim(line);
+		// BitcoinExchange::trim(line);
 		index_delimiter = line.find('|');
 		if (index_delimiter == std::string::npos)
 		{
@@ -267,13 +293,7 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 		date_time = this->validateDate(date);
 		if (!date_time)
 		{
-			if (!title_pass)
-			{
-				title_pass = true;
-				continue ;
-			}
-			else
-				std::cerr << RED << "Error: invalid date => " << RESET << line << "\n";
+			std::cerr << RED << "Error: invalid date => " << RESET << line << "\n";
 			continue ;
 		}
 
@@ -285,7 +305,6 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 		if (value_d < 0)
 		{
 			printValueError(value_d);
-			title_pass = true;
 			continue ;
 		}
 
@@ -294,12 +313,10 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 		if (btc_value == -1)
 		{
 			std::cerr << RED << "Error: date is too early " << RESET << date << "\n";
-			title_pass = true;
 			continue ;
 		}
 
 		// print result
 		std::cout << date << " => " << value_d << " = " << value_d * btc_value << "\n";
-		title_pass = true;
 	}
 }
