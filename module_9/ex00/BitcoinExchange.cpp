@@ -135,10 +135,13 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 
 	BitcoinExchange::trim(date);
 
+	if (date.empty())
+		return (0);
+
 	if (date.find_last_not_of("1234567890- ") != std::string::npos)
 		return (0);
 
-	if (std::count(date.begin() + 1, date.end(), '-') > 2)
+	if (std::count(date.begin(), date.end(), '-') > 2)
 		return (0);
 
 	// if (date[4] != '-' || date[7] != '-')
@@ -179,7 +182,6 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 	return (the_time);
 }
 
-
 double	BitcoinExchange::validateValue(std::string &value)
 {
 	// remove whitespaces at the beginning
@@ -190,14 +192,17 @@ double	BitcoinExchange::validateValue(std::string &value)
 	while (isspace(*(value.end() - 1)))
 		value.erase(value.end() - 1, value.end());
 
-	std::stringstream	ss(value);
-	double	num;
-
 	if (value.find_first_not_of("1234567890.-") != std::string::npos
-		|| value.find("-", 1) != std::string::npos )
+		|| value.find("-", 1) != std::string::npos
+		|| value[0] == '.'
+		|| value[value.size() - 1] == '.')
 		return (-1);
+
 	if (std::count(value.begin(), value.end(), '.') > 1)
 		return (-1);
+
+	std::stringstream	ss(value);
+	double	num;
 	ss >> num;
 	if (ss.fail())
 		return (-1);
@@ -205,7 +210,6 @@ double	BitcoinExchange::validateValue(std::string &value)
 		return (-3);
 	return (num);
 }
-
 
 double	BitcoinExchange::getValue(time_t const	time) const
 {

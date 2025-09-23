@@ -75,10 +75,10 @@ ifneq ($(filter $(firstword $(MAKECMDGOALS)),re),)
 endif
 
 run	:	all
-	@./$(NAME) input.txt
+	@./$(NAME) input.csv
 
 val	:	all
-	@valgrind --track-origins=yes ./$(NAME) input.txt
+	@valgrind --track-origins=yes ./$(NAME) input.csv
 
 .phony	:	all c clean f fclean re run val
 
