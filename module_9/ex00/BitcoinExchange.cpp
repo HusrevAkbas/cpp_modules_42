@@ -184,9 +184,15 @@ time_t	BitcoinExchange::validateDate(std::string &date)
 
 double	BitcoinExchange::validateValue(std::string &value)
 {
+	if (value.empty())
+		return (-1);
+
 	// remove whitespaces at the beginning
 	while (isspace(value[0]))
 		value = &value[1];
+
+	if (value.empty())
+		return (-1);
 
 	// remove whitespaces at the end
 	while (isspace(*(value.end() - 1)))
