@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:21:55 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/22 16:58:22 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:16:49 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <stack>
 #include <list>
 #include <exception>
+#include <limits>
+#include <cmath>
 
 #define	RED		"\e[1;31m"
 #define	RESET	"\e[0m"
@@ -35,14 +37,13 @@ class	RPN
 		~RPN();
 		RPN(const RPN &RPN);
 		RPN& operator=(const RPN &RPN);
-		void	rpn(std::string input);
+		int	rpn(std::string input);
 
 		class InvalidInputException : public std::exception {
 			const char*	what() const throw () {
 				return ("\e[1;31mInvalid Input\e[0m");
 			}
 		};
-	
 };
 
 bool	isoperator(char ch);

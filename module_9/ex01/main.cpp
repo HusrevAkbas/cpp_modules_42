@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 15:44:42 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/09/22 16:58:11 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:09:23 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
+	// std::cout << (std::numeric_limits<double>::max() / 2 + std::numeric_limits<double>::max() / 2 + (double)100000000000000000) << "\n";
+
 	RPN	calculator;
 
-	calculator.rpn(argv[1]);
+	if (calculator.rpn(argv[1]))
+		return (1);
 
 	return (0);
 }

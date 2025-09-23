@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:21:52 by huakbas           #+#    #+#             */
-/*   Updated: 2025/09/22 17:11:35 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:23:58 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	RPN::operate(char op)
 	this->numbers.pop();
 	double operand = this->numbers.top();
 	this->numbers.pop();
+	double	result;
 
 	//	COMMENT OUT TO SEE CALCULATION STEP BY STEP
 	//std::cout << RED << operand << " " << op << " " << operand2 << "\n" << RESET;
@@ -57,16 +58,45 @@ void	RPN::operate(char op)
 	switch (op)
 	{
 	case '+':
-		this->numbers.push(operand + operand2);
+		result = operand + operand2;
+		if (std::isinf(result) || std::isnan(result))
+		{
+			std::cerr << RED << "Error: Overflow limits!\n" << RESET;
+			throw InvalidInputException();
+		}
+		this->numbers.push(result);
 		break;
 	case '-':
-		this->numbers.push(operand - operand2);
+		result = operand - operand2;
+		if (std::isinf(result) || std::isnan(result))
+		{
+			std::cerr << RED << "Error: Overflow limits!\n" << RESET;
+			throw InvalidInputException();
+		}
+		this->numbers.push(result);
 		break;
 	case '*':
-		this->numbers.push(operand * operand2);
+		result = operand * operand2;
+		if (std::isinf(result) || std::isnan(result))
+		{
+			std::cerr << RED << "Error: Overflow limits!\n" << RESET;
+			throw InvalidInputException();
+		}
+		this->numbers.push(result);
 		break;
 	case '/':
-		this->numbers.push(operand / operand2);
+		if (operand2 == 0)
+		{
+			std::cerr << RED << "Error: Division by zero!\n" << RESET;
+			throw InvalidInputException();
+		}
+		result = operand / operand2;
+		if (std::isinf(result) || std::isnan(result))
+		{
+			std::cerr << RED << "Error: Overflow limits!\n" << RESET;
+			throw InvalidInputException();
+		}
+		this->numbers.push(result);
 		break;
 	default:
 		break;
@@ -92,10 +122,10 @@ void	RPN::errorCheck(std::string &input)
 		throw InvalidInputException();
 
 	// check invalid characters
-	if (input.find_first_not_of("1234567890+-*/ ") != std::string::npos)
+	if (input.find_first_not_of("1234567890+-*/ \t\n") != std::string::npos)
 	{
-		std::cerr << RED << "Error: Invalid char in sequence: " << RESET
-		<< input[input.find_first_not_of("1234567890+-*/ ")] <<"\n";
+		std::cerr << RED << "Error: Invalid character" << RESET << " '"
+		<< input[input.find_first_not_of("1234567890+-*/ ")] <<"'\n";
 		throw InvalidInputException();
 	}
 
@@ -103,13 +133,8 @@ void	RPN::errorCheck(std::string &input)
 	{
 		if (std::isdigit(*it) && std::isdigit(*(it + 1)))
 		{
-			if (*it == '0')
-				*it = ' ';
-			else
-			{
-				std::cerr << RED << "Error: number is too big" << RESET <<"\n";
-				throw InvalidInputException();
-			}
+			std::cerr << RED << "Error: Numbers must be single digit" << RESET <<"\n";
+			throw InvalidInputException();
 		}
 	}
 
@@ -124,7 +149,7 @@ void	RPN::errorCheck(std::string &input)
 	}
 }
 
-void	RPN::rpn(std::string input)
+int	RPN::rpn(std::string input)
 {
 	// check errors
 	try
@@ -135,9 +160,11 @@ void	RPN::rpn(std::string input)
 			this->calculate(*i);
 		// print output
 		std::cout << numbers.top() << "\n";
+		return (0);
 	}
 	catch(const std::exception& e)
 	{
 		// std::cerr << e.what() << '\n';
+		return (1);
 	}
 }
