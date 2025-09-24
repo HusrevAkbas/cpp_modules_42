@@ -21,6 +21,7 @@
 #include <iterator>
 #include <limits>
 #include <exception>
+#include <iomanip>
 
 #define	RED		"\e[1;31m"
 #define	YELLOW	"\e[1;33m"

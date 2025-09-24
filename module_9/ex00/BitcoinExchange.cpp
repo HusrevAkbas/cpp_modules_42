@@ -335,6 +335,8 @@ void	BitcoinExchange::calculateExchange(std::string filename)
 		}
 
 		// print result
-		std::cout << date << " => " << value_d << " = " << value_d * btc_value << "\n";
+		std::ostringstream	format_result;
+		format_result << std::fixed << std::setprecision(2) << value_d * btc_value;
+		std::cout << date << " => " << value_d << " = " << format_result.str() << "\n";
 	}
 }
