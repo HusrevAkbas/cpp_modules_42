@@ -6,7 +6,7 @@
 /*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:53:47 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/05 17:08:16 by huakbas          ###   ########.fr       */
+/*   Updated: 2025/09/30 11:48:37 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,5 @@ Fixed	Point::get_y() const
 
 bool	operator==( const Point& a, const Point &b )
 {
-	if (a.get_x() == b.get_x() && a.get_y() == b.get_y())
-		return (true);
-	return (false);
+	return (a.get_x() == b.get_x() && a.get_y() == b.get_y());
 }

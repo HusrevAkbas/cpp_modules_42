@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: husrevakbas <husrevakbas@student.42.fr>    +#+  +:+       +#+        */
+/*   By: huakbas <huakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 23:32:36 by husrevakbas       #+#    #+#             */
-/*   Updated: 2025/08/06 21:49:11 by husrevakbas      ###   ########.fr       */
+/*   Updated: 2025/09/30 11:48:14 by huakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,44 +119,32 @@ int	Fixed::toInt( void ) const
 
 bool	operator<(Fixed a, Fixed b)
 {
-	if (a.getRawBits() < b.getRawBits())
-		return (true);
-	return (false);
+	return (a.getRawBits() < b.getRawBits());
 }
 
 bool	operator>(Fixed a, Fixed b)
 {
-	if (a.getRawBits() > b.getRawBits())
-		return (true);
-	return (false);
+	return (a.getRawBits() > b.getRawBits());
 }
 
 bool	operator>=(Fixed a, Fixed b)
 {
-	if (a.getRawBits() >= b.getRawBits())
-		return (true);
-	return (false);
+	return (a.getRawBits() >= b.getRawBits());
 }
 
 bool	operator<=(Fixed a, Fixed b)
 {
-	if (a.getRawBits() <= b.getRawBits())
-		return (true);
-	return (false);
+	return (a.getRawBits() <= b.getRawBits());
 }
 
 bool	operator==(Fixed a, Fixed b)
 {
-	if (a.getRawBits() == b.getRawBits())
-		return (true);
-	return (false);
+	return (a.getRawBits() == b.getRawBits());
 }
 
 bool	operator!=(Fixed a, Fixed b)
 {
-	if (a.getRawBits() != b.getRawBits())
-		return (true);
-	return (false);
+	return (a.getRawBits() != b.getRawBits());
 }
 
 Fixed	Fixed::operator++(int)
